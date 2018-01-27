@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
+//runs when the server starts up
 Meteor.startup(() => {
-  // code to run on server at startup
+	//creates an empty array that will hold game data
+	var gameDatabase = [];
 });

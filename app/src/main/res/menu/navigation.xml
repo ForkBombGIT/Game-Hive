@@ -5,17 +5,18 @@
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home"
-        android:visible="true" />
+        android:visible="true"
+        android:itemBackground="@color/colorPrimary"/>
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_random"
         android:enabled="true"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_random"
         android:visible="true" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_quiz"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_quiz" />
 

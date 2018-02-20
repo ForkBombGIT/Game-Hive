@@ -18,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".gamehive_random"
+            android:label="@string/title_random"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".gamehive_quiz"
+            android:label="@string/title_quiz"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

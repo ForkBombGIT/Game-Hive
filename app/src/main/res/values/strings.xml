@@ -4,4 +4,7 @@
     <string name="title_random">Random</string>
     <string name="title_quiz">Quiz</string>
     <string name="settings">Setting</string>
+    <string name="title_activity_gotd">GOTD</string>
+    <string name="title_activity_gamehive_random">gamehive_random</string>
+    <string name="title_activity_gamehive_quiz">gamehive_quiz</string>
 </resources>

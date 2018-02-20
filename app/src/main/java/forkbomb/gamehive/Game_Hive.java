@@ -1,5 +1,6 @@
 package forkbomb.gamehive;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -34,4 +35,25 @@ public class Game_Hive extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.navigation_home:
+                randomStart(Game_Hive.class);
+                return true;
+            case R.id.navigation_random:
+                randomStart(gamehive_random.class);
+                return true;
+            case R.id.navigation_quiz:
+                randomStart(gamehive_quiz.class);
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public void randomStart(Class t){
+        Intent intent = new Intent(this,t);
+        startActivity(intent);
+    }
 }

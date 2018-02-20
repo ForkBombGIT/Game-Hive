@@ -15,6 +15,7 @@ public class gamehive_random extends AppCompatActivity {
         setContentView(R.layout.activity_gamehive_random);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }

@@ -15,6 +15,8 @@ public class gamehive_quiz extends AppCompatActivity {
         setContentView(R.layout.activity_gamehive_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }

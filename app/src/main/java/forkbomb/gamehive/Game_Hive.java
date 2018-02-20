@@ -38,21 +38,18 @@ public class Game_Hive extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.navigation_home:
-                randomStart(Game_Hive.class);
-                return true;
             case R.id.navigation_random:
-                randomStart(gamehive_random.class);
+                activityStart(gamehive_random.class);
                 return true;
             case R.id.navigation_quiz:
-                randomStart(gamehive_quiz.class);
+                activityStart(gamehive_quiz.class);
                 return true;
             default:
                 return false;
         }
     }
 
-    public void randomStart(Class t){
+    public void activityStart(Class t){
         Intent intent = new Intent(this,t);
         startActivity(intent);
     }

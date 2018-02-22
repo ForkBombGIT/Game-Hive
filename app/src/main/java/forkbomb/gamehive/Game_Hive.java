@@ -27,7 +27,7 @@ public class Game_Hive extends AppCompatActivity {
         setSupportActionBar(toptoolbar);
     }
 
-    //drop down menu
+    //sets up drop down menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
@@ -35,6 +35,7 @@ public class Game_Hive extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    //checks for drop down menu clicks
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -49,8 +50,10 @@ public class Game_Hive extends AppCompatActivity {
         }
     }
 
+    //starts an activity
     public void activityStart(Class t){
         Intent intent = new Intent(this,t);
         startActivity(intent);
+        overridePendingTransition(R.anim.activity_slide_in_home,R.anim.activity_slide_out_home);
     }
 }

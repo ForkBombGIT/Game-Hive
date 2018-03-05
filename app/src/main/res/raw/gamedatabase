@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gamedatabase>
+    <game>
+        <title>
+            Guacamelee!
+        </title>
+        <year>
+            2013
+        </year>
+        <publisher>
+            Drinkbox Studios
+        </publisher>
+        <developer>
+            Drinkbox Studios
+        </developer>
+        <genre>
+            Platformer,Metroidvania,Beat ‘em up
+        </genre>
+        <platforms>
+            PlayStation 4,PlayStation 3,PlayStation Vita,Xbox One,Xbox 360,PC,Wii U
+        </platforms>
+        <region>
+            WW
+        </region>
+        <rating>
+            T
+        </rating>
+        <multiplayer>
+            True
+        </multiplayer>
+    </game>
+
+    <game>
+        <title>
+            Astro Boy: Omega Factor
+        </title>
+        <year>
+            2003
+        </year>
+        <publisher>
+            Sega
+        </publisher>
+        <developer>
+            Treasure,Hitmaker
+        </developer>
+        <genre>
+            Beat ‘em up,Shoot ‘em up
+        </genre>
+        <platforms>
+            Game Boy Advance
+        </platforms>
+        <region>
+            JP,NA,EU
+        </region>
+        <rating>
+            E
+        </rating>
+        <multiplayer>
+            False
+        </multiplayer>
+    </game>
+
+    <game>
+        <title>
+            Mischief Makers
+        </title>
+        <year>
+            1997
+        </year>
+        <publisher>
+            Nintendo,Enix
+        </publisher>
+        <developer>
+            Treasure
+        </developer>
+        <genre>
+            Puzzle,Platformer
+        </genre>
+        <platforms>
+            Nintendo 64
+        </platforms>
+        <region>
+            JP,NA,UK,AU
+        </region>
+        <rating>
+            E
+        </rating>
+        <multiplayer>
+            False
+        </multiplayer>
+    </game>
+
+    <game>
+        <title>
+            Super Mario Odyssey
+        </title>
+        <year>
+            2017
+        </year>
+        <publisher>
+            Nintendo
+        </publisher>
+        <developer>
+            Nintendo EPD
+        </developer>
+        <genre>
+            Platformer
+        </genre>
+        <platforms>
+            Nintendo Switch
+        </platforms>
+        <region>
+            WW
+        </region>
+        <rating>
+            E
+        </rating>
+        <multiplayer>
+            True
+        </multiplayer>
+    </game>
+</gamedatabase>
+

@@ -3,4 +3,5 @@
     <color name="colorPrimary">#FFCA00</color>
     <color name="colorDropDown">#FF9200</color>
     <color name="toolBarColor">#FFFFFF</color>
+    <color name="homeTitleColor">#2B2B2B</color>
 </resources>

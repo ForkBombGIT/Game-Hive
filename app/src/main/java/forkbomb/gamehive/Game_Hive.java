@@ -8,20 +8,25 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Game_Hive extends AppCompatActivity {
     //var to hold the top toolbar
     Toolbar toptoolbar;
+    //holds game database
+    List<HashMap<String,String>> gameDataBase;
     private static final String TAG = "Game_Hive";
 
     //on create function
@@ -34,6 +39,9 @@ public class Game_Hive extends AppCompatActivity {
         toptoolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toptoolbar);
 
+        //initializes the array list
+        gameDataBase = new ArrayList<HashMap<String,String>>();
+        //calls the parser
         parseXML(R.raw.gamedatabase);
     }
 
@@ -64,22 +72,58 @@ public class Game_Hive extends AppCompatActivity {
     public void activityStart(Class t){
         Intent intent = new Intent(this,t);
         startActivity(intent);
+        //overrides default animation
         overridePendingTransition(R.anim.activity_slide_in_home,R.anim.activity_slide_out_home);
     }
 
     //parses xml
     public void parseXML(int xml){
-        InputStream stream = getResources().openRawResource(R.raw.gamedatabase);
+        //takes the file as input
+        InputStream stream = getResources().openRawResource(xml);
+        //reads the input file
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 
+        //holds the line being read
         String readLine = null;
+        //holds the data being added to the array list
+        String data = "";
+        //holds the current index of the array list
+        int index = 0;
         try{
+            //loops until the reaching a null line
             while ((readLine = reader.readLine()) != null){
-                Log.i(TAG,readLine);
+                //removes whitespace
+                readLine = readLine.trim();
+                //checks if line is the start of a new tag
+                if (readLine.startsWith("<") && !readLine.startsWith("</")){data = ""; continue;}
+                //checks if the line is not a tag
+                if (!readLine.startsWith("<")){data+=readLine; continue;}
+                //checks if line is an end tags
+                if (readLine.startsWith("</")){
+                    //checks if the end of a game tag, and if so increment index
+                    if (readLine.startsWith("</game>")) {gameDataBase.add(new HashMap<String, String>()); index++;}
+                    //otherwise, add the data to the map
+                    else if (readLine.startsWith("</title>")) {gameDataBase.get(index).put("title",data);}
+                    else if (readLine.startsWith("</year>")) {gameDataBase.get(index).put("year",data);}
+                    else if (readLine.startsWith("</publisher>")) {gameDataBase.get(index).put("publisher",data);}
+                    else if (readLine.startsWith("</developer>")) {gameDataBase.get(index).put("developer",data);}
+                    else if (readLine.startsWith("</genre>")) {gameDataBase.get(index).put("genre",data);}
+                    else if (readLine.startsWith("</platforms>")) {gameDataBase.get(index).put("platforms",data);}
+                    else if (readLine.startsWith("</region>")) {gameDataBase.get(index).put("region",data);}
+                    else if (readLine.startsWith("</rating>")) {gameDataBase.get(index).put("rating",data);}
+                    else if (readLine.startsWith("</multiplayer>")) {gameDataBase.get(index).put("multiplayer",data);}
+                }
             }
+            //closes the reader
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        for (int i = 0; i < gameDataBase.size(); i++){
+            for (int j = 0; j < gameDataBase.get(i).size(); j++){
+               // Log(TAG,gameDataBase.get(i).get(j));
+            }
         }
     }
 }

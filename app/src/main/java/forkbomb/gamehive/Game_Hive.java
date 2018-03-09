@@ -95,13 +95,17 @@ public class Game_Hive extends AppCompatActivity {
                 //removes whitespace
                 readLine = readLine.trim();
                 //checks if line is the start of a new tag
-                if (readLine.startsWith("<") && !readLine.startsWith("</")){data = ""; continue;}
+                if (readLine.startsWith("<") && !readLine.startsWith("</")){
+                    if (readLine.startsWith("<game>")) gameDataBase.add(new HashMap<String, String>());
+                    data = "";
+                    continue;
+                }
                 //checks if the line is not a tag
                 if (!readLine.startsWith("<")){data+=readLine; continue;}
                 //checks if line is an end tags
                 if (readLine.startsWith("</")){
                     //checks if the end of a game tag, and if so increment index
-                    if (readLine.startsWith("</game>")) {gameDataBase.add(new HashMap<String, String>()); index++;}
+                    if (readLine.startsWith("</game>")) {index++;}
                     //otherwise, add the data to the map
                     else if (readLine.startsWith("</title>")) {gameDataBase.get(index).put("title",data);}
                     else if (readLine.startsWith("</year>")) {gameDataBase.get(index).put("year",data);}
@@ -120,10 +124,7 @@ public class Game_Hive extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        for (int i = 0; i < gameDataBase.size(); i++){
-            for (int j = 0; j < gameDataBase.get(i).size(); j++){
-               // Log(TAG,gameDataBase.get(i).get(j));
-            }
-        }
+        //iterates through list, printing titles (for testing)
+        for (int i = 0; i < gameDataBase.size(); i++){Log.i(TAG,gameDataBase.get(i).get("title"));}
     }
 }

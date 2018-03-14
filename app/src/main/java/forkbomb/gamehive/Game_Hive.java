@@ -63,6 +63,9 @@ public class Game_Hive extends AppCompatActivity {
             case R.id.navigation_quiz:
                 activityStart(gamehive_quiz.class);
                 return true;
+            case R.id.navigation_fav:
+                activityStart(gamehive_fav.class);
+                return true;
             default:
                 return false;
         }

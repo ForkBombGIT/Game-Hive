@@ -19,14 +19,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
 
 public class Game_Hive extends AppCompatActivity {
     //var to hold the top toolbar
     Toolbar toptoolbar;
     //holds game database
-    List<HashMap<String,String>> gameDataBase;
+    ArrayList<HashMap<String,String>> gameDatabase;
     private static final String TAG = "Game_Hive";
 
     //on create function
@@ -40,7 +39,7 @@ public class Game_Hive extends AppCompatActivity {
         setSupportActionBar(toptoolbar);
 
         //initializes the array list
-        gameDataBase = new ArrayList<HashMap<String,String>>();
+        gameDatabase = new ArrayList<HashMap<String,String>>();
         //calls the parser
         parseXML(R.raw.gamedatabase);
     }
@@ -73,7 +72,13 @@ public class Game_Hive extends AppCompatActivity {
 
     //starts an activity
     public void activityStart(Class t){
+        //creates a new intent
         Intent intent = new Intent(this,t);
+        //creates a bundle to send
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("gameDatabase",gameDatabase);
+        intent.putExtra("gameDatabase",bundle);
+        //starts the new activity
         startActivity(intent);
         //overrides default animation
         overridePendingTransition(R.anim.activity_slide_in_home,R.anim.activity_slide_out_home);
@@ -99,7 +104,7 @@ public class Game_Hive extends AppCompatActivity {
                 readLine = readLine.trim();
                 //checks if line is the start of a new tag
                 if (readLine.startsWith("<") && !readLine.startsWith("</")){
-                    if (readLine.startsWith("<game>")) gameDataBase.add(new HashMap<String, String>());
+                    if (readLine.startsWith("<game>")) gameDatabase.add(new HashMap<String, String>());
                     data = "";
                     continue;
                 }
@@ -110,15 +115,15 @@ public class Game_Hive extends AppCompatActivity {
                     //checks if the end of a game tag, and if so increment index
                     if (readLine.startsWith("</game>")) {index++;}
                     //otherwise, add the data to the map
-                    else if (readLine.startsWith("</title>")) {gameDataBase.get(index).put("title",data);}
-                    else if (readLine.startsWith("</year>")) {gameDataBase.get(index).put("year",data);}
-                    else if (readLine.startsWith("</publisher>")) {gameDataBase.get(index).put("publisher",data);}
-                    else if (readLine.startsWith("</developer>")) {gameDataBase.get(index).put("developer",data);}
-                    else if (readLine.startsWith("</genre>")) {gameDataBase.get(index).put("genre",data);}
-                    else if (readLine.startsWith("</platforms>")) {gameDataBase.get(index).put("platforms",data);}
-                    else if (readLine.startsWith("</region>")) {gameDataBase.get(index).put("region",data);}
-                    else if (readLine.startsWith("</rating>")) {gameDataBase.get(index).put("rating",data);}
-                    else if (readLine.startsWith("</multiplayer>")) {gameDataBase.get(index).put("multiplayer",data);}
+                    else if (readLine.startsWith("</title>")) {gameDatabase.get(index).put("title",data);}
+                    else if (readLine.startsWith("</year>")) {gameDatabase.get(index).put("year",data);}
+                    else if (readLine.startsWith("</publisher>")) {gameDatabase.get(index).put("publisher",data);}
+                    else if (readLine.startsWith("</developer>")) {gameDatabase.get(index).put("developer",data);}
+                    else if (readLine.startsWith("</genre>")) {gameDatabase.get(index).put("genre",data);}
+                    else if (readLine.startsWith("</platforms>")) {gameDatabase.get(index).put("platforms",data);}
+                    else if (readLine.startsWith("</region>")) {gameDatabase.get(index).put("region",data);}
+                    else if (readLine.startsWith("</rating>")) {gameDatabase.get(index).put("rating",data);}
+                    else if (readLine.startsWith("</multiplayer>")) {gameDatabase.get(index).put("multiplayer",data);}
                 }
             }
             //closes the reader
@@ -128,6 +133,6 @@ public class Game_Hive extends AppCompatActivity {
         }
 
         //iterates through list, printing titles (for testing)
-        for (int i = 0; i < gameDataBase.size(); i++){Log.i(TAG,gameDataBase.get(i).get("title"));}
+        for (int i = 0; i < gameDatabase.size(); i++){Log.i(TAG,gameDatabase.get(i).get("title"));}
     }
 }

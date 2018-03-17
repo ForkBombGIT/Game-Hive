@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class gamehive_random extends AppCompatActivity {
 
     //on create event
@@ -14,6 +17,11 @@ public class gamehive_random extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gamehive_random);
+
+        //processes gamedatabase
+        Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
+        ArrayList<HashMap<String,String>> database = (ArrayList<HashMap<String,String>>) gameDatabase.getSerializable("gameDatabase");
+
         //sets toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

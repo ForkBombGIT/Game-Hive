@@ -28,8 +28,8 @@
                 android:value="forkbomb.gamehive.Game_Hive" />
         </activity>
         <activity
-            android:name=".gamehive_quiz"
-            android:label="@string/title_quiz"
+            android:name=".gamehive_fav"
+            android:label="@string/title_fav"
             android:parentActivityName=".Game_Hive"
             android:theme="@style/AppTheme">
             <meta-data
@@ -37,8 +37,8 @@
                 android:value="forkbomb.gamehive.Game_Hive" />
         </activity>
         <activity
-            android:name=".gamehive_fav"
-            android:label="@string/title_fav"
+            android:name=".gamehive_quiz"
+            android:label="@string/title_quiz"
             android:parentActivityName=".Game_Hive"
             android:theme="@style/AppTheme">
             <meta-data

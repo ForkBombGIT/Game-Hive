@@ -10,9 +10,13 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class gamehive_random extends AppCompatActivity {
-
+    //used for random number generation
+    Random rand = new Random();
+    //used to hold the games
+    ArrayList<HashMap<String,String>> database;
     //on create event
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +25,7 @@ public class gamehive_random extends AppCompatActivity {
 
         //processes gamedatabase
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
-        ArrayList<HashMap<String,String>> database = (ArrayList<HashMap<String,String>>) gameDatabase.getSerializable("gameDatabase");
+        database = (ArrayList<HashMap<String,String>>) gameDatabase.getSerializable("gameDatabase");
 
         //button handler
         Button button = (Button) findViewById(R.id.button);
@@ -51,7 +55,9 @@ public class gamehive_random extends AppCompatActivity {
         return true;
     }
 
-    public void onButtonPress(){
+    //generates a random game
+    public HashMap<String,String> generateRandomGame(){
+        return (database.get(rand.nextInt(database.size())));
     }
 
 

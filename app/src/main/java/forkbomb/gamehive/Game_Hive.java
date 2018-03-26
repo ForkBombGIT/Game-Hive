@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +25,8 @@ import java.util.HashMap;
 public class Game_Hive extends AppCompatActivity {
     //var to hold the top toolbar
     Toolbar toptoolbar;
+    //title of game
+    TextView title, dev, pub, release, genre, platforms;
     //holds game database
     ArrayList<HashMap<String,String>> gameDatabase;
     private static final String TAG = "Game_Hive";
@@ -42,6 +45,25 @@ public class Game_Hive extends AppCompatActivity {
         gameDatabase = new ArrayList<HashMap<String,String>>();
         //calls the parser
         parseXML(R.raw.gamedatabase);
+
+        //displays text for game of the day
+        title = (TextView) findViewById(R.id.game_title);
+        title.setText(gameDatabase.get(0).get("title"));
+
+        dev = (TextView) findViewById(R.id.game_dev);
+        dev.setText(gameDatabase.get(0).get("developer"));
+
+        pub = (TextView) findViewById(R.id.game_pub);
+        pub.setText(gameDatabase.get(0).get("publisher"));
+
+        release = (TextView) findViewById(R.id.game_release);
+        release.setText(gameDatabase.get(0).get("year"));
+
+        genre = (TextView) findViewById(R.id.game_genre);
+        genre.setText(gameDatabase.get(0).get("genre"));
+
+        platforms = (TextView) findViewById(R.id.game_platform);
+        platforms.setText(gameDatabase.get(0).get("platforms"));
     }
 
     //sets up drop down menu

@@ -46,24 +46,26 @@ public class Game_Hive extends AppCompatActivity {
         //calls the parser
         parseXML(R.raw.gamedatabase);
 
-        //displays text for game of the day
-        title = (TextView) findViewById(R.id.game_title);
-        title.setText(gameDatabase.get(0).get("title"));
+        if (gameDatabase.size() > 0) {
+            //displays text for game of the day
+            title = (TextView) findViewById(R.id.game_title);
+            title.setText(gameDatabase.get(1).get("title"));
 
-        dev = (TextView) findViewById(R.id.game_dev);
-        dev.setText(gameDatabase.get(0).get("developer"));
+            dev = (TextView) findViewById(R.id.game_dev);
+            dev.append(" " + gameDatabase.get(1).get("developer"));
 
-        pub = (TextView) findViewById(R.id.game_pub);
-        pub.setText(gameDatabase.get(0).get("publisher"));
+            pub = (TextView) findViewById(R.id.game_pub);
+            pub.append(" " + gameDatabase.get(1).get("publisher"));
 
-        release = (TextView) findViewById(R.id.game_release);
-        release.setText(gameDatabase.get(0).get("year"));
+            release = (TextView) findViewById(R.id.game_release);
+            release.append(" " + gameDatabase.get(1).get("year"));
 
-        genre = (TextView) findViewById(R.id.game_genre);
-        genre.setText(gameDatabase.get(0).get("genre"));
+            // genre = (TextView) findViewById(R.id.game_genre);
+            //genre.setText(gameDatabase.get(0).get("genre"));
 
-        platforms = (TextView) findViewById(R.id.game_platform);
-        platforms.setText(gameDatabase.get(0).get("platforms"));
+            // platforms = (TextView) findViewById(R.id.game_platform);
+            //platforms.setText(gameDatabase.get(0).get("platforms"));
+        }
     }
 
     //sets up drop down menu

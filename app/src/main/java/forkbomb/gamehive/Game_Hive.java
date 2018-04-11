@@ -49,16 +49,16 @@ public class Game_Hive extends AppCompatActivity {
         if (gameDatabase.size() > 0) {
             //displays text for game of the day
             title = (TextView) findViewById(R.id.game_title);
-            title.setText(gameDatabase.get(1).get("title"));
-
-            dev = (TextView) findViewById(R.id.game_dev);
-            dev.append(" " + gameDatabase.get(1).get("developer"));
-
-            pub = (TextView) findViewById(R.id.game_pub);
-            pub.append(" " + gameDatabase.get(1).get("publisher"));
+            title.setText(gameDatabase.get(2).get("title"));
 
             release = (TextView) findViewById(R.id.game_release);
-            release.append(" " + gameDatabase.get(1).get("year"));
+            release.append(" " + gameDatabase.get(2).get("year"));
+
+            dev = (TextView) findViewById(R.id.game_dev);
+            dev.append(" " + gameDatabase.get(2).get("developer"));
+
+            pub = (TextView) findViewById(R.id.game_pub);
+            pub.append(" " + gameDatabase.get(2).get("publisher"));
 
             // genre = (TextView) findViewById(R.id.game_genre);
             //genre.setText(gameDatabase.get(0).get("genre"));

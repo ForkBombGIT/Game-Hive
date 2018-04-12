@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -49,22 +50,30 @@ public class Game_Hive extends AppCompatActivity {
         if (gameDatabase.size() > 0) {
             //displays text for game of the day
             title = (TextView) findViewById(R.id.game_title);
-            title.setText(gameDatabase.get(2).get("title"));
+            title.setText(gameDatabase.get(1).get("title"));
 
             release = (TextView) findViewById(R.id.game_release);
-            release.append(" " + gameDatabase.get(2).get("year"));
+            release.append(" " + gameDatabase.get(1).get("year"));
 
             dev = (TextView) findViewById(R.id.game_dev);
-            dev.append(" " + gameDatabase.get(2).get("developer"));
+            dev.append(" " + gameDatabase.get(1).get("developer"));
 
             pub = (TextView) findViewById(R.id.game_pub);
-            pub.append(" " + gameDatabase.get(2).get("publisher"));
+            pub.append(" " + gameDatabase.get(1).get("publisher"));
 
-            // genre = (TextView) findViewById(R.id.game_genre);
-            //genre.setText(gameDatabase.get(0).get("genre"));
+            genre = (TextView) findViewById(R.id.genre_entries);
+            String[] genres = gameDatabase.get(1).get("genre").split(",");
+            String genreText = "";
+            for (int i = 0; i < genres.length; i++)
+                genreText += genres[i] + "\n";
+            genre.setText(genreText);
 
-            // platforms = (TextView) findViewById(R.id.game_platform);
-            //platforms.setText(gameDatabase.get(0).get("platforms"));
+            platforms = (TextView) findViewById(R.id.platform_entries);
+            String[] platformEntries = gameDatabase.get(1).get("platforms").split(",");
+            String platformText = "\n";
+            for (int i = 0; i < platformEntries.length; i++)
+                platformText += platformEntries[i] + "\n";
+            platforms.setText(platformText);
         }
     }
 

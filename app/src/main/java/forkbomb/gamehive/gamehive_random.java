@@ -1,5 +1,6 @@
 package forkbomb.gamehive;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,14 +28,33 @@ public class gamehive_random extends AppCompatActivity {
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
         database = (ArrayList<HashMap<String,String>>) gameDatabase.getSerializable("gameDatabase");
 
-        //button handler
-        Button button = (Button) findViewById(R.id.button);
-
         //sets toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    //handles button press
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.button:
+                activityStart(game.class,generateRandomGame());
+                break;
+            default:
+                break;
+        }
+    }
+
+    //starts an activity
+    public void activityStart(Class t, HashMap<String,String> g){
+        //creates a new intent
+        Intent intent = new Intent(this,t);
+        //creates a bundle to send
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("randomGame",g);
+        intent.putExtra("randomGame",bundle);
+        //starts the new activity
+        startActivity(intent);
     }
 
     //back button press event

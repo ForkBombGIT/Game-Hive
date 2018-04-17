@@ -5,13 +5,13 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="forkbomb.gamehive.Game_Hive"
+    tools:context="forkbomb.gamehive.game"
     tools:layout_editor_absoluteY="81dp">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:titleTextColor="@color/toolBarColor" />
@@ -46,10 +46,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintVertical_bias="0.103" />
 
     <TextView
         android:id="@+id/game_dev"
@@ -94,13 +94,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/game_title"
-        app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <TextView
         android:id="@+id/game_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="16dp"
         android:text="GENRE:"
         android:textColor="@color/homeTitleColor"
@@ -163,6 +163,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="141dp" />
+        app:layout_constraintGuide_end="137dp" />
 
 </android.support.constraint.ConstraintLayout>

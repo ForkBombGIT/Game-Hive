@@ -1,10 +1,9 @@
 package forkbomb.gamehive;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -12,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -23,16 +21,40 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import java.util.Calendar;
+
 public class Game_Hive extends AppCompatActivity {
     //var to hold the top toolbar
     Toolbar toptoolbar;
     //title of game
     TextView title, dev, pub, release, genre, platforms;
+    //used to hold date data, to check if its a new day
+    SharedPreferences preferences;
     //holds game database
     ArrayList<HashMap<String,String>> gameDatabase;
+
     private static final String TAG = "Game_Hive";
 
-    //on create function
+    //called when the activity starts
+    @Override
+    protected void onStart(){
+        preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        if (preferences.contains("date"))
+           Log.i(TAG, preferences.getString("date",null));
+        super.onStart();
+    }
+
+    //called when the activity stops
+    @Override
+    protected void onStop(){
+        preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("date","test");
+        editor.commit();
+        super.onStop();
+    }
+
+    //on create function, when the app is initially created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,8 +186,5 @@ public class Game_Hive extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        //iterates through list, printing titles (for testing)
-        for (int i = 0; i < gameDatabase.size(); i++){Log.i(TAG,gameDatabase.get(i).get("title"));}
     }
 }

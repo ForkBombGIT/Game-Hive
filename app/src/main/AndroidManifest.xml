@@ -45,6 +45,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="forkbomb.gamehive.Game_Hive" />
         </activity>
+        <activity
+            android:name=".game"
+            android:label="@string/title_activity_game"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

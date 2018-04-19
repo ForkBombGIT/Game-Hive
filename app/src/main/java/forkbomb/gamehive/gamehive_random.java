@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class gamehive_random extends AppCompatActivity {
-    //used for random number generation
-    Random rand = new Random();
     //used to hold the games
     ArrayList<HashMap<String,String>> database;
     //on create event
@@ -38,7 +36,7 @@ public class gamehive_random extends AppCompatActivity {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                activityStart(game.class,generateRandomGame());
+                activityStart(game.class);
                 break;
             default:
                 break;
@@ -46,15 +44,17 @@ public class gamehive_random extends AppCompatActivity {
     }
 
     //starts an activity
-    public void activityStart(Class t, HashMap<String,String> g){
-        //creates a new intent
-        Intent intent = new Intent(this,t);
-        //creates a bundle to send
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("randomGame",g);
-        intent.putExtra("randomGame",bundle);
-        //starts the new activity
-        startActivity(intent);
+    public void activityStart(Class t){
+        if (database.size() > 0) {
+            //creates a new intent
+            Intent intent = new Intent(this, t);
+            //creates a bundle to send
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("gameDatabase", database);
+            intent.putExtra("gameDatabase", bundle);
+            //starts the new activity
+            startActivity(intent);
+        }
     }
 
     //back button press event
@@ -74,11 +74,5 @@ public class gamehive_random extends AppCompatActivity {
         overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out);
         return true;
     }
-
-    //generates a random game
-    public HashMap<String,String> generateRandomGame(){
-        return (database.get(rand.nextInt(database.size())));
-    }
-
 
 }

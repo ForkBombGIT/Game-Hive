@@ -100,11 +100,11 @@
         android:id="@+id/game_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         android:text="GENRE:"
         android:textColor="@color/homeTitleColor"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/game_dev" />
 
@@ -115,24 +115,24 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="PLATFORM:"
+        android:text="PLATFORMS:"
         android:textColor="@color/homeTitleColor"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.597"
+        app:layout_constraintHorizontal_bias="0.641"
         app:layout_constraintStart_toEndOf="@+id/game_genre"
         app:layout_constraintTop_toBottomOf="@+id/game_dev" />
 
     <TextView
         android:id="@+id/genre_entries"
         android:layout_width="162dp"
-        android:layout_height="38dp"
+        android:layout_height="254dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text=""
         android:textColor="@color/homeTitleColor"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/game_genre" />
@@ -140,14 +140,15 @@
     <TextView
         android:id="@+id/platform_entries"
         android:layout_width="162dp"
-        android:layout_height="36dp"
+        android:layout_height="273dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text=""
         android:textColor="@color/homeTitleColor"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/game_platform" />
 

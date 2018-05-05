@@ -38,10 +38,9 @@ public class Game_Hive extends AppCompatActivity {
     TextView title, dev, pub, release, genre, platforms;
     //used to hold date data, to check if its a new day
     SharedPreferences preferences;
+    SharedPreferences.Editor editor;
     //holds game database
     ArrayList<HashMap<String,String>> gameDatabase;
-    //index used to display game
-    int index = 0;
 
     private static final String TAG = "Game_Hive";
 
@@ -61,9 +60,8 @@ public class Game_Hive extends AppCompatActivity {
         //calls the parser
         parseXML(R.raw.gamedatabase);
 
-
         checkForNewDate();
-        displayGame(index);
+        displayGame(getIndex());
     }
 
     //called when the activity starts
@@ -71,15 +69,16 @@ public class Game_Hive extends AppCompatActivity {
     protected void onStart(){
         Log.i(TAG,"on start");
         checkForNewDate();
-        displayGame(index);
+        displayGame(getIndex());
         super.onStart();
     }
 
+    //when the activity unpauses
     @Override
     protected void onResume(){
         Log.i(TAG,"on resume");
         checkForNewDate();
-        displayGame(index);
+        displayGame(getIndex());
         super.onResume();
     }
 
@@ -87,51 +86,62 @@ public class Game_Hive extends AppCompatActivity {
     @Override
     protected void onStop(){
         Log.i(TAG,"on stop");
-        getDate();
+        getDate(getIndex());
         super.onStop();
     }
 
-    //called when the activity stops
+    //called when the switching to another activity
     @Override
     protected void onPause(){
         Log.i(TAG,"on pause");
-        getDate();
+        getDate(getIndex());
         super.onPause();
     }
 
+    //called when activity is closed
     @Override
     protected void onDestroy(){
         Log.i(TAG,"on destroy");
-        getDate();
+        getDate(getIndex());
         super.onDestroy();
+    }
+
+    //gets the correct index
+    public int getIndex(){
+        preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        if (preferences.contains("index")){return preferences.getInt("index",0);}
+        return 0;
     }
 
     //checks to see if the app is ran on a new day
     public void checkForNewDate(){
+        //index used to display game
+        int index = getIndex();
+        preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        editor = preferences.edit();
         if (gameDatabase != null) {
-            preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
             if (preferences.contains("day") && preferences.contains("month") && preferences.contains("year")) {
                 int day = preferences.getInt("day",-1);
                 int month = preferences.getInt("month",-1);
                 int year = preferences.getInt("year",-1);
-
+                //checks if theres a difference in days
                 if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR))
                     if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH))
                         if ((day < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))
-                            index = rnd.nextInt() % gameDatabase.size();
+                            index = rnd.nextInt(gameDatabase.size());
                         else if (month < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH)) index = rnd.nextInt() % gameDatabase.size();
                         else if (year < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) index = rnd.nextInt() % gameDatabase.size();
             }
         }
-
-
+        //adds current index to preferences
+        editor.putInt("index",index);
+        editor.commit();
     }
 
     //gets the current date
-    public void getDate(){
-        preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        SimpleDateFormat fmt = new SimpleDateFormat();
+    public void getDate(int i){
+        //stores the current day in preferences
+        editor = preferences.edit();
         int day = Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH);
         int month = Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH);
         int year = Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR);
@@ -139,6 +149,7 @@ public class Game_Hive extends AppCompatActivity {
         editor.putInt("day",day);
         editor.putInt("month",month);
         editor.putInt("year",year);
+        editor.putInt("index",i);
 
         editor.commit();
     }

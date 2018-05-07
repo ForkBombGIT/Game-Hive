@@ -110,7 +110,7 @@ public class Game_Hive extends AppCompatActivity {
     public int getIndex(){
         preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         if (preferences.contains("index")){return preferences.getInt("index",0);}
-        return 0;
+        return 2;
     }
 
     //checks to see if the app is ran on a new day

@@ -23,8 +23,8 @@
             android:name=".gamehive_random"
             android:label="@string/title_random"
             android:parentActivityName=".Game_Hive"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="forkbomb.gamehive.Game_Hive" />
@@ -33,8 +33,8 @@
             android:name=".gamehive_quiz"
             android:label="@string/title_quiz"
             android:parentActivityName=".Game_Hive"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="forkbomb.gamehive.Game_Hive" />
@@ -42,8 +42,17 @@
         <activity
             android:name=".game"
             android:label="@string/title_activity_game"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".quiz"
+            android:label="@string/title_activity_quiz"
+            android:parentActivityName=".gamehive_quiz"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gamehive_quiz" />
+        </activity>
     </application>
 
 </manifest>

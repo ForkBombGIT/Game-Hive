@@ -9,4 +9,5 @@
     <string name="title_activity_gamehive_quiz">gamehive_quiz</string>
     <string name="title_activity_gamehive_fav">gamehive_fav</string>
     <string name="title_activity_game">game</string>
+    <string name="title_activity_quiz">Quiz</string>
 </resources>

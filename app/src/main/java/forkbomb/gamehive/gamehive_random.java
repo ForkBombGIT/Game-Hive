@@ -32,6 +32,7 @@ public class gamehive_random extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
     //handles button press
     public void onClick(View v){
         switch (v.getId()){

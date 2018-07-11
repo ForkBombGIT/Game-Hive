@@ -8,9 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class quiz extends AppCompatActivity {
-
+    QuestionHandler questionHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        questionHandler = new QuestionHandler();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

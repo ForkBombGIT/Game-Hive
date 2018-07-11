@@ -125,6 +125,7 @@ public class Game_Hive extends AppCompatActivity {
                 int month = preferences.getInt("month",-1);
                 int year = preferences.getInt("year",-1);
                 //checks if theres a difference in days
+                //to-do: check for year change
                 if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR))
                     if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH))
                         if ((day < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))

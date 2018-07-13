@@ -6,6 +6,8 @@ import java.util.Random;
 public class QuestionHandler {
     //holds questions for specific quiz
     private HashSet<Integer> selectedIndexs;
+    //holds the questions selected for the quiz
+    public Question[] quizQuestions;
     //holds all possible questions
     private Question[] questionList = new Question[]{
             new Question("What does a visually interesting game look like to you?", new String[]{"Realistic","Pixel Art","Cartoon","Minimalist"}, "visuals"),
@@ -23,7 +25,7 @@ public class QuestionHandler {
     //constructor
     public QuestionHandler(){
         selectedIndexs = new HashSet<Integer>();
-        Question[] quizQuestions = generateQuestions();
+        quizQuestions = generateQuestions();
     }
 
     //generates questions for quiz

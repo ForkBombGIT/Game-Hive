@@ -72,5 +72,4 @@ public class gamehive_quiz extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
 }

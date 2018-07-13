@@ -18,18 +18,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 import java.util.Calendar;
-import java.util.Locale;
 import java.util.Random;
 import java.util.TimeZone;
 
-public class Game_Hive extends AppCompatActivity {
+public class gamehive extends AppCompatActivity {
     //random
     Random rnd = new Random();
     //var to hold the top toolbar
@@ -49,7 +45,7 @@ public class Game_Hive extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG,"on create");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game__hive);
+        setContentView(R.layout.activity_gamehive);
 
         //sets up toolbar
         toptoolbar = (Toolbar) findViewById(R.id.toolbar);

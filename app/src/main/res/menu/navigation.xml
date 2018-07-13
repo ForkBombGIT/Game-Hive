@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/navigation_quiz"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_quiz" />
+
+    <item
         android:id="@+id/navigation_random"
         android:enabled="true"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_random"
         android:visible="true" />
-
-    <item
-        android:id="@+id/navigation_quiz"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_quiz" />
 
 </menu>

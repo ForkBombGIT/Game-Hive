@@ -2,18 +2,14 @@ package forkbomb.gamehive;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
-public class gamehive_random extends AppCompatActivity {
+public class GameHiveRandomActivity extends AppCompatActivity {
     //used to hold the games
     ArrayList<HashMap<String,String>> database;
     //on create event
@@ -37,7 +33,7 @@ public class gamehive_random extends AppCompatActivity {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                activityStart(game.class);
+                activityStart(GameActivity.class);
                 break;
             default:
                 break;

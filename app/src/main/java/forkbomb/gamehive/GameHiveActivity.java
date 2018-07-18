@@ -6,17 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,25 +19,22 @@ import java.util.Calendar;
 import java.util.Random;
 import java.util.TimeZone;
 
-public class gamehive extends AppCompatActivity {
-    //random
+public class GameHiveActivity extends AppCompatActivity {
+    //random val gen
     Random rnd = new Random();
     //var to hold the top toolbar
     Toolbar toptoolbar;
-    //title of game
+    //title of GameActivity
     TextView title, dev, pub, release, genre, platforms;
     //used to hold date data, to check if its a new day
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    //holds game database
+    //holds GameActivity database
     ArrayList<HashMap<String,String>> gameDatabase;
-
-    private static final String TAG = "Game_Hive";
 
     //on create function, when the app is initially created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(TAG,"on create");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gamehive);
 
@@ -52,9 +43,7 @@ public class gamehive extends AppCompatActivity {
         setSupportActionBar(toptoolbar);
 
         //initializes the array list
-        gameDatabase = new ArrayList<HashMap<String,String>>();
-        //calls the parser
-        parseXML(R.raw.gamedatabase);
+        gameDatabase = XmlReader.readXml(GameHiveActivity.this, R.raw.gamedatabase);
 
         checkForNewDate();
         displayGame(getIndex());
@@ -63,7 +52,6 @@ public class gamehive extends AppCompatActivity {
     //called when the activity starts
     @Override
     protected void onStart(){
-        Log.i(TAG,"on start");
         checkForNewDate();
         displayGame(getIndex());
         super.onStart();
@@ -72,7 +60,6 @@ public class gamehive extends AppCompatActivity {
     //when the activity unpauses
     @Override
     protected void onResume(){
-        Log.i(TAG,"on resume");
         checkForNewDate();
         displayGame(getIndex());
         super.onResume();
@@ -81,7 +68,6 @@ public class gamehive extends AppCompatActivity {
     //called when the activity stops
     @Override
     protected void onStop(){
-        Log.i(TAG,"on stop");
         getDate(getIndex());
         super.onStop();
     }
@@ -89,7 +75,6 @@ public class gamehive extends AppCompatActivity {
     //called when the switching to another activity
     @Override
     protected void onPause(){
-        Log.i(TAG,"on pause");
         getDate(getIndex());
         super.onPause();
     }
@@ -97,9 +82,31 @@ public class gamehive extends AppCompatActivity {
     //called when activity is closed
     @Override
     protected void onDestroy(){
-        Log.i(TAG,"on destroy");
         getDate(getIndex());
         super.onDestroy();
+    }
+
+    //sets up drop down menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.navigation, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //checks for drop down menu clicks
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.navigation_random:
+                activityStart(GameHiveRandomActivity.class);
+                return true;
+            case R.id.navigation_quiz:
+                activityStart(GameHiveQuizActivity.class);
+                return true;
+            default:
+                return false;
+        }
     }
 
     //gets the correct index
@@ -111,7 +118,7 @@ public class gamehive extends AppCompatActivity {
 
     //checks to see if the app is ran on a new day
     public void checkForNewDate(){
-        //index used to display game
+        //index used to display GameActivity
         int index = getIndex();
         preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         editor = preferences.edit();
@@ -151,9 +158,9 @@ public class gamehive extends AppCompatActivity {
         editor.commit();
     }
 
-    //displays game
+    //displays GameActivity
     public void displayGame(int index){
-        //displays text for game of the day
+        //displays text for GameActivity of the day
         title = (TextView) findViewById(R.id.game_title);
         title.setText(gameDatabase.get(index).get("title"));
 
@@ -184,29 +191,6 @@ public class gamehive extends AppCompatActivity {
         platforms.setText(platformText);
     }
 
-    //sets up drop down menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.navigation, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    //checks for drop down menu clicks
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.navigation_random:
-                activityStart(gamehive_random.class);
-                return true;
-            case R.id.navigation_quiz:
-                activityStart(gamehive_quiz.class);
-                return true;
-            default:
-                return false;
-        }
-    }
-
     //starts an activity
     public void activityStart(Class t){
         //creates a new intent
@@ -219,54 +203,5 @@ public class gamehive extends AppCompatActivity {
         startActivity(intent);
         //overrides default animation
         overridePendingTransition(R.anim.activity_slide_in_home,R.anim.activity_slide_out_home);
-    }
-
-    //parses xml
-    public void parseXML(int xml){
-        //takes the file as input
-        InputStream stream = getResources().openRawResource(xml);
-        //reads the input file
-        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-
-        //holds the line being read
-        String readLine = null;
-        //holds the data being added to the array list
-        String data = "";
-        //holds the current index of the array list
-        int index = 0;
-        try{
-            //loops until the reaching a null line
-            while ((readLine = reader.readLine()) != null){
-                //removes whitespace
-                readLine = readLine.trim();
-                //checks if line is the start of a new tag
-                if (readLine.startsWith("<") && !readLine.startsWith("</")){
-                    if (readLine.startsWith("<game>")) gameDatabase.add(new HashMap<String, String>());
-                    data = "";
-                    continue;
-                }
-                //checks if the line is not a tag
-                if (!readLine.startsWith("<")){data+=readLine; continue;}
-                //checks if line is an end tags
-                if (readLine.startsWith("</")){
-                    //checks if the end of a game tag, and if so increment index
-                    if (readLine.startsWith("</game>")) {index++;}
-                    //otherwise, add the data to the map
-                    else if (readLine.startsWith("</title>")) {gameDatabase.get(index).put("title",data);}
-                    else if (readLine.startsWith("</year>")) {gameDatabase.get(index).put("year",data);}
-                    else if (readLine.startsWith("</publisher>")) {gameDatabase.get(index).put("publisher",data);}
-                    else if (readLine.startsWith("</developer>")) {gameDatabase.get(index).put("developer",data);}
-                    else if (readLine.startsWith("</genre>")) {gameDatabase.get(index).put("genre",data);}
-                    else if (readLine.startsWith("</platforms>")) {gameDatabase.get(index).put("platforms",data);}
-                    else if (readLine.startsWith("</region>")) {gameDatabase.get(index).put("region",data);}
-                    else if (readLine.startsWith("</rating>")) {gameDatabase.get(index).put("rating",data);}
-                    else if (readLine.startsWith("</multiplayer>")) {gameDatabase.get(index).put("multiplayer",data);}
-                }
-            }
-            //closes the reader
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

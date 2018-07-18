@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".gamehive"
+            android:name=".GameHiveActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -20,38 +20,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".gamehive_random"
+            android:name=".GameHiveRandomActivity"
             android:label="@string/title_random"
-            android:parentActivityName=".gamehive"
+            android:parentActivityName=".GameHiveActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="forkbomb.gamehive.gamehive" />
+                android:value="forkbomb.gamehive.GameHiveActivity" />
         </activity>
         <activity
-            android:name=".gamehive_quiz"
+            android:name=".GameHiveQuizActivity"
             android:label="@string/title_quiz"
-            android:parentActivityName=".gamehive"
+            android:parentActivityName=".GameHiveActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="forkbomb.gamehive.gamehive" />
+                android:value="forkbomb.gamehive.GameHiveActivity" />
         </activity>
         <activity
-            android:name=".game"
+            android:name=".GameActivity"
             android:label="@string/title_activity_game"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".quiz"
+            android:name=".QuizActivity"
             android:label="@string/title_activity_quiz"
-            android:parentActivityName=".gamehive_quiz"
+            android:parentActivityName=".GameHiveQuizActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gamehive_quiz" />
+                android:value=".GameHiveQuizActivity" />
         </activity>
     </application>
 

@@ -28,7 +28,7 @@ public class QuestionHandler {
         quizQuestions = generateQuestions();
     }
 
-    //generates questions for quiz
+    //generates questions for QuizActivity
     private Question[] generateQuestions(){
         Question[] temp = new Question[7];
         //iterates through the array and adds random questions

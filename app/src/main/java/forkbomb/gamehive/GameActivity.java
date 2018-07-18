@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-public class game extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
     Random rand = new Random();
-    //title of game
+    //title of GameActivity
     TextView title, dev, pub, release, genre, platforms;
-    //data used to display the game
+    //data used to display the GameActivity
     ArrayList<HashMap<String,String>> gameData;
     //on create event
     @Override
@@ -48,7 +48,7 @@ public class game extends AppCompatActivity {
     }
 
     public void displayData(int index){
-        //displays text for game of the day
+        //displays text for GameActivity of the day
         title = (TextView) findViewById(R.id.game_title);
         title.setText(gameData.get(index).get("title"));
 
@@ -79,11 +79,10 @@ public class game extends AppCompatActivity {
         platforms.setText(platformText);
     }
 
-    //generates a new random game
+    //generates a new random GameActivity
     public void generateRandomGame(){
-       if (gameData.size() > 0) {
-            displayData(rand.nextInt(gameData.size()));
-       }
+       if (gameData.size() > 0) displayData(rand.nextInt(gameData.size()));
+
     }
 
     //handles button press

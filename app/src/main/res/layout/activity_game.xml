@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="forkbomb.gamehive.game"
+    tools:context="forkbomb.gamehive.GameActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <android.support.v7.widget.Toolbar
@@ -16,17 +16,18 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:titleTextColor="@color/toolBarColor" />
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/game_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="266dp"
+        android:layout_height="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text=""
+        android:text="title"
         android:textColor="@color/homeTitleColor"
         android:textSize="28sp"
         android:textStyle="bold"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />

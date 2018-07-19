@@ -58,7 +58,9 @@ public class QuizActivity extends AppCompatActivity {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                questionNumber++;
+                if (questionNumber < 6)
+                    questionNumber++;
+                else questionNumber = 0;
                 handleQuiz();
                 break;
             default:

@@ -19,7 +19,7 @@
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/game_title"
         android:layout_width="266dp"
-        android:layout_height="56dp"
+        android:layout_height="42dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -27,6 +27,9 @@
         android:textColor="@color/homeTitleColor"
         android:textSize="28sp"
         android:textStyle="bold"
+        android:gravity="center"
+        app:autoSizeMaxTextSize="32dp"
+        app:autoSizeMinTextSize="16dp"
         app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

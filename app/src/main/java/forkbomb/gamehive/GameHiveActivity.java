@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,6 +32,7 @@ public class GameHiveActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     //holds GameActivity database
     ArrayList<HashMap<String,String>> gameDatabase;
+    private static final String TAG = "GameHiveActivity";
 
     //on create function, when the app is initially created
     @Override
@@ -129,12 +131,15 @@ public class GameHiveActivity extends AppCompatActivity {
                 int year = preferences.getInt("year",-1);
                 //checks if theres a difference in days
                 //to-do: check for year change
-                if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR))
-                    if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH))
+                if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) {
+                    if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH)) {
                         if ((day < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))
                             index = rnd.nextInt(gameDatabase.size());
-                        else if (month < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH)) index = rnd.nextInt() % gameDatabase.size();
-                        else if (year < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) index = rnd.nextInt() % gameDatabase.size();
+                    }
+                    else if (month < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH))
+                        index = rnd.nextInt(gameDatabase.size());
+                }
+                else if (year < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) index = rnd.nextInt(gameDatabase.size());
             }
         }
         //adds current index to preferences

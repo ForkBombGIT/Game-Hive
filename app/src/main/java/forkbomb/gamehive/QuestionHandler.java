@@ -1,5 +1,6 @@
 package forkbomb.gamehive;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -40,5 +41,12 @@ public class QuestionHandler {
             temp[i] = questionList[arr[i]];
 
         return temp;
+    }
+
+    //generates the answers
+    public String generateAnswer(int index) {
+        String answer = quizQuestions[index].possibleAnswers[new Random(System.nanoTime()).nextInt(quizQuestions[index].possibleAnswers.length)];
+        if (!(Arrays.asList(quizQuestions[index].displayedAnswers).contains(answer))) return answer;
+        return generateAnswer(index);
     }
 }

@@ -48,22 +48,30 @@ public class QuizActivity extends AppCompatActivity {
         question = (TextView) findViewById(R.id.tv_question);
         answers = (ListView) findViewById(R.id.answers);
         button = (Button) findViewById(R.id.button);
+
+        //event handling for when item in list view is clicked
         answers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //checks if question is not selected
                 if (!questionHandler.quizQuestions[questionNumber].userAnswers.contains(answers.getItemAtPosition(position).toString())) {
+                    //switches color, adds to array
                     view.setBackgroundColor(Color.parseColor("#CCCCCC"));
                     questionHandler.quizQuestions[questionNumber].userAnswers.add(answers.getItemAtPosition(position).toString());
                 }
+                //checks if question is selected
                 else {
+                    //switches color, removes from array
                     view.setBackgroundColor(Color.TRANSPARENT);
                     questionHandler.quizQuestions[questionNumber].userAnswers.remove(answers.getItemAtPosition(position).toString());
                 }
 
+                //changes text on button depending on if anything is selected
                 button.setText((questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) ? "NEXT" : "SKIP");
             }
         });
 
+        //generates starting possible answers
         for (int i = 0; i < 4; i++)
             questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
 
@@ -81,14 +89,18 @@ public class QuizActivity extends AppCompatActivity {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
+                //resets displayed answers array
                 questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[4];
+                //increments question number
                 if (questionNumber < 6)
                     questionNumber++;
                 else questionNumber = 0;
+                //generates new answers
                 for (int i = 0; i < 4; i++)
                     questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
 
-                button.setText((questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) ? "NEXT" : "SKIP");
+                //resets text
+                button.setText("SKIP");
                 handleQuiz();
                 break;
             default:

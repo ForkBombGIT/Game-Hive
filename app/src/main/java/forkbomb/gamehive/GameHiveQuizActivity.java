@@ -33,7 +33,7 @@ public class GameHiveQuizActivity extends AppCompatActivity {
         //kills the activity
         finish();
         //animation
-        overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out);
+       // overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out);
     }
 
     //navbar back button press
@@ -48,7 +48,7 @@ public class GameHiveQuizActivity extends AppCompatActivity {
     //handles button press
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.button:
+            case R.id.btn_start:
                 activityStart(QuizActivity.class);
                 break;
             default:

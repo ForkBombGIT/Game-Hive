@@ -207,6 +207,5 @@ public class GameHiveActivity extends AppCompatActivity {
         //starts the new activity
         startActivity(intent);
         //overrides default animation
-        overridePendingTransition(R.anim.activity_slide_in_home,R.anim.activity_slide_out_home);
     }
 }

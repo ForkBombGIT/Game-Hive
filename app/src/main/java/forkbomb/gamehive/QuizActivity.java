@@ -92,7 +92,7 @@ public class QuizActivity extends AppCompatActivity {
                 //resets displayed answers array
                 questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[4];
                 //increments question number
-                if (questionNumber < 6)
+                if (questionNumber < getIntent().getIntExtra("length",2) - 1)
                     questionNumber++;
                 else questionNumber = 0;
                 //generates new answers

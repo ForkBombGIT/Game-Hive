@@ -4,13 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.widget.SeekBar.OnSeekBarChangeListener;
+
 public class GameHiveQuizActivity extends AppCompatActivity {
     ArrayList<HashMap<String,String>> database;
+    int quizLength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +27,31 @@ public class GameHiveQuizActivity extends AppCompatActivity {
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
         database = (ArrayList<HashMap<String,String>>) gameDatabase.getSerializable("gameDatabase");
 
+        //sets up seek bar
+        SeekBar seekBar = findViewById(R.id.wdg_seek);
+        seekBar.setProgress(0);
+        seekBar.incrementProgressBy(1);
+        seekBar.setMax(10);
+        quizLength = 2;
+        final TextView seekVal = findViewById(R.id.txt_seekval);
+
+        seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+                float thumbPos = ((float) progress/seekBar.getMax()) * (float) seekBar.getWidth()/2;
+                seekVal.setText(String.valueOf(progress + 2));
+                quizLength = progress+2;
+            }
+        });
+
         //sets up toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -65,6 +94,7 @@ public class GameHiveQuizActivity extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putSerializable("gameDatabase", database);
             intent.putExtra("gameDatabase", bundle);
+            intent.putExtra("length",quizLength);
             //starts the new activity
             startActivity(intent);
         }

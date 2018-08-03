@@ -39,108 +39,118 @@
         android:id="@+id/game_release"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="REL:"
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/game_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/game_title"
         app:layout_constraintTop_toBottomOf="@+id/game_title" />
 
     <TextView
         android:id="@+id/game_dev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="DEV:"
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/game_title"
+        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintStart_toStartOf="@+id/game_title"
         app:layout_constraintTop_toBottomOf="@+id/game_release" />
 
     <TextView
         android:id="@+id/game_pub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="PUB:"
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/game_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/game_dev"
         app:layout_constraintTop_toBottomOf="@+id/game_dev" />
 
     <TextView
         android:id="@+id/game_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="GENRE:"
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/game_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/game_title"
         app:layout_constraintTop_toBottomOf="@+id/game_pub" />
 
     <TextView
         android:id="@+id/game_platform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="PLATFORMS:"
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/game_pub" />
+        app:layout_constraintEnd_toEndOf="@+id/game_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/game_title"
+        app:layout_constraintTop_toBottomOf="@+id/genre_entries" />
 
     <TextView
         android:id="@+id/genre_entries"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="6dp"
         android:text=""
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/game_title"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="@+id/game_title"
         app:layout_constraintTop_toBottomOf="@+id/game_genre" />
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/platform_entries"
-        android:layout_width="135dp"
-        android:layout_height="wrap_content"
+        android:layout_width="231dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:text=""
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:autoSizeMaxTextSize="16dp"
+        app:autoSizeMinTextSize="14dp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="@+id/game_title"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toStartOf="@+id/game_title"
         app:layout_constraintTop_toBottomOf="@+id/game_platform" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="onClick"
         android:text="Another?"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorSecondary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="566dp"
-        android:layout_marginEnd="199dp"
-        android:layout_marginStart="184dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="155dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/platform_entries" />
 
 </android.support.constraint.ConstraintLayout>

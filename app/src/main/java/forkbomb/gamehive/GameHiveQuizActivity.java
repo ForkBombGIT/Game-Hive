@@ -15,7 +15,7 @@ import java.util.HashMap;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class GameHiveQuizActivity extends AppCompatActivity {
-    ArrayList<HashMap<String,String>> database;
+    ArrayList<Game> database;
     int quizLength;
 
     @Override
@@ -25,7 +25,7 @@ public class GameHiveQuizActivity extends AppCompatActivity {
 
         //processes gamedatabase
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
-        database = (ArrayList<HashMap<String,String>>) gameDatabase.getSerializable("gameDatabase");
+        database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
 
         //sets up seek bar
         SeekBar seekBar = findViewById(R.id.wdg_seek);

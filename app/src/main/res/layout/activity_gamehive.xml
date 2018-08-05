@@ -55,7 +55,7 @@
 
     <TextView
         android:id="@+id/game_dev"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="25dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -73,7 +73,7 @@
 
     <TextView
         android:id="@+id/game_pub"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="25dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -88,7 +88,7 @@
 
     <TextView
         android:id="@+id/game_release"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="25dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -106,13 +106,12 @@
 
     <TextView
         android:id="@+id/game_genre"
-        android:layout_width="61dp"
-        android:layout_height="21dp"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="GENRE:"
-        android:textAlignment="center"
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/game_title"
@@ -122,12 +121,11 @@
 
     <TextView
         android:id="@+id/game_platform"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="21dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="PLATFORMS:"
-        android:textAlignment="center"
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/game_title"
@@ -137,7 +135,7 @@
 
     <TextView
         android:id="@+id/genre_entries"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -153,7 +151,7 @@
 
     <TextView
         android:id="@+id/platform_entries"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"

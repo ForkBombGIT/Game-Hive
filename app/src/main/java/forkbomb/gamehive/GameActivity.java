@@ -20,7 +20,7 @@ public class GameActivity extends AppCompatActivity {
     //title of GameActivity
     TextView title, dev, pub, release, genre, platforms;
     //data used to display the GameActivity
-    ArrayList<HashMap<String,String>> gameData;
+    ArrayList<Game> gameData;
     //on create event
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
 
         //gets bundle
         Bundle bundle = getIntent().getBundleExtra("gameDatabase");
-        gameData = (ArrayList<HashMap<String,String>>) bundle.getSerializable("gameDatabase");
+        gameData = (ArrayList<Game>) bundle.getSerializable("gameDatabase");
         generateRandomGame();
 
         //sets toolbar
@@ -50,29 +50,29 @@ public class GameActivity extends AppCompatActivity {
     public void displayData(int index){
         //displays text for GameActivity of the day
         title = (TextView) findViewById(R.id.game_title);
-        title.setText(gameData.get(index).get("title"));
+        title.setText(gameData.get(index).title);
 
         release = (TextView) findViewById(R.id.game_release);
         release.setText("REL:");
-        release.append(" " + gameData.get(index).get("year"));
+        release.append(" " + gameData.get(index).year);
 
         dev = (TextView) findViewById(R.id.game_dev);
         dev.setText("DEV:");
-        dev.append(" " + gameData.get(index).get("developer"));
+        dev.append(" " + gameData.get(index).developer);
 
         pub = (TextView) findViewById(R.id.game_pub);
         pub.setText("PUB:");
-        pub.append(" " + gameData.get(index).get("publisher"));
+        pub.append(" " + gameData.get(index).publisher);
 
         genre = (TextView) findViewById(R.id.genre_entries);
-        String[] genres = gameData.get(index).get("genre").split(",");
+        String[] genres = gameData.get(index).genre.split(",");
         String genreText = "";
         for (int i = 0; i < genres.length; i++)
             genreText += genres[i] + "\n";
         genre.setText(genreText);
 
         platforms = (TextView) findViewById(R.id.platform_entries);
-        String[] platformEntries = gameData.get(index).get("platforms").split(",");
+        String[] platformEntries = gameData.get(index).platforms.split(",");
         String platformText = "";
         for (int i = 0; i < platformEntries.length; i++)
             platformText += platformEntries[i] + "\n";

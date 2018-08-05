@@ -31,7 +31,7 @@ public class GameHiveActivity extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     //holds GameActivity database
-    ArrayList<HashMap<String,String>> gameDatabase;
+    ArrayList<Game> gameDatabase;
     private static final String TAG = "GameHiveActivity";
 
     //on create function, when the app is initially created
@@ -167,29 +167,29 @@ public class GameHiveActivity extends AppCompatActivity {
     public void displayGame(int index){
         //displays text for GameActivity of the day
         title = (TextView) findViewById(R.id.game_title);
-        title.setText(gameDatabase.get(index).get("title"));
+        title.setText(gameDatabase.get(index).title);
 
         release = (TextView) findViewById(R.id.game_release);
         release.setText("REL:");
-        release.append(" " + gameDatabase.get(index).get("year"));
+        release.append(" " + gameDatabase.get(index).year);
 
         dev = (TextView) findViewById(R.id.game_dev);
         dev.setText("DEV:");
-        dev.append(" " + gameDatabase.get(index).get("developer"));
+        dev.append(" " + gameDatabase.get(index).developer);
 
         pub = (TextView) findViewById(R.id.game_pub);
         pub.setText("PUB:");
-        pub.append(" " + gameDatabase.get(index).get("publisher"));
+        pub.append(" " + gameDatabase.get(index).publisher);
 
         genre = (TextView) findViewById(R.id.genre_entries);
-        String[] genres = gameDatabase.get(index).get("genre").split(",");
+        String[] genres = gameDatabase.get(index).genre.split(",");
         String genreText = "";
         for (int i = 0; i < genres.length; i++)
             genreText += genres[i] + "\n";
         genre.setText(genreText);
 
         platforms = (TextView) findViewById(R.id.platform_entries);
-        String[] platformEntries = gameDatabase.get(index).get("platforms").split(",");
+        String[] platformEntries = gameDatabase.get(index).platforms.split(",");
         String platformText = "";
         for (int i = 0; i < platformEntries.length; i++)
             platformText += platformEntries[i] + "\n";

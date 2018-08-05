@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class GameHiveRandomActivity extends AppCompatActivity {
     //used to hold the games
-    ArrayList<HashMap<String,String>> database;
+    ArrayList<Game> database;
     //on create event
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class GameHiveRandomActivity extends AppCompatActivity {
 
         //processes gamedatabase
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
-        database = (ArrayList<HashMap<String,String>>) gameDatabase.getSerializable("gameDatabase");
+        database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
 
         //sets toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

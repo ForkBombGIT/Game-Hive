@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class XmlReader {
-    public static ArrayList<HashMap<String,String>> readXml(Context context, int xml){
-        ArrayList<HashMap<String,String>> gameDatabase = new ArrayList<>();
+    public static ArrayList<Game> readXml(Context context, int xml){
+        ArrayList<Game> gameDatabase = new ArrayList<>();
         //takes the file as input
         InputStream stream = context.getResources().openRawResource(xml);
         //reads the input file
@@ -30,7 +30,7 @@ public class XmlReader {
                 readLine = readLine.trim();
                 //checks if line is the start of a new tag
                 if (readLine.startsWith("<") && !readLine.startsWith("</")){
-                    if (readLine.startsWith("<game>")) gameDatabase.add(new HashMap<String, String>());
+                    if (readLine.startsWith("<game>")) gameDatabase.add(new Game());
                     data = "";
                     continue;
                 }
@@ -41,24 +41,24 @@ public class XmlReader {
                     //checks if the end of a GameActivity tag, and if so increment index
                     if (readLine.startsWith("</game>")) {index++;}
                     //otherwise, add the data to the map
-                    else if (readLine.startsWith("</title>")) {gameDatabase.get(index).put("title",data);}
-                    else if (readLine.startsWith("</year>")) {gameDatabase.get(index).put("year",data);}
-                    else if (readLine.startsWith("</publisher>")) {gameDatabase.get(index).put("publisher",data);}
-                    else if (readLine.startsWith("</developer>")) {gameDatabase.get(index).put("developer",data);}
-                    else if (readLine.startsWith("</genre>")) {gameDatabase.get(index).put("genre",data);}
-                    else if (readLine.startsWith("</platforms>")) {gameDatabase.get(index).put("platforms",data);}
-                    else if (readLine.startsWith("</region>")) {gameDatabase.get(index).put("region",data);}
-                    else if (readLine.startsWith("</rating>")) {gameDatabase.get(index).put("rating",data);}
-                    else if (readLine.startsWith("</multiplayer>")) {gameDatabase.get(index).put("multiplayer",data);}
-                    else if (readLine.startsWith("</visuals>")) {gameDatabase.get(index).put("visuals",data);}
-                    else if (readLine.startsWith("</music>")) {gameDatabase.get(index).put("music",data);}
-                    else if (readLine.startsWith("</tone>")) {gameDatabase.get(index).put("tone",data);}
-                    else if (readLine.startsWith("</pace>")) {gameDatabase.get(index).put("pace",data);}
-                    else if (readLine.startsWith("</length>")) {gameDatabase.get(index).put("length",data);}
-                    else if (readLine.startsWith("</violence>")) {gameDatabase.get(index).put("violence",data);}
-                    else if (readLine.startsWith("</protag>")) {gameDatabase.get(index).put("protag",data);}
-                    else if (readLine.startsWith("</camera>")) {gameDatabase.get(index).put("camera",data);}
-                    else if (readLine.startsWith("</setting>")) {gameDatabase.get(index).put("setting",data);}
+                    else if (readLine.startsWith("</title>")) {gameDatabase.get(index).title = data;}
+                    else if (readLine.startsWith("</year>")) {gameDatabase.get(index).year = data;}
+                    else if (readLine.startsWith("</publisher>")) {gameDatabase.get(index).publisher = data;}
+                    else if (readLine.startsWith("</developer>")) {gameDatabase.get(index).developer = data;}
+                    else if (readLine.startsWith("</genre>")) {gameDatabase.get(index).genre = data;}
+                    else if (readLine.startsWith("</platforms>")) {gameDatabase.get(index).platforms = data;}
+                    else if (readLine.startsWith("</region>")) {gameDatabase.get(index).region = data;}
+                    else if (readLine.startsWith("</rating>")) {gameDatabase.get(index).rating = data;}
+                    else if (readLine.startsWith("</multiplayer>")) {gameDatabase.get(index).multiplayer = data;}
+                    else if (readLine.startsWith("</visuals>")) {gameDatabase.get(index).visuals = data;}
+                    else if (readLine.startsWith("</music>")) {gameDatabase.get(index).music = data;}
+                    else if (readLine.startsWith("</tone>")) {gameDatabase.get(index).tone = data;}
+                    else if (readLine.startsWith("</pace>")) {gameDatabase.get(index).pace = data;}
+                    else if (readLine.startsWith("</length>")) {gameDatabase.get(index).length = data;}
+                    else if (readLine.startsWith("</violence>")) {gameDatabase.get(index).violence = data;}
+                    else if (readLine.startsWith("</protag>")) {gameDatabase.get(index).protag = data;}
+                    else if (readLine.startsWith("</camera>")) {gameDatabase.get(index).camera = data;}
+                    else if (readLine.startsWith("</setting>")) {gameDatabase.get(index).setting = data;}
                 }
             }
             //closes the reader

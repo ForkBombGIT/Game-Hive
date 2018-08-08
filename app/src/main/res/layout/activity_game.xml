@@ -14,7 +14,8 @@
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:theme="@style/ThemeOverlay.AppCompat.Dark"
-        app:titleTextColor="@color/toolBarColor" />
+        app:titleTextColor="@color/toolBarColor"
+        app:elevation="0dp"/>
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/game_title"
@@ -151,6 +152,7 @@
         android:background="@color/colorSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/platform_entries" />
+        app:layout_constraintTop_toBottomOf="@+id/platform_entries"
+        style="?android:attr/borderlessButtonStyle"/>
 
 </android.support.constraint.ConstraintLayout>

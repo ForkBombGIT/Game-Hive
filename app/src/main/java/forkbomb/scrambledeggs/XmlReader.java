@@ -1,4 +1,4 @@
-package forkbomb.gamehive;
+package forkbomb.scrambledeggs;
 
 import android.content.Context;
 
@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class XmlReader {
     public static ArrayList<Game> readXml(Context context, int xml){

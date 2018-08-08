@@ -1,4 +1,4 @@
-package forkbomb.gamehive;
+package forkbomb.scrambledeggs;
 
 import java.util.Arrays;
 import java.util.HashSet;

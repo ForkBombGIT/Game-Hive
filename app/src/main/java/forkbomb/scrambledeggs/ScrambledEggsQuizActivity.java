@@ -1,27 +1,25 @@
-package forkbomb.gamehive;
+package forkbomb.scrambledeggs;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
-public class GameHiveQuizActivity extends AppCompatActivity {
+public class ScrambledEggsQuizActivity extends AppCompatActivity {
     ArrayList<Game> database;
     int quizLength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gamehive_quiz);
+        setContentView(R.layout.activity_scrambledeggs_quiz);
 
         //processes gamedatabase
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");

@@ -1,4 +1,4 @@
-package forkbomb.gamehive;
+package forkbomb.scrambledeggs;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,20 +7,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import java.util.Calendar;
 import java.util.Random;
 import java.util.TimeZone;
 
-public class GameHiveActivity extends AppCompatActivity {
+public class ScrambledEggsActivity extends AppCompatActivity {
     //random val gen
     Random rnd = new Random();
     //var to hold the top toolbar
@@ -32,20 +30,20 @@ public class GameHiveActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     //holds GameActivity database
     ArrayList<Game> gameDatabase;
-    private static final String TAG = "GameHiveActivity";
+    private static final String TAG = "ScrambledEggsActivity";
 
     //on create function, when the app is initially created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gamehive);
+        setContentView(R.layout.activity_scrambledeggs);
 
         //sets up toolbar
         toptoolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toptoolbar);
 
         //initializes the array list
-        gameDatabase = XmlReader.readXml(GameHiveActivity.this, R.raw.gamedatabase);
+        gameDatabase = XmlReader.readXml(ScrambledEggsActivity.this, R.raw.gamedatabase);
 
         checkForNewDate();
         displayGame(getIndex());
@@ -101,10 +99,10 @@ public class GameHiveActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.navigation_random:
-                activityStart(GameHiveRandomActivity.class);
+                activityStart(ScrambledEggsRandomActivity.class);
                 return true;
             case R.id.navigation_quiz:
-                activityStart(GameHiveQuizActivity.class);
+                activityStart(ScrambledEggsQuizActivity.class);
                 return true;
             default:
                 return false;

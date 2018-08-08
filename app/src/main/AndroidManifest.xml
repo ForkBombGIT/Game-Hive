@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="forkbomb.gamehive">
+    package="forkbomb.scrambledeggs">
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme"
         >
         <activity
-            android:name=".GameHiveActivity"
+            android:name="forkbomb.scrambledeggs.ScrambledEggsActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -21,38 +21,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GameHiveRandomActivity"
+            android:name="forkbomb.scrambledeggs.ScrambledEggsRandomActivity"
             android:label="@string/title_random"
-            android:parentActivityName=".GameHiveActivity"
+            android:parentActivityName="forkbomb.scrambledeggs.ScrambledEggsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="forkbomb.gamehive.GameHiveActivity" />
+                android:value="forkbomb.scrambledeggs.ScrambledEggsActivity" />
         </activity>
         <activity
-            android:name=".GameHiveQuizActivity"
+            android:name="forkbomb.scrambledeggs.ScrambledEggsQuizActivity"
             android:label="@string/title_quiz"
-            android:parentActivityName=".GameHiveActivity"
+            android:parentActivityName="forkbomb.scrambledeggs.ScrambledEggsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="forkbomb.gamehive.GameHiveActivity" />
+                android:value="forkbomb.scrambledeggs.ScrambledEggsActivity" />
         </activity>
         <activity
-            android:name=".GameActivity"
+            android:name="forkbomb.scrambledeggs.GameActivity"
             android:label="@string/title_activity_game"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".QuizActivity"
+            android:name="forkbomb.scrambledeggs.QuizActivity"
             android:label="@string/title_activity_quiz"
-            android:parentActivityName=".GameHiveQuizActivity"
+            android:parentActivityName="forkbomb.scrambledeggs.ScrambledEggsQuizActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".GameHiveQuizActivity" />
+                android:value="forkbomb.scrambledeggs.ScrambledEggsQuizActivity" />
         </activity>
     </application>
 

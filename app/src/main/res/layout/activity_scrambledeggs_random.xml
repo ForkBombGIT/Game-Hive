@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="forkbomb.gamehive.GameHiveQuizActivity">
+    tools:context="forkbomb.scrambledeggs.ScrambledEggsRandomActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -17,11 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
             android:background="@color/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:elevation="0dp"/>
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_gamehive_quiz" />
+    <include layout="@layout/content_scrambledeggs_random" />
 
 </android.support.design.widget.CoordinatorLayout>

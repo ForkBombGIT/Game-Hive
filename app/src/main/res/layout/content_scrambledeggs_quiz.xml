@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="forkbomb.gamehive.GameHiveQuizActivity"
-    tools:showIn="@layout/activity_gamehive_quiz">
+    tools:context="forkbomb.scrambledeggs.ScrambledEggsQuizActivity"
+    tools:showIn="@layout/activity_scrambledeggs_quiz">
 
     <TextView
         android:id="@+id/txt_title"

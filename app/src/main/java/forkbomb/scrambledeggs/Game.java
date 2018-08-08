@@ -1,4 +1,4 @@
-package forkbomb.gamehive;
+package forkbomb.scrambledeggs;
 import java.io.Serializable;
 
 public class Game implements Serializable {

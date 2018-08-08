@@ -1,4 +1,4 @@
-package forkbomb.gamehive;
+package forkbomb.scrambledeggs;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,16 +7,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class GameHiveRandomActivity extends AppCompatActivity {
+public class ScrambledEggsRandomActivity extends AppCompatActivity {
     //used to hold the games
     ArrayList<Game> database;
     //on create event
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gamehive_random);
+        setContentView(R.layout.activity_scrambledeggs_random);
 
         //processes gamedatabase
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");

@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="116dp"
-        android:text="GAME QUESTIONNAIRE"
+        android:text="@string/activity_scrambledeggs_quiz_heading"
         android:textColor="@color/homeTitleColor"
         android:textSize="26dp"
         android:textStyle="bold"
@@ -54,8 +54,7 @@
         android:layout_marginTop="16dp"
         android:progressTint="@color/colorSecondary"
         android:thumbTint="@color/colorSecondary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/txt_seekval"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/txt_title" />
 
@@ -75,6 +74,7 @@
         android:id="@+id/txt_seekval"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="5dp"
         android:text="3"
         android:textAlignment="center"
@@ -82,8 +82,7 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="@+id/txt_title"
-        app:layout_constraintStart_toEndOf="@+id/wdg_seek"
         app:layout_constraintTop_toBottomOf="@+id/txt_title"
-        app:layout_constraintVertical_bias="0.47000003" />
+        app:layout_constraintVertical_bias="0.459" />
 
 </android.support.constraint.ConstraintLayout>

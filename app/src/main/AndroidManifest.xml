@@ -22,7 +22,7 @@
         </activity>
         <activity
             android:name="forkbomb.scrambledeggs.ScrambledEggsRandomActivity"
-            android:label="@string/title_random"
+            android:label="@string/activity_scrambledeggs_random_title"
             android:parentActivityName="forkbomb.scrambledeggs.ScrambledEggsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -32,7 +32,7 @@
         </activity>
         <activity
             android:name="forkbomb.scrambledeggs.ScrambledEggsQuizActivity"
-            android:label="@string/title_quiz"
+            android:label="@string/activity_scrambledeggs_quiz_title"
             android:parentActivityName="forkbomb.scrambledeggs.ScrambledEggsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -42,12 +42,10 @@
         </activity>
         <activity
             android:name="forkbomb.scrambledeggs.GameActivity"
-            android:label="@string/title_activity_game"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name="forkbomb.scrambledeggs.QuizActivity"
-            android:label="@string/title_activity_quiz"
             android:parentActivityName="forkbomb.scrambledeggs.ScrambledEggsQuizActivity"
             android:theme="@style/AppTheme">
             <meta-data

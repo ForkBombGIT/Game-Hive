@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">Scrambled Eggs</string>
-    <string name="title_random">Random</string>
-    <string name="title_quiz">Quiz</string>
-    <string name="title_activity_scrambledeggs_random">gamehive_random</string>
-    <string name="title_activity_scrambledeggs_quiz">gamehive_quiz</string>
-    <string name="title_activity_game">game</string>
-    <string name="title_activity_quiz">Quiz</string>
+    <string name="activity_scrambledeggs_random_title">Random</string>
+    <string name="activity_scrambledeggs_quiz_title">Quiz</string>
+    <string name="activity_scrambledeggs_heading">GAME OF THE DAY</string>
+    <string name="activity_scrambledeggs_quiz_heading">GAME QUESTIONNAIRE</string>
+    <string name="activity_scrambledeggs_random_heading">RANDOM GAME</string>
 </resources>

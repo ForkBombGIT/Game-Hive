@@ -5,14 +5,14 @@
     <item
         android:id="@+id/navigation_quiz"
         android:icon="@drawable/ic_quizicon24a"
-        android:title="@string/title_quiz"
+        android:title="@string/activity_scrambledeggs_quiz_title"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/navigation_random"
         android:enabled="true"
         android:icon="@drawable/ic_randomicon24a"
-        android:title="@string/title_random"
+        android:title="@string/activity_scrambledeggs_random_title"
         android:visible="true"
         app:showAsAction="ifRoom"/>
 

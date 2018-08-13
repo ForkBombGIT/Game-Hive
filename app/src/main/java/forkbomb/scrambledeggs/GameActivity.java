@@ -62,14 +62,14 @@ public class GameActivity extends AppCompatActivity {
         String[] genres = gameData.get(index).genre.split(",");
         String genreText = "";
         for (int i = 0; i < genres.length; i++)
-            genreText += genres[i] + "\n";
+            genreText += genres[i] + ((i == (genres.length - 1)) ? "" : "\n");
         genre.setText(genreText);
 
         platforms = (TextView) findViewById(R.id.platform_entries);
         String[] platformEntries = gameData.get(index).platforms.split(",");
         String platformText = "";
         for (int i = 0; i < platformEntries.length; i++)
-            platformText += platformEntries[i] + "\n";
+            platformText += platformEntries[i] + ((i == (platformEntries.length - 1)) ? "" : "\n");
         platforms.setText(platformText);
     }
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,7 +25,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     //var to hold the top toolbar
     Toolbar toptoolbar;
     //title of GameActivity
-    TextView title, dev, pub, release, genre, platforms;
+    TextView title, dev, pub, release, genreEntries, platformsEntries,genre,platforms;
     //used to hold date data, to check if its a new day
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -168,30 +169,36 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         title.setText(gameDatabase.get(index).title);
 
         release = (TextView) findViewById(R.id.game_release);
-        release.setText("REL:");
+        release.setText(Html.fromHtml("<b>REL:</b>"));
         release.append(" " + gameDatabase.get(index).year);
 
         dev = (TextView) findViewById(R.id.game_dev);
-        dev.setText("DEV:");
+        dev.setText(Html.fromHtml("<b>PUB:</b>"));
         dev.append(" " + gameDatabase.get(index).developer);
 
         pub = (TextView) findViewById(R.id.game_pub);
-        pub.setText("PUB:");
+        pub.setText(Html.fromHtml("<b>PUB:</b>"));
         pub.append(" " + gameDatabase.get(index).publisher);
 
-        genre = (TextView) findViewById(R.id.genre_entries);
+        genre = (TextView) findViewById(R.id.game_genre);
+        genre.setText(Html.fromHtml("<b>GENRE:</b>"));
+
+        platforms = (TextView) findViewById(R.id.game_platform);
+        platforms.setText(Html.fromHtml("<b>PLATFORMS:</b>"));
+
+        genreEntries = (TextView) findViewById(R.id.genre_entries);
         String[] genres = gameDatabase.get(index).genre.split(",");
         String genreText = "";
         for (int i = 0; i < genres.length; i++)
             genreText += genres[i] + ((i == (genres.length - 1)) ? "" : "\n");
-        genre.setText(genreText);
+        genreEntries.setText(genreText);
 
-        platforms = (TextView) findViewById(R.id.platform_entries);
+        platformsEntries = (TextView) findViewById(R.id.platform_entries);
         String[] platformEntries = gameDatabase.get(index).platforms.split(",");
         String platformText = "";
         for (int i = 0; i < platformEntries.length; i++)
             platformText += platformEntries[i] + ((i == (platformEntries.length - 1)) ? "" : "\n");
-        platforms.setText(platformText);
+        platformsEntries.setText(platformText);
     }
 
     //starts an activity

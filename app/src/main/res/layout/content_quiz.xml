@@ -36,6 +36,8 @@
         android:layout_marginStart="8dp"
         android:onClick="onClick"
         android:text="SKIP"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"

@@ -5,4 +5,11 @@
     <string name="activity_scrambledeggs_heading">GAME OF THE DAY</string>
     <string name="activity_scrambledeggs_quiz_heading">GAME QUESTIONNAIRE</string>
     <string name="activity_scrambledeggs_random_heading">RANDOM GAME</string>
+    <string name="label_dev">DEV:</string>
+    <string name="label_pub"><b>PUB:</b></string>
+    <string name="label_rel">REL:</string>
+    <string name="label_genre">GENRE:</string>
+    <string name="label_platforms">PLATFORMS:</string>
+    <string name="activity_scrambledeggs_quiz_length">LENGTH:</string>
+    <string name="activity_scrambledeggs_quiz_btn">BEGIN</string>
 </resources>

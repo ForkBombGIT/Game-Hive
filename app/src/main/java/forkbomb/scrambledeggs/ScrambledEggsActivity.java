@@ -1,8 +1,11 @@
 package forkbomb.scrambledeggs;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -61,6 +64,10 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     //when the activity unpauses
     @Override
     protected void onResume(){
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.launchericonb512);
+        ActivityManager.TaskDescription td = new ActivityManager.TaskDescription(null, bm, getResources().getColor(R.color.colorPrimary));
+        this.setTaskDescription(td);
+
         checkForNewDate();
         displayGame(getIndex());
         super.onResume();
@@ -173,7 +180,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         release.append(" " + gameDatabase.get(index).year);
 
         dev = (TextView) findViewById(R.id.game_dev);
-        dev.setText(Html.fromHtml("<b>PUB:</b>"));
+        dev.setText(Html.fromHtml("<b>DEV:</b>"));
         dev.append(" " + gameDatabase.get(index).developer);
 
         pub = (TextView) findViewById(R.id.game_pub);
@@ -212,5 +219,6 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         //starts the new activity
         startActivity(intent);
         //overrides default animation
+        overridePendingTransition(R.anim.activity_slide_in_home, R.anim.activity_slide_out_home);
     }
 }

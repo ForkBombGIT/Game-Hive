@@ -52,7 +52,7 @@ public class GameActivity extends AppCompatActivity {
         release.append(" " + gameData.get(index).year);
 
         dev = (TextView) findViewById(R.id.game_dev);
-        dev.setText(Html.fromHtml("<b>PUB:</b>"));
+        dev.setText(Html.fromHtml("<b>DEV:</b>"));
         dev.append(" " + gameData.get(index).developer);
 
         pub = (TextView) findViewById(R.id.game_pub);

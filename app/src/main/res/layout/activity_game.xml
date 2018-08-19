@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/label_rel"
         android:textColor="@color/homeTitleColor"
         android:textSize="18sp"
@@ -126,7 +126,7 @@
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/platform_entries"
         android:layout_width="260dp"
-        android:layout_height="120dp"
+        android:layout_height="234dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="4dp"
         android:text=""
@@ -140,20 +140,18 @@
         app:layout_constraintStart_toStartOf="@+id/game_title"
         app:layout_constraintTop_toBottomOf="@+id/game_platform" />
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="67dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="32dp"
+        android:clickable="true"
         android:onClick="onClick"
-        android:text="Another?"
-        android:textColor="@color/colorWhite"
-        android:background="@color/colorSecondary"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/platform_entries"
-        style="?android:attr/borderlessButtonStyle"/>
+        app:srcCompat="@drawable/ic_randomicon24a"
+        app:elevation="0dp" />
 
 </android.support.constraint.ConstraintLayout>

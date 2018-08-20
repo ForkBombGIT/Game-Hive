@@ -64,7 +64,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     //when the activity unpauses
     @Override
     protected void onResume(){
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.launchericonb512);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.eggonlyicon512);
         ActivityManager.TaskDescription td = new ActivityManager.TaskDescription(null, bm, getResources().getColor(R.color.colorPrimary));
         this.setTaskDescription(td);
 

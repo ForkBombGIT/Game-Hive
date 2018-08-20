@@ -151,7 +151,7 @@
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_randomicon24a"
+        app:srcCompat="@drawable/refreshicon512"
         app:elevation="0dp" />
 
 </android.support.constraint.ConstraintLayout>

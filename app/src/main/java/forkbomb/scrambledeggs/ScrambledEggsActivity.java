@@ -191,7 +191,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         genre.setText(Html.fromHtml("<b>GENRE:</b>"));
 
         platforms = (TextView) findViewById(R.id.game_platform);
-        platforms.setText(Html.fromHtml("<b>PLATFORMS:</b>"));
+        platforms.setText(Html.fromHtml("<b>PLATFORM(S):</b>"));
 
         genreEntries = (TextView) findViewById(R.id.genre_entries);
         String[] genres = gameDatabase.get(index).genre.split(",");

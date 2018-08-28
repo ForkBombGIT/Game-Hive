@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,7 +42,6 @@ public class QuizActivity extends AppCompatActivity {
         //sets up activity elements
         question = (TextView) findViewById(R.id.tv_question);
         answers = (ListView) findViewById(R.id.answers);
-        button = (Button) findViewById(R.id.button);
 
         //event handling for when item in list view is clicked
         answers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,9 +59,6 @@ public class QuizActivity extends AppCompatActivity {
                     view.setBackgroundColor(Color.TRANSPARENT);
                     questionHandler.quizQuestions[questionNumber].userAnswers.remove(answers.getItemAtPosition(position).toString());
                 }
-
-                //changes text on button depending on if anything is selected
-                button.setText((questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) ? "NEXT" : "SKIP");
             }
         });
 
@@ -72,10 +69,19 @@ public class QuizActivity extends AppCompatActivity {
         handleQuiz();
     }
 
+
     //controls QuizActivity
     public void handleQuiz(){
         question.setText(questionHandler.quizQuestions[questionNumber].question);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, questionHandler.quizQuestions[questionNumber].displayedAnswers);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, questionHandler.quizQuestions[questionNumber].displayedAnswers){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                TextView textView = (TextView) super.getView(position, convertView, parent);
+                textView.setTextSize(18);
+
+                return textView;
+            }
+        };
         answers.setAdapter(adapter);
     }
 

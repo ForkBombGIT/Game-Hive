@@ -4,11 +4,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,7 +22,6 @@ public class QuizActivity extends AppCompatActivity {
     //changes the text for the question
     TextView question;
     ListView answers;
-    Button button;
 
     //adapter for filling listview
     ArrayAdapter<String> adapter;
@@ -50,13 +49,15 @@ public class QuizActivity extends AppCompatActivity {
                 //checks if question is not selected
                 if (!questionHandler.quizQuestions[questionNumber].userAnswers.contains(answers.getItemAtPosition(position).toString())) {
                     //switches color, adds to array
-                    view.setBackgroundColor(Color.parseColor("#CCCCCC"));
+                    view.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    ((TextView)view).setTextColor(getResources().getColor(R.color.colorWhite));
                     questionHandler.quizQuestions[questionNumber].userAnswers.add(answers.getItemAtPosition(position).toString());
                 }
                 //checks if question is selected
                 else {
                     //switches color, removes from array
                     view.setBackgroundColor(Color.TRANSPARENT);
+                    ((TextView)view).setTextColor(getResources().getColor(R.color.colorBlack));
                     questionHandler.quizQuestions[questionNumber].userAnswers.remove(answers.getItemAtPosition(position).toString());
                 }
             }
@@ -77,8 +78,8 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 TextView textView = (TextView) super.getView(position, convertView, parent);
-                textView.setTextSize(18);
-
+                textView.setTextSize(20);
+                textView.setTextAlignment(convertView.TEXT_ALIGNMENT_CENTER);
                 return textView;
             }
         };
@@ -99,8 +100,6 @@ public class QuizActivity extends AppCompatActivity {
                 for (int i = 0; i < 4; i++)
                     questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
 
-                //resets text
-                button.setText("SKIP");
                 handleQuiz();
                 break;
             default:

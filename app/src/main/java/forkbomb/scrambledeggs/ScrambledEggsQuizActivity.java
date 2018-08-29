@@ -31,7 +31,6 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
         seekBar.incrementProgressBy(1);
         seekBar.setMax(10);
         quizLength = 2;
-        //final TextView seekVal = findViewById(R.id.txt_seekval);
 
         seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
             @Override
@@ -42,9 +41,8 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
             }
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
-                float thumbPos = ((float) progress/seekBar.getMax()) * (float) seekBar.getWidth()/2;
                 //seekVal.setText(String.valueOf(progress + 2));
-                quizLength = progress+2;
+                quizLength = progress + 2;
             }
         });
 

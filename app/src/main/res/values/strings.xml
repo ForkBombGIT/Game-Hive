@@ -8,7 +8,7 @@
     <string name="label_dev">DEV:</string>
     <string name="label_pub"><b>PUB:</b></string>
     <string name="label_rel">REL:</string>
-    <string name="label_genre">GENRE:</string>
+    <string name="label_genre">GENRE(S):</string>
     <string name="label_platforms">PLATFORM(S):</string>
     <string name="activity_scrambledeggs_random_btn">GENERATE</string>
     <string name="activity_scrambledeggs_quiz_length">Questions</string>

@@ -60,8 +60,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_slidericon512" />
-                            <entry key="sourceFile" value="C:\Users\Eros\Downloads\SliderIcon5121.svg" />
+                            <entry key="height" value="512" />
+                            <entry key="outputName" value="ic_blackegg512" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\Eros\Downloads\BlackEgg512.svg" />
+                            <entry key="width" value="512" />
                           </map>
                         </option>
                       </PersistentState>

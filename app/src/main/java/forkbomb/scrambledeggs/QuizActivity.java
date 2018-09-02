@@ -1,7 +1,9 @@
 package forkbomb.scrambledeggs;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -34,6 +36,7 @@ public class QuizActivity extends AppCompatActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_downicon512));
 
         //used for handling questions, answers, and user selections
         questionHandler = new QuestionHandler();
@@ -49,8 +52,9 @@ public class QuizActivity extends AppCompatActivity {
                 //checks if question is not selected
                 if (!questionHandler.quizQuestions[questionNumber].userAnswers.contains(answers.getItemAtPosition(position).toString())) {
                     //switches color, adds to array
-                    view.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    ((TextView)view).setBackground(getDrawable(R.drawable.listview_entries_selected));
                     ((TextView)view).setTextColor(getResources().getColor(R.color.colorWhite));
+                    ((FloatingActionButton)getWindow().getDecorView().findViewById(R.id.button)).setImageResource(R.drawable.nexticon512);
                     questionHandler.quizQuestions[questionNumber].userAnswers.add(answers.getItemAtPosition(position).toString());
                 }
                 //checks if question is selected
@@ -58,18 +62,21 @@ public class QuizActivity extends AppCompatActivity {
                     //switches color, removes from array
                     view.setBackgroundColor(Color.TRANSPARENT);
                     ((TextView)view).setTextColor(getResources().getColor(R.color.colorBlack));
+                    ((TextView)view).setBackground(getDrawable(R.drawable.listview_entries_default));
                     questionHandler.quizQuestions[questionNumber].userAnswers.remove(answers.getItemAtPosition(position).toString());
+                    if (questionHandler.quizQuestions[questionNumber].userAnswers.size() == 0)
+                        ((FloatingActionButton)getWindow().getDecorView().findViewById(R.id.button)).setImageResource(R.drawable.refreshicon512);
                 }
             }
         });
-
-        //generates starting possible answers
-        for (int i = 0; i < 4; i++)
-            questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
-
+        generateAnswers();
         handleQuiz();
     }
 
+    public void generateAnswers(){
+        for (int i = 0; i < 4; i++)
+            questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
+    }
 
     //controls QuizActivity
     public void handleQuiz(){
@@ -78,8 +85,9 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 TextView textView = (TextView) super.getView(position, convertView, parent);
-                textView.setTextSize(20);
+                textView.setTextSize(21);
                 textView.setTextAlignment(convertView.TEXT_ALIGNMENT_CENTER);
+                textView.setBackground(getContext().getDrawable(R.drawable.listview_entries_default));
                 return textView;
             }
         };
@@ -92,13 +100,22 @@ public class QuizActivity extends AppCompatActivity {
             case R.id.button:
                 //resets displayed answers array
                 questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[4];
-                //increments question number
-                if (questionNumber < getIntent().getIntExtra("length",2) - 1)
-                    questionNumber++;
-                else questionNumber = 0;
-                //generates new answers
-                for (int i = 0; i < 4; i++)
-                    questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
+                Log.i("t",Integer.toString(questionHandler.quizQuestions[questionNumber].userAnswers.size()));
+                if (questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) {
+                    ((FloatingActionButton)getWindow().getDecorView().findViewById(R.id.button)).setImageResource(R.drawable.refreshicon512);
+                    //increments question number
+                    if (questionNumber < getIntent().getIntExtra("length", 2) - 1)
+                        questionNumber++;
+                    else questionNumber = 0;
+                    //generates new answers
+                    for (int i = 0; i < 4; i++)
+                        questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
+                }
+                else {
+                    for (int i = 0; i < 4; i++) {
+                        questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
+                    }
+                }
 
                 handleQuiz();
                 break;

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,7 +35,9 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     //holds GameActivity database
     ArrayList<Game> gameDatabase;
-    private static final String TAG = "ScrambledEggsActivity";
+
+    int DB_LENGTH;
+    ArrayList<Integer> seenGames;
 
     //on create function, when the app is initially created
     @Override
@@ -48,6 +51,8 @@ public class ScrambledEggsActivity extends AppCompatActivity {
 
         //initializes the array list
         gameDatabase = XmlReader.readXml(ScrambledEggsActivity.this, R.raw.gamedatabase);
+        DB_LENGTH = gameDatabase.size();
+        seenGames = new ArrayList<>();
 
         checkForNewDate();
         displayGame(getIndex());
@@ -117,6 +122,18 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         }
     }
 
+    //generates a new random GameActivity
+    public int generateRandomGame(){
+        int index = rnd.nextInt(gameDatabase.size());
+        if (seenGames.size() >= DB_LENGTH)
+            seenGames.clear();
+        if (!(seenGames.contains(index))) {
+            seenGames.add(index);
+            return index;
+        }
+        return generateRandomGame();
+    }
+
     //gets the correct index
     public int getIndex(){
         preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
@@ -140,12 +157,12 @@ public class ScrambledEggsActivity extends AppCompatActivity {
                 if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) {
                     if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH)) {
                         if ((day < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))
-                            index = rnd.nextInt(gameDatabase.size());
+                            index = generateRandomGame();
                     }
                     else if (month < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH))
-                        index = rnd.nextInt(gameDatabase.size());
+                        index = generateRandomGame();
                 }
-                else if (year < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) index = rnd.nextInt(gameDatabase.size());
+                else if (year < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) index = generateRandomGame();
             }
         }
         //adds current index to preferences
@@ -188,7 +205,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         pub.append(" " + gameDatabase.get(index).publisher);
 
         genre = (TextView) findViewById(R.id.game_genre);
-        genre.setText(Html.fromHtml("<b>GENRE:</b>"));
+        genre.setText(Html.fromHtml("<b>GENRE(S):</b>"));
 
         platforms = (TextView) findViewById(R.id.game_platform);
         platforms.setText(Html.fromHtml("<b>PLATFORM(S):</b>"));

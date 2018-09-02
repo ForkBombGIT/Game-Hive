@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,6 +17,9 @@ public class GameActivity extends AppCompatActivity {
     TextView title, dev, pub, release, genre, platforms,genreEntries,platformsEntries;
     //data used to display the GameActivity
     ArrayList<Game> gameData;
+
+    int DB_LENGTH;
+    ArrayList<Integer> seenGames;
     //on create event
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,8 @@ public class GameActivity extends AppCompatActivity {
         //gets bundle
         Bundle bundle = getIntent().getBundleExtra("gameDatabase");
         gameData = (ArrayList<Game>) bundle.getSerializable("gameDatabase");
+        DB_LENGTH = gameData.size();
+        seenGames = new ArrayList<>();
         generateRandomGame();
 
         //sets toolbar
@@ -33,6 +39,7 @@ public class GameActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_downicon512));
     }
 
     //navbar back button press
@@ -60,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
         pub.append(" " + gameData.get(index).publisher);
 
         genre = (TextView) findViewById(R.id.game_genre);
-        genre.setText(Html.fromHtml("<b>GENRE:</b>"));
+        genre.setText(Html.fromHtml("<b>GENRE(S):</b>"));
 
         platforms = (TextView) findViewById(R.id.game_platform);
         platforms.setText(Html.fromHtml("<b>PLATFORM(S):</b>"));
@@ -82,7 +89,18 @@ public class GameActivity extends AppCompatActivity {
 
     //generates a new random GameActivity
     public void generateRandomGame(){
-       if (gameData.size() > 0) displayData(rand.nextInt(gameData.size()));
+       if (gameData.size() > 0) {
+           int index = rand.nextInt(gameData.size());
+           Log.i("num",Integer.toString(index));
+           if (seenGames.size() >= DB_LENGTH)
+               seenGames.clear();
+           if (!(seenGames.contains(index))) {
+               displayData(index);
+               seenGames.add(index);
+               return;
+           }
+           generateRandomGame();
+       }
 
     }
 

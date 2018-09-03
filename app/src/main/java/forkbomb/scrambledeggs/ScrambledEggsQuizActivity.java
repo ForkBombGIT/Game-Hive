@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class ScrambledEggsQuizActivity extends AppCompatActivity {
     ArrayList<Game> database;
+    GridLayout imgGrid;
     int quizLength;
 
     @Override
@@ -24,7 +27,6 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
         //processes gamedatabase
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
         database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
-
         //sets up seek bar
         SeekBar seekBar = findViewById(R.id.wdg_seek);
         seekBar.setProgress(0);

@@ -11,7 +11,7 @@
     <string name="label_genre">GENRE(S):</string>
     <string name="label_platforms">PLATFORM(S):</string>
     <string name="activity_scrambledeggs_random_btn">GENERATE</string>
-    <string name="activity_scrambledeggs_quiz_length">Questions</string>
+    <string name="activity_scrambledeggs_quiz_length">Quiz Length</string>
     <string name="activity_scrambledeggs_quiz_btn">START</string>
     <string name="activity_scrambledeggs_quiz_desc">We tell you shit!</string>
 </resources>

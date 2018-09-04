@@ -1,9 +1,12 @@
 package forkbomb.scrambledeggs;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -16,7 +19,8 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class ScrambledEggsQuizActivity extends AppCompatActivity {
     ArrayList<Game> database;
-    GridLayout imgGrid;
+    android.support.v7.widget.GridLayout imgGrid;
+    ImageView[] eggs = new ImageView[12];
     int quizLength;
 
     @Override
@@ -27,12 +31,24 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
         //processes gamedatabase
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
         database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
+
+        //sets imageview array
+        imgGrid = findViewById(R.id.imggrid);
+        for (int i = 0; i < imgGrid.getChildCount(); i++){
+            eggs[i] = (ImageView) imgGrid.getChildAt(i);
+            eggs[i].setColorFilter(getResources().getColor(R.color.itemBorder));
+        }
+
         //sets up seek bar
         SeekBar seekBar = findViewById(R.id.wdg_seek);
         seekBar.setProgress(0);
         seekBar.incrementProgressBy(1);
-        seekBar.setMax(10);
-        quizLength = 2;
+        seekBar.setMax(11);
+        quizLength = 1;
+
+        for (int i = 0; i < quizLength;i++){
+            eggs[i].setColorFilter(Color.TRANSPARENT);
+        }
 
         seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
             @Override
@@ -44,7 +60,14 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
                 //seekVal.setText(String.valueOf(progress + 2));
-                quizLength = progress + 2;
+                quizLength = progress + 1;
+                Log.i("len",Integer.toString(quizLength));
+                for (int i = 0; i < quizLength;i++){
+                    eggs[i].setColorFilter(Color.TRANSPARENT);
+                }
+                for (int i = quizLength; i < 12; i++){
+                    eggs[i].setColorFilter(getResources().getColor(R.color.itemBorder));
+                }
             }
         });
 

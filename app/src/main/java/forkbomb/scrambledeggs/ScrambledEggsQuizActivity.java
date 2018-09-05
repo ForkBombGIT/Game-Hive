@@ -44,7 +44,7 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
         seekBar.setProgress(0);
         seekBar.incrementProgressBy(1);
         seekBar.setMax(11);
-        quizLength = 1;
+        quizLength = 2;
 
         for (int i = 0; i < quizLength;i++){
             eggs[i].setColorFilter(Color.TRANSPARENT);
@@ -82,8 +82,6 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
     public void onBackPressed() {
         //kills the activity
         finish();
-        //animation
-       // overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out);
     }
 
     //navbar back button press

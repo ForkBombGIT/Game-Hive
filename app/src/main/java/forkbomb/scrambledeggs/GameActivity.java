@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -91,7 +90,6 @@ public class GameActivity extends AppCompatActivity {
     public void generateRandomGame(){
        if (gameData.size() > 0) {
            int index = rand.nextInt(gameData.size());
-           Log.i("num",Integer.toString(index));
            if (seenGames.size() >= DB_LENGTH)
                seenGames.clear();
            if (!(seenGames.contains(index))) {

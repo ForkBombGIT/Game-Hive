@@ -2,16 +2,12 @@ package forkbomb.scrambledeggs;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -61,7 +57,6 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
                 //seekVal.setText(String.valueOf(progress + 2));
                 quizLength = progress + 1;
-                Log.i("len",Integer.toString(quizLength));
                 for (int i = 0; i < quizLength;i++){
                     eggs[i].setColorFilter(Color.TRANSPARENT);
                 }

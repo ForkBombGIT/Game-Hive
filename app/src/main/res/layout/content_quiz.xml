@@ -27,12 +27,11 @@
                 android:layout_height="100dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="QUESTION"
                 android:textColor="@color/homeTitleColor"
                 android:textSize="40sp"
-                android:textStyle="bold"
                 app:autoSizeMaxTextSize="40sp"
                 app:autoSizeMinTextSize="26sp"
                 app:autoSizeTextType="uniform"
@@ -56,7 +55,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_question" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_question" >
+
+            </ListView>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

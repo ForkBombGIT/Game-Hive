@@ -85,7 +85,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 TextView textView = (TextView) super.getView(position, convertView, parent);
-                textView.setTextSize(21);
+                textView.setTextSize(((TextView)findViewById(R.id.tv_question)).getTextSize()/4);
                 textView.setTextAlignment(convertView.TEXT_ALIGNMENT_CENTER);
                 textView.setBackground(getContext().getDrawable(R.drawable.listview_entries_default));
                 return textView;

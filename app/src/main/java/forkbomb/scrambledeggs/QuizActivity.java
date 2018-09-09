@@ -1,5 +1,6 @@
 package forkbomb.scrambledeggs;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,11 +15,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class QuizActivity extends AppCompatActivity {
     //controls what questions will be used for the QuizActivity
     private QuestionHandler questionHandler;
     //controls what question the user is on
     private int questionNumber = 0;
+    //used to hold the games
+    ArrayList<Game> database;
 
     //view elements
     //changes the text for the question
@@ -37,6 +42,9 @@ public class QuizActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_downicon512));
+
+        Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
+        database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
 
         //used for handling questions, answers, and user selections
         questionHandler = new QuestionHandler();
@@ -98,20 +106,34 @@ public class QuizActivity extends AppCompatActivity {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                //resets displayed answers array
-                questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[4];
-                Log.i("t",Integer.toString(questionHandler.quizQuestions[questionNumber].userAnswers.size()));
                 if (questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) {
-                    ((FloatingActionButton)getWindow().getDecorView().findViewById(R.id.button)).setImageResource(R.drawable.refreshicon512);
                     //increments question number
-                    if (questionNumber < getIntent().getIntExtra("length", 2) - 1)
-                        questionNumber++;
-                    else questionNumber = 0;
-                    //generates new answers
-                    for (int i = 0; i < 4; i++)
-                        questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
+                    if (questionNumber < getIntent().getIntExtra("length", 2) - 1) {
+                        //resets displayed answers array
+                        questionHandler.quizQuestions[++questionNumber].displayedAnswers = new String[4];
+
+                        //generates new answers
+                        for (int i = 0; i < 4; i++)
+                            questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
+
+                        ((FloatingActionButton)getWindow().getDecorView().findViewById(R.id.button)).setImageResource(R.drawable.refreshicon512);
+                    }
+                    else {
+                        Intent intent = new Intent(this, GameActivity.class);
+                        //creates a bundle to send
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("gameDatabase",database);
+                        intent.putExtra("gameDatabase",bundle);
+                        intent.putExtra("index", generateGame());
+                        intent.putExtra("origin","quiz");
+                        //starts the new activity
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 else {
+                    //resets displayed answers array
+                    questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[4];
                     for (int i = 0; i < 4; i++) {
                         questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
                     }
@@ -122,6 +144,10 @@ public class QuizActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    public int generateGame(){
+        return 0;
     }
 
     //navbar back button press

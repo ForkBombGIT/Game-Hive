@@ -16,7 +16,10 @@ public class GameActivity extends AppCompatActivity {
     TextView title, dev, pub, release, genre, platforms,genreEntries,platformsEntries;
     //data used to display the GameActivity
     ArrayList<Game> gameData;
-
+    Game game;
+    //used to tell what started activity
+    String origin;
+    //used for generating random games
     int DB_LENGTH;
     ArrayList<Integer> seenGames;
     //on create event
@@ -25,13 +28,21 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        //origin of acitivity
+        origin = getIntent().getStringExtra("origin");
+
         //gets bundle
         Bundle bundle = getIntent().getBundleExtra("gameDatabase");
         gameData = (ArrayList<Game>) bundle.getSerializable("gameDatabase");
-        DB_LENGTH = gameData.size();
-        seenGames = new ArrayList<>();
-        generateRandomGame();
 
+        if (origin.equals("quiz")) {
+            findViewById(R.id.button).setVisibility(View.GONE);
+            displayData(getIntent().getIntExtra("index",0));
+        } else {
+            DB_LENGTH = gameData.size();
+            seenGames = new ArrayList<>();
+            generateRandomGame();
+        }
         //sets toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
@@ -106,7 +117,8 @@ public class GameActivity extends AppCompatActivity {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                generateRandomGame();
+                if (origin.equals("random"))
+                    generateRandomGame();
                 break;
             default:
                 break;

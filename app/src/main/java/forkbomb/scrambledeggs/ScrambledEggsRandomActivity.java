@@ -48,6 +48,7 @@ public class ScrambledEggsRandomActivity extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putSerializable("gameDatabase", database);
             intent.putExtra("gameDatabase", bundle);
+            intent.putExtra("origin", "random");
             //starts the new activity
             startActivity(intent);
         }

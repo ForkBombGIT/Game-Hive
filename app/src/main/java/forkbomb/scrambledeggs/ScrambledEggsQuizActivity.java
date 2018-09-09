@@ -77,6 +77,8 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
     public void onBackPressed() {
         //kills the activity
         finish();
+        //animation
+        overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out);
     }
 
     //navbar back button press

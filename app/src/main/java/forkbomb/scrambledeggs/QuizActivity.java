@@ -2,12 +2,10 @@ package forkbomb.scrambledeggs;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,9 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
+    Random rnd = new Random();
     //controls what questions will be used for the QuizActivity
     private QuestionHandler questionHandler;
     //controls what question the user is on
@@ -147,7 +148,27 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public int generateGame(){
-        return 0;
+        ArrayList<Integer> matches = new ArrayList<>();
+        int highest = 0;
+        for (int i = 0; i < database.size(); i++){
+            int counter = 0;
+            for (int j = 0; j < getIntent().getIntExtra("length", 2) - 1; j++){
+                for (int k = 0; k < questionHandler.quizQuestions[j].userAnswers.size(); k++){
+                    if (questionHandler.quizQuestions[j].userAnswers.get(k).equals(database.get(i).get(questionHandler.quizQuestions[j].tag))){
+                        counter++;
+                    }
+                }
+            }
+            if (counter > highest){
+                highest = counter;
+                matches.clear();
+                matches.add(i);
+            }
+            else if (counter == highest) matches.add(i);
+        }
+
+        return (matches.get(rnd.nextInt(matches.size())));
+
     }
 
     //navbar back button press

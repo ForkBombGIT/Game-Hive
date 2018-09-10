@@ -58,6 +58,7 @@ public class XmlReader {
                     else if (readLine.startsWith("</protag>")) {gameDatabase.get(index).protag = data;}
                     else if (readLine.startsWith("</camera>")) {gameDatabase.get(index).camera = data;}
                     else if (readLine.startsWith("</setting>")) {gameDatabase.get(index).setting = data;}
+                    else if (readLine.startsWith("</dimension>")) {gameDatabase.get(index).dimension = data;}
                 }
             }
             //closes the reader

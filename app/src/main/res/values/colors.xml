@@ -10,5 +10,5 @@
     <color name="colorWhite">#ffffff</color>
     <color name="toolBarColor">#FFFFFF</color>
     <color name="homeTitleColor">#2B2B2B</color>
-    <color name="itemBorder">#EEEEEE</color>
+    <color name="itemBorder">#cccccc</color>
 </resources>

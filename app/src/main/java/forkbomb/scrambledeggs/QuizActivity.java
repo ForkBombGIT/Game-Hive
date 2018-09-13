@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -153,9 +154,11 @@ public class QuizActivity extends AppCompatActivity {
         int highest = 0;
         for (int i = 0; i < database.size(); i++){
             int counter = 0;
-            for (int j = 0; j < getIntent().getIntExtra("length", 2) - 1; j++){
+            for (int j = 0; j < getIntent().getIntExtra("length", 2); j++){
+                Log.d("quizact", j + "" + questionHandler.quizQuestions[j].tag);
                 for (int k = 0; k < questionHandler.quizQuestions[j].userAnswers.size(); k++){
-                    if (questionHandler.quizQuestions[j].userAnswers.get(k).contains(database.get(i).get(questionHandler.quizQuestions[j].tag))){
+                    Log.d("quizact",database.get(i).title + ": " + (database.get(i).get(questionHandler.quizQuestions[j].tag) + " | " + questionHandler.quizQuestions[j].userAnswers.get(k).toLowerCase()));
+                    if (database.get(i).get(questionHandler.quizQuestions[j].tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k).toLowerCase())){
                         counter++;
                     }
                 }
@@ -167,9 +170,11 @@ public class QuizActivity extends AppCompatActivity {
             }
             else if (counter == highest) matches.add(i);
         }
+        Log.i("size",Integer.toString(matches.size()));
         if (matches.size() > 0)
             return (matches.get(rnd.nextInt(matches.size())));
         return 0;
+
     }
 
     //navbar back button press

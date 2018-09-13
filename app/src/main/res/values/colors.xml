@@ -6,9 +6,9 @@
     <color name="colorSecondary">#ffa000</color>
     <color name="colorSecondaryLight">#ffd149</color>
     <color name="colorSecondaryDark">#c67100</color>
-    <color name="colorBlack">#000000</color>
+    <color name="colorBlack">#333333</color>
     <color name="colorWhite">#ffffff</color>
     <color name="toolBarColor">#FFFFFF</color>
-    <color name="homeTitleColor">#2B2B2B</color>
+    <color name="homeTitleColor">#333333</color>
     <color name="itemBorder">#cccccc</color>
 </resources>

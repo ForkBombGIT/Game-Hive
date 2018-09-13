@@ -94,7 +94,8 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 TextView textView = (TextView) super.getView(position, convertView, parent);
-                textView.setTextSize(((TextView)findViewById(R.id.tv_question)).getTextSize()/4);
+                float fontSize = android.support.v4.math.MathUtils .clamp(((TextView)findViewById(R.id.tv_question)).getTextSize()/4,24,44);
+                textView.setTextSize(fontSize);
                 textView.setTextAlignment(convertView.TEXT_ALIGNMENT_CENTER);
                 textView.setBackground(getContext().getDrawable(R.drawable.listview_entries_default));
                 return textView;
@@ -154,7 +155,7 @@ public class QuizActivity extends AppCompatActivity {
             int counter = 0;
             for (int j = 0; j < getIntent().getIntExtra("length", 2) - 1; j++){
                 for (int k = 0; k < questionHandler.quizQuestions[j].userAnswers.size(); k++){
-                    if (questionHandler.quizQuestions[j].userAnswers.get(k).equals(database.get(i).get(questionHandler.quizQuestions[j].tag))){
+                    if (questionHandler.quizQuestions[j].userAnswers.get(k).contains(database.get(i).get(questionHandler.quizQuestions[j].tag))){
                         counter++;
                     }
                 }
@@ -166,9 +167,9 @@ public class QuizActivity extends AppCompatActivity {
             }
             else if (counter == highest) matches.add(i);
         }
-
-        return (matches.get(rnd.nextInt(matches.size())));
-
+        if (matches.size() > 0)
+            return (matches.get(rnd.nextInt(matches.size())));
+        return 0;
     }
 
     //navbar back button press

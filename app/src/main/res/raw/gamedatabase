@@ -2,52 +2,22 @@
 <gamedatabase>
     <game>
         <title>
-            Guacamelee!
+            Um Jammer Lammy
         </title>
         <year>
-            2013
+            1999
         </year>
         <publisher>
-            Drinkbox Studios
+            Sony
         </publisher>
         <developer>
-            Drinkbox Studios
+            NanaOn-Sha
         </developer>
         <genre>
-            Platformer,Metroidvania,Beat ‘em up
+            Rhythm
         </genre>
         <platforms>
-            PlayStation 4,PlayStation 3,PlayStation Vita,Xbox One,Xbox 360,PC,Wii U
-        </platforms>
-        <region>
-            WW
-        </region>
-        <rating>
-            T
-        </rating>
-        <multiplayer>
-            True
-        </multiplayer>
-    </game>
-
-    <game>
-        <title>
-            Astro Boy: Omega Factor
-        </title>
-        <year>
-            2003
-        </year>
-        <publisher>
-            Sega
-        </publisher>
-        <developer>
-            Treasure, Hitmaker
-        </developer>
-        <genre>
-            Beat ‘em up,Shoot ‘em up
-        </genre>
-        <platforms>
-            Game Boy Advance
+            PlayStation
         </platforms>
         <region>
             JP,NA,EU
@@ -56,61 +26,57 @@
             E
         </rating>
         <multiplayer>
-            False
+            True
         </multiplayer>
+        <visuals>
+            cartoon,abstract
+        </visuals>
+        <music>
+            musical
+        </music>
+        <tone>
+            surreal
+        </tone>
+        <pace>
+            fast,casual
+        </pace>
+        <length>
+            short
+        </length>
+        <violence>
+            not at all
+        </violence>
+        <protag>
+            a cutie,an unlikely hero,female lead,animal lead
+        </protag>
+        <camera>
+            Everything
+        </camera>
+        <setting>
+            Bizarre
+        </setting>
     </game>
-
     <game>
         <title>
-            Mischief Makers
+            Pokemon Gold and Silver
         </title>
         <year>
-            1997
-        </year>
-        <publisher>
-            Nintendo, Enix
-        </publisher>
-        <developer>
-            Treasure
-        </developer>
-        <genre>
-            Puzzle,Platformer
-        </genre>
-        <platforms>
-            Nintendo 64
-        </platforms>
-        <region>
-            JP,NA,UK,AU
-        </region>
-        <rating>
-            E
-        </rating>
-        <multiplayer>
-            False
-        </multiplayer>
-    </game>
-
-    <game>
-        <title>
-            Super Mario Odyssey
-        </title>
-        <year>
-            2017
+            1999
         </year>
         <publisher>
             Nintendo
         </publisher>
         <developer>
-            Nintendo EPD
+            Game Freak
         </developer>
         <genre>
-            Platformer
+            JRPG
         </genre>
         <platforms>
-            Nintendo Switch
+            Game Boy Color
         </platforms>
         <region>
-            WW
+            JP,AU,NA,EU
         </region>
         <rating>
             E
@@ -118,6 +84,145 @@
         <multiplayer>
             True
         </multiplayer>
+        <visuals>
+            pixel art
+        </visuals>
+        <music>
+            cheerful,intense
+        </music>
+        <tone>
+            casual,adventurous
+        </tone>
+        <pace>
+            casual,adventurous
+        </pace>
+        <length>
+            medium
+        </length>
+        <violence>
+            cartoon violence is okay
+        </violence>
+        <protag>
+            yourself,male lead,female lead
+        </protag>
+        <camera>
+            overhead
+        </camera>
+        <setting>
+            modern
+        </setting>
+    </game>
+    <game>
+        <title>
+            Donkey Kong Country
+        </title>
+        <year>
+            1994
+        </year>
+        <publisher>
+            Nintendo
+        </publisher>
+        <developer>
+            Rare
+        </developer>
+        <genre>
+            Platformer
+        </genre>
+        <platforms>
+            Super Nintendo Entertainment System
+        </platforms>
+        <region>
+            NA,EU,JP
+        </region>
+        <rating>
+            E
+        </rating>
+        <multiplayer>
+            True
+        </multiplayer>
+        <visuals>
+            realistic,cartoon
+        </visuals>
+        <music>
+            ambient,cheerful,intense
+        </music>
+        <tone>
+            adventurous
+        </tone>
+        <pace>
+            adventurous
+        </pace>
+        <length>
+            medium
+        </length>
+        <violence>
+            cartoon violence is okay
+        </violence>
+        <protag>
+            male lead,animal lead
+        </protag>
+        <camera>
+            everything
+        </camera>
+        <setting>
+            fantasy
+        </setting>
+    </game>
+    <game>
+        <title>
+            Konami Krazy Racers
+        </title>
+        <year>
+            2001
+        </year>
+        <publisher>
+            Konami
+        </publisher>
+        <developer>
+            KCEK
+        </developer>
+        <genre>
+            Racing
+        </genre>
+        <platforms>
+            Game Boy Advance
+        </platforms>
+        <region>
+            JP,NA,PAL
+        </region>
+        <rating>
+            E
+        </rating>
+        <multiplayer>
+            True
+        </multiplayer>
+        <visuals>
+            cartoon,pixel art
+        </visuals>
+        <music>
+            cheerful,intense
+        </music>
+        <tone>
+            casual
+        </tone>
+        <pace>
+            casual,fast
+        </pace>
+        <length>
+            short
+        </length>
+        <violence>
+            cartoon violence is okay
+        </violence>
+        <protag>
+            vehicle user
+        </protag>
+        <camera>
+            behind the body
+        </camera>
+        <setting>
+            fantasy,modern,bizarre
+        </setting>
     </game>
 </gamedatabase>
 

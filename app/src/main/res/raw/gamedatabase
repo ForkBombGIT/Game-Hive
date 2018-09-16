@@ -55,6 +55,8 @@
         <setting>
             Bizarre
         </setting>
+        <dimension>
+        </dimension>
     </game>
     <game>
         <title>
@@ -111,6 +113,8 @@
         <setting>
             modern
         </setting>
+        <dimension>
+        </dimension>
     </game>
     <game>
         <title>
@@ -167,6 +171,8 @@
         <setting>
             fantasy
         </setting>
+        <dimension>
+        </dimension>
     </game>
     <game>
         <title>
@@ -216,6 +222,7 @@
         </violence>
         <protag>
             vehicle lead
+
         </protag>
         <camera>
             behind the body
@@ -223,6 +230,8 @@
         <setting>
             fantasy,modern,bizarre
         </setting>
+        <dimension>
+        </dimension>
     </game>
 </gamedatabase>
 

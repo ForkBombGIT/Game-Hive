@@ -49,7 +49,7 @@ public class QuizActivity extends AppCompatActivity {
         database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
 
         //used for handling questions, answers, and user selections
-        questionHandler = new QuestionHandler();
+        questionHandler = new QuestionHandler(getIntent().getIntExtra("length", 2));
 
         //sets up activity elements
         question = (TextView) findViewById(R.id.tv_question);
@@ -111,7 +111,7 @@ public class QuizActivity extends AppCompatActivity {
             case R.id.button:
                 if (questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) {
                     //increments question number
-                    if (questionNumber < getIntent().getIntExtra("length", 2) - 1) {
+                    if (questionNumber < questionHandler.quizLength - 1) {
                         //resets displayed answers array
                         questionHandler.quizQuestions[++questionNumber].displayedAnswers = new String[4];
 
@@ -154,11 +154,12 @@ public class QuizActivity extends AppCompatActivity {
         int highest = 0;
         for (int i = 0; i < database.size(); i++){
             int counter = 0;
-            for (int j = 0; j < getIntent().getIntExtra("length", 2); j++){
+            for (int j = 0; j < questionHandler.quizLength; j++){
                 Log.d("quizact", j + "" + questionHandler.quizQuestions[j].tag);
                 for (int k = 0; k < questionHandler.quizQuestions[j].userAnswers.size(); k++){
                     Log.d("quizact",database.get(i).title + ": " + (database.get(i).get(questionHandler.quizQuestions[j].tag) + " | " + questionHandler.quizQuestions[j].userAnswers.get(k).toLowerCase()));
-                    if (database.get(i).get(questionHandler.quizQuestions[j].tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k).toLowerCase())){
+                    String tag = (database.get(i).get(questionHandler.quizQuestions[j].tag) != null) ? database.get(i).get(questionHandler.quizQuestions[j].tag) : "";
+                    if ((tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k).toLowerCase())){
                         counter++;
                     }
                 }
@@ -170,7 +171,6 @@ public class QuizActivity extends AppCompatActivity {
             }
             else if (counter == highest) matches.add(i);
         }
-        Log.i("size",Integer.toString(matches.size()));
         if (matches.size() > 0)
             return (matches.get(rnd.nextInt(matches.size())));
         return 0;

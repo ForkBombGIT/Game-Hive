@@ -11,6 +11,7 @@ public class QuestionHandler {
     private HashSet<Integer> selectedIndexs;
     //holds the questions selected for the quiz
     public Question[] quizQuestions;
+    public int quizLength;
     //holds all possible questions
     private Question[] questionList = new Question[]{
             new Question("What does a visually interesting game look like to you?", new String[]{"Realistic","Pixel Art","Cartoon","Minimalist","Abstract"}, "visuals"),
@@ -27,20 +28,21 @@ public class QuestionHandler {
     };
 
     //constructor
-    public QuestionHandler(){
+    public QuestionHandler(int length){
+        quizLength = length;
         selectedIndexs = new HashSet<Integer>();
         quizQuestions = generateQuestions();
     }
 
     //generates questions for QuizActivity
     private Question[] generateQuestions(){
-        Question[] temp = new Question[7];
+        Question[] temp = new Question[quizLength];
         //iterates through the array and adds random questions
-        while (selectedIndexs.size() < 7) selectedIndexs.add(new Random(System.nanoTime()).nextInt(questionList.length));
+        while (selectedIndexs.size() < quizLength) selectedIndexs.add(new Random(System.nanoTime()).nextInt(questionList.length));
 
         //adds the questions to the array
-        Integer[] arr = selectedIndexs.toArray(new Integer[7]);
-        for (int i = 0; i < 7; i++)
+        Integer[] arr = selectedIndexs.toArray(new Integer[quizLength]);
+        for (int i = 0; i < quizLength; i++)
             temp[i] = questionList[arr[i]];
 
         return temp;

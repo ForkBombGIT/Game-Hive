@@ -13,11 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary"
+        app:elevation="0dp"
         app:theme="@style/ThemeOverlay.AppCompat.Dark"
-        app:titleTextColor="@color/toolBarColor"
-        app:elevation="0dp"/>
+        app:titleTextColor="@color/toolBarColor" />
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="55dp"
@@ -30,9 +30,9 @@
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/game_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text=""
@@ -153,7 +153,7 @@
                 app:layout_constraintStart_toStartOf="@+id/game_title"
                 app:layout_constraintTop_toBottomOf="@+id/game_platform" />
         </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button"
@@ -162,12 +162,12 @@
         android:layout_marginBottom="28dp"
         android:layout_marginEnd="32dp"
         android:clickable="true"
+        android:focusable="true"
         android:onClick="onClick"
         app:backgroundTint="@color/colorPrimary"
+        app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/refreshicon512"
-        app:elevation="0dp"
-        android:focusable="true" />
+        app:srcCompat="@drawable/refreshicon512" />
 
 </android.support.constraint.ConstraintLayout>

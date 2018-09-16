@@ -44,6 +44,8 @@ public class Game implements Serializable {
                 return multiplayer;
             case ("visuals"):
                 return visuals;
+            case ("region"):
+                return region;
             case ("music"):
                 return music;
             case ("tone"):

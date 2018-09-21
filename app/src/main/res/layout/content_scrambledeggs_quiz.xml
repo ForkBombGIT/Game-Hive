@@ -9,8 +9,23 @@
     tools:showIn="@layout/activity_scrambledeggs_quiz">
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+    </ScrollView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -162,11 +177,11 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="175dp"
                 android:layout_height="53dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/listview_entries_selected"
+                android:background="@drawable/button"
                 android:onClick="onClick"
                 android:text="@string/activity_scrambledeggs_quiz_btn"
                 android:textColor="@color/colorWhite"
@@ -193,6 +208,6 @@
                 app:layout_constraintStart_toStartOf="@+id/txt_title"
                 app:layout_constraintTop_toBottomOf="@+id/length" />
         </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>

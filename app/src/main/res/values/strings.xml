@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Scrambled Eggs</string>
-    <string name="activity_scrambledeggs_random_title">Random</string>
-    <string name="activity_scrambledeggs_quiz_title">Quiz</string>
+    <string name="activity_scrambledeggs_random_title">Quick Scramble</string>
+    <string name="activity_scrambledeggs_quiz_title">Omelette Scramble</string>
     <string name="activity_scrambledeggs_heading">GAME OF THE DAY</string>
     <string name="activity_scrambledeggs_quiz_heading">QUIZ</string>
     <string name="activity_scrambledeggs_random_heading">RANDOM GAME</string>
@@ -13,5 +13,4 @@
     <string name="activity_scrambledeggs_random_btn">GENERATE</string>
     <string name="activity_scrambledeggs_quiz_length">Quiz Length</string>
     <string name="activity_scrambledeggs_quiz_btn">START</string>
-    <string name="activity_scrambledeggs_quiz_desc">We tell you shit!</string>
 </resources>

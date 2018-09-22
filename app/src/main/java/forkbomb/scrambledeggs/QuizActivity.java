@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -64,7 +65,7 @@ public class QuizActivity extends AppCompatActivity {
                     //switches color, adds to array
                     ((TextView)view).setBackground(getDrawable(R.drawable.listview_entries_selected));
                     ((TextView)view).setTextColor(getResources().getColor(R.color.colorWhite));
-                    ((FloatingActionButton)getWindow().getDecorView().findViewById(R.id.button)).setImageResource(R.drawable.nexticon512);
+                    ((Button)getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_next);
                     questionHandler.quizQuestions[questionNumber].userAnswers.add(answers.getItemAtPosition(position).toString());
                 }
                 //checks if question is selected
@@ -75,7 +76,7 @@ public class QuizActivity extends AppCompatActivity {
                     ((TextView)view).setBackground(getDrawable(R.drawable.listview_entries_default));
                     questionHandler.quizQuestions[questionNumber].userAnswers.remove(answers.getItemAtPosition(position).toString());
                     if (questionHandler.quizQuestions[questionNumber].userAnswers.size() == 0)
-                        ((FloatingActionButton)getWindow().getDecorView().findViewById(R.id.button)).setImageResource(R.drawable.refreshicon512);
+                        ((Button)getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_refresh);
                 }
             }
         });
@@ -119,7 +120,7 @@ public class QuizActivity extends AppCompatActivity {
                         for (int i = 0; i < 4; i++)
                             questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
 
-                        ((FloatingActionButton)getWindow().getDecorView().findViewById(R.id.button)).setImageResource(R.drawable.refreshicon512);
+                        ((Button)getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_refresh);
                     }
                     else {
                         Intent intent = new Intent(this, GameActivity.class);

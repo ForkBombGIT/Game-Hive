@@ -156,9 +156,7 @@ public class QuizActivity extends AppCompatActivity {
         for (int i = 0; i < database.size(); i++){
             int counter = 0;
             for (int j = 0; j < questionHandler.quizLength; j++){
-                Log.d("quizact", j + "" + questionHandler.quizQuestions[j].tag);
                 for (int k = 0; k < questionHandler.quizQuestions[j].userAnswers.size(); k++){
-                    Log.d("quizact",database.get(i).title + ": " + (database.get(i).get(questionHandler.quizQuestions[j].tag) + " | " + questionHandler.quizQuestions[j].userAnswers.get(k).toLowerCase()));
                     String tag = (database.get(i).get(questionHandler.quizQuestions[j].tag) != null) ? database.get(i).get(questionHandler.quizQuestions[j].tag) : "";
                     if ((tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k).toLowerCase())){
                         counter++;

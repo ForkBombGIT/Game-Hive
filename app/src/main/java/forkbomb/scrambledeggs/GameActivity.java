@@ -1,6 +1,8 @@
 package forkbomb.scrambledeggs;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -38,6 +40,17 @@ public class GameActivity extends AppCompatActivity {
         if (origin.equals("quiz")) {
             findViewById(R.id.button).setVisibility(View.GONE);
             displayData(getIntent().getIntExtra("index",0));
+
+            platformsEntries = (TextView) findViewById(R.id.platform_entries);
+            ConstraintLayout mConstraintLayout  = (ConstraintLayout)findViewById(R.id.constraint);
+            ConstraintSet set = new ConstraintSet();
+
+            mConstraintLayout.removeView(platformsEntries);
+            mConstraintLayout.addView(platformsEntries,0);
+            set.clone(mConstraintLayout);
+            set.connect(platformsEntries.getId(), ConstraintSet.BOTTOM, mConstraintLayout.getId(), ConstraintSet.BOTTOM, 32);
+            set.applyTo(mConstraintLayout);
+
         } else {
             DB_LENGTH = gameData.size();
             seenGames = new ArrayList<>();
@@ -110,7 +123,6 @@ public class GameActivity extends AppCompatActivity {
            }
            generateRandomGame();
        }
-
     }
 
     //handles button press

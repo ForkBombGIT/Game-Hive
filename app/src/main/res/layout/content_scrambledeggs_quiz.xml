@@ -10,7 +10,7 @@
 
     <ScrollView
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -39,25 +39,28 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/length"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/flavor"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="60dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
                         android:text="@string/activity_scrambledeggs_quiz_length"
+                        android:textAlignment="center"
                         android:textColor="@color/homeTitleColor"
-                        android:textSize="28sp"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toTopOf="@+id/wdg_seek"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.502"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imggrid" />
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <android.support.v7.widget.GridLayout
                         android:id="@+id/imggrid"
                         android:layout_width="280dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="64dp"
+                        app:layout_constraintBottom_toTopOf="@+id/flavor"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txt_title">
@@ -67,6 +70,7 @@
                             android:layout_width="70dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="15dp"
+                            android:contentDescription="an egg with a 1 on it"
                             app:layout_column="0"
                             app:layout_row="0"
                             app:srcCompat="@drawable/ic_quizegg1_512" />
@@ -75,6 +79,7 @@
                             android:id="@+id/img_egg_2"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with a 2 on it"
                             app:layout_column="1"
                             app:layout_row="0"
                             app:srcCompat="@drawable/ic_quizegg2_512" />
@@ -83,6 +88,7 @@
                             android:id="@+id/img_egg_3"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with a 3 on it"
                             app:layout_column="2"
                             app:layout_row="0"
                             app:srcCompat="@drawable/ic_quizegg3_512" />
@@ -91,6 +97,7 @@
                             android:id="@+id/img_egg_4"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with a 4 on it"
                             app:layout_column="3"
                             app:layout_row="0"
                             app:srcCompat="@drawable/ic_quizegg4_512" />
@@ -100,6 +107,7 @@
                             android:layout_width="70dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="15dp"
+                            android:contentDescription="an egg with a 5 on it"
                             app:layout_column="0"
                             app:layout_row="1"
                             app:srcCompat="@drawable/ic_quizegg5_512" />
@@ -108,6 +116,7 @@
                             android:id="@+id/img_egg_6"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with a 6 on it"
                             app:layout_column="1"
                             app:layout_row="1"
                             app:srcCompat="@drawable/ic_quizegg6_512" />
@@ -116,6 +125,7 @@
                             android:id="@+id/img_egg_7"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with a 7 on it"
                             app:layout_column="2"
                             app:layout_row="1"
                             app:srcCompat="@drawable/ic_quizegg7_512" />
@@ -124,6 +134,7 @@
                             android:id="@+id/img_egg_8"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with an 8 on it"
                             app:layout_column="3"
                             app:layout_row="1"
                             app:srcCompat="@drawable/ic_quizegg8_512" />
@@ -132,6 +143,7 @@
                             android:id="@+id/img_egg_9"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with a 9 on it"
                             app:layout_column="0"
                             app:layout_row="2"
                             app:srcCompat="@drawable/ic_quizegg9_512" />
@@ -140,6 +152,7 @@
                             android:id="@+id/img_egg_10"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with a 10 on it"
                             app:layout_column="1"
                             app:layout_row="2"
                             app:srcCompat="@drawable/ic_quizegg10_512" />
@@ -148,6 +161,7 @@
                             android:id="@+id/img_egg_11"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with an 11 on it"
                             app:layout_column="2"
                             app:layout_row="2"
                             app:srcCompat="@drawable/ic_quizegg11_512" />
@@ -156,6 +170,7 @@
                             android:id="@+id/img_egg_12"
                             android:layout_width="70dp"
                             android:layout_height="60dp"
+                            android:contentDescription="an egg with a 12 on it"
                             app:layout_column="3"
                             app:layout_row="2"
                             app:srcCompat="@drawable/ic_quizegg12_512" />
@@ -185,7 +200,6 @@
                         android:layout_width="175dp"
                         android:layout_height="53dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="24dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="32dp"
                         android:background="@drawable/button"
@@ -195,25 +209,23 @@
                         android:textSize="22sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/wdg_seek"
-                        app:layout_constraintVertical_bias="1.0" />
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <android.widget.SeekBar
                         android:id="@+id/wdg_seek"
-                        android:layout_width="319dp"
+                        android:layout_width="0dp"
                         android:layout_height="36dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="24dp"
                         android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
                         android:background="@null"
                         android:progress="0"
                         android:progressTint="@color/colorSecondary"
                         android:thumb="@drawable/ic_slidericon512"
+                        app:layout_constraintBottom_toTopOf="@+id/btn_start"
                         app:layout_constraintEnd_toEndOf="@+id/txt_title"
-                        app:layout_constraintHorizontal_bias="0.49"
-                        app:layout_constraintStart_toStartOf="@+id/txt_title"
-                        app:layout_constraintTop_toBottomOf="@+id/length" />
+                        app:layout_constraintHorizontal_bias="0.509"
+                        app:layout_constraintStart_toStartOf="@+id/txt_title" />
                 </android.support.constraint.ConstraintLayout>
             </android.support.v7.widget.CardView>
         </android.support.constraint.ConstraintLayout>

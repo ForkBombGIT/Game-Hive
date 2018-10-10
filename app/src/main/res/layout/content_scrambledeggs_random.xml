@@ -45,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="64dp"
+                        android:layout_marginBottom="32dp"
                         android:background="@drawable/button"
                         android:onClick="onClick"
                         android:text="@string/activity_scrambledeggs_random_btn"
@@ -58,17 +58,19 @@
 
                     <ImageView
                         android:id="@+id/imageView"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginTop="56dp"
-                        android:layout_marginBottom="56dp"
-                        android:contentDescription="an egg with a question mark in it"
-                        app:layout_constraintBottom_toTopOf="@+id/button"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="64dp"
+                        android:contentDescription="an egg with a question mark on it"
+                        app:layout_constraintBottom_toTopOf="@+id/flavor"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView"
-                        app:layout_constraintVertical_bias="0.0"
+                        app:layout_constraintVertical_bias="1.0"
                         app:srcCompat="@drawable/ic_randomflavoricon512" />
 
                     <TextView
@@ -81,11 +83,26 @@
                         android:text="@string/activity_scrambledeggs_random_heading"
                         android:textAlignment="center"
                         android:textColor="@color/homeTitleColor"
-                        android:textSize="40dp"
+                        android:textSize="40sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/flavor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toTopOf="@+id/button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
                 </android.support.constraint.ConstraintLayout>
             </android.support.v7.widget.CardView>
         </android.support.constraint.ConstraintLayout>

@@ -10,14 +10,29 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 
 public class ScrambledEggsQuizActivity extends AppCompatActivity {
+    //random number gen
+    Random rnd = new Random();
+    //games
     ArrayList<Game> database;
+    //used to display eggs
     android.support.v7.widget.GridLayout imgGrid;
     ImageView[] eggs = new ImageView[12];
+    //holds length of quiz
     int quizLength;
+
+    //possible flavor text
+    TextView flavorText;
+    String[] flavor = {
+            "How many eggs ya want?",
+            "How many eggs ya want?",
+            "How many eggs ya want?"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +42,10 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
         //processes gamedatabase
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
         database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
+
+        //sets random flavor text
+        flavorText = findViewById(R.id.flavor);
+        flavorText.setText(flavor[rnd.nextInt(flavor.length)]);
 
         //sets imageview array
         imgGrid = findViewById(R.id.imggrid);

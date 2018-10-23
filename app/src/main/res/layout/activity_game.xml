@@ -93,7 +93,7 @@
                         android:layout_marginEnd="16dp"
                         android:text="@string/label_genre"
                         android:textColor="@color/homeTitleColor"
-                        android:textSize="32sp"
+                        android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -107,7 +107,7 @@
                         android:layout_marginEnd="16dp"
                         android:text="@string/label_platforms"
                         android:textColor="@color/homeTitleColor"
-                        android:textSize="32sp"
+                        android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/genre_entries" />
@@ -115,7 +115,7 @@
                     <Button
                         android:id="@+id/button"
                         style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="146dp"
+                        android:layout_width="175dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="32dp"
@@ -173,7 +173,7 @@
                         android:layout_marginEnd="16dp"
                         android:text="@string/label_rel"
                         android:textColor="@color/homeTitleColor"
-                        android:textSize="32sp"
+                        android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/game_desc" />
@@ -187,7 +187,7 @@
                         android:layout_marginEnd="16dp"
                         android:text="@string/label_dev"
                         android:textColor="@color/homeTitleColor"
-                        android:textSize="32sp"
+                        android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/game_release" />
@@ -202,7 +202,7 @@
                         android:layout_marginBottom="16dp"
                         android:text="@string/label_pub"
                         android:textColor="@color/homeTitleColor"
-                        android:textSize="32sp"
+                        android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/game_dev" />

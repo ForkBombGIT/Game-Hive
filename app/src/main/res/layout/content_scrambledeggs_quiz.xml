@@ -48,7 +48,7 @@
                         android:text="@string/activity_scrambledeggs_quiz_length"
                         android:textAlignment="center"
                         android:textColor="@color/homeTitleColor"
-                        android:textSize="22sp"
+                        android:textSize="24sp"
                         app:layout_constraintBottom_toTopOf="@+id/wdg_seek"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -58,8 +58,8 @@
                         android:id="@+id/imggrid"
                         android:layout_width="280dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginBottom="64dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="32dp"
                         app:layout_constraintBottom_toTopOf="@+id/flavor"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +178,7 @@
 
                     </android.support.v7.widget.GridLayout>
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/txt_title"
                         android:layout_width="280dp"
                         android:layout_height="wrap_content"
@@ -188,8 +188,11 @@
                         android:text="@string/activity_scrambledeggs_quiz_heading"
                         android:textAlignment="center"
                         android:textColor="@color/homeTitleColor"
-                        android:textSize="48sp"
+                        android:textSize="46sp"
                         android:textStyle="bold"
+                        app:autoSizeMaxTextSize="46sp"
+                        app:autoSizeMinTextSize="30dp"
+                        app:autoSizeTextType="uniform"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

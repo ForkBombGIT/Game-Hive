@@ -13,17 +13,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
+    //random gen
     Random rand = new Random();
     //title of GameActivity
     TextView title, dev, pub, release, genre, platforms,genreEntries,platformsEntries;
     //data used to display the GameActivity
     ArrayList<Game> gameData;
-    Game game;
     //used to tell what started activity
     String origin;
     //used for generating random games
     int DB_LENGTH;
     ArrayList<Integer> seenGames;
+
     //on create event
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class GameActivity extends AppCompatActivity {
             seenGames = new ArrayList<>();
             generateRandomGame();
         }
+
         //sets toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");

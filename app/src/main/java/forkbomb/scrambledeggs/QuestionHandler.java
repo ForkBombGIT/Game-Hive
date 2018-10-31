@@ -1,7 +1,5 @@
 package forkbomb.scrambledeggs;
 
-import android.util.Log;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
@@ -14,17 +12,18 @@ public class QuestionHandler {
     public int quizLength;
     //holds all possible questions
     private Question[] questionList = new Question[]{
-            new Question("What does a visually interesting game look like to you?", new String[]{"Realistic","Pixel Art","Cartoon","Minimalist","Abstract"}, "visuals"),
-            new Question("What would you like to see in a game’s soundtrack?", new String[]{"Ambient","Cheerful","Intense","Musical"}, "music"),
-            new Question("Any regional preferences for developers?", new String[]{"Asian","North American","European","Obscure"}, "region"),
-            new Question("What should the game’s tone be?", new String[]{"Casual","Energetic","Suspenseful","Adventurous"}, "tone"),
-            new Question("What should the game’s pace be?", new String[]{"Casual","Fast","Slow","Adventurous"}, "pace"),
-            new Question("What should the game’s length be?", new String[]{"Short","Medium","Long","Infinite"}, "length"),
-            new Question("What dimension do you wanna play in?", new String[]{"2D","3D","2.5D","I don't wanna move around"}, "dimension"),
-            new Question("Do you want to see violence?", new String[]{"Not at all","Cartoon violence is okay","A bit of blood won’t hurt","Gratuitous amounts"}, "violence"),
-            new Question("Who are you playing as?", new String[]{"Yourself","A Tough Cookie","An Unlikely Hero","A Cutie", "Female Lead", "Male Lead", "Animal Lead","Royalty","Vehicle Lead","Peasant"}, "protag"),
-            new Question("What’s the camera showing?", new String[]{"First-person","Behind the body","Overhead","Everything"}, "camera"),
-            new Question("What’s the setting?", new String[]{"Fantasy","Horror","Modern","Sci-fi"}, "setting")
+
+            new Question("Any regional preferences for developers?",new String[]{"Asian","North American","European","Other"},"region"),
+            new Question("What should the game's length be?",new String[]{"Short","Medium","Long","Infinite"},"length"),
+            new Question("Do you want to see violence?",new String[]{"Not at all","Cartoon violence is okay","A bit of blood won't hurt","Casual violence is fine","Gratuitous amounts"},"violence"),
+            new Question("What dimension do you wanna move around in?",new String[]{"2D","2.5D","3D","I don't want to move around"},"dimension"),
+            new Question("Where's the camera?",new String[]{"First-person","Behind your back","Side view","Top down"},"camera"),
+            new Question("What development standard do you prefer?",new String[]{"AAA","Indie","Regular","Freeware"},"devstan"),
+            new Question("Who do you wanna play with?",new String[]{"Nobody","A friend","A group","The whole world"},"coop"),
+            new Question("What decade was this game released?",new String[]{"1980s","1990s","2000s","2010s"},"release"),
+            new Question("Do you have any accessories you want to play with?",new String[]{"Motion controls","Steering wheel","Flight stick","Musical instrument","Light gun","Arcade stick","Other"},"accessories"),
+            new Question("What's the game's difficulty?",new String[]{"Easy","Normal","Hard","Extreme","I get to choose"},"difficulty"),
+            new Question("What's the learning curve?",new String[]{"A baby could do this","Easy to learn; hard to master","Takes a bit of practice","Takes a lot of practice","Accustomed for experts"},"curve"),
     };
 
     //constructor

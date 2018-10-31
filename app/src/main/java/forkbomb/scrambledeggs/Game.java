@@ -3,6 +3,7 @@ import java.io.Serializable;
 
 public class Game implements Serializable {
     public String title;
+    public String description;
     public String year;
     public String publisher;
     public String developer;
@@ -28,6 +29,8 @@ public class Game implements Serializable {
         switch(val) {
             case ("title"):
                 return title;
+            case ("description"):
+                return description;
             case ("year"):
                 return year;
             case ("publisher"):

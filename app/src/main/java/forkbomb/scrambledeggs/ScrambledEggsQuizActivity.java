@@ -29,9 +29,8 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
     //possible flavor text
     TextView flavorText;
     String[] flavor = {
-            "How many eggs ya want?",
-            "How many eggs ya want?",
-            "How many eggs ya want?"
+            "How many eggs do you want?",
+            "How big do you want your ommlete?",
     };
 
     @Override

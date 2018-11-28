@@ -22,6 +22,22 @@ public class Game implements Serializable {
     public String camera;
     public String setting;
     public String dimension;
+    public String decade;
+    public String standard;
+    public String players;
+    public String goal;
+    public String weapon;
+    public String period;
+    public String story;
+    public String accessories;
+    public String customizing;
+    public String enemy;
+    public String difficulty;
+    public String curve;
+    public String feel;
+    public String communities;
+    public String achievement;
+
 
     public Game(){ }
 
@@ -67,6 +83,36 @@ public class Game implements Serializable {
                 return setting;
             case ("dimension"):
                 return dimension;
+            case("decade"):
+                return decade;
+            case("standard"):
+                return standard;
+            case("players"):
+                return players;
+            case("goal"):
+                return goal;
+            case("weapon"):
+                return weapon;
+            case("period"):
+                return period;
+            case("story"):
+                return story;
+            case("accessories"):
+                return accessories;
+            case("customizing"):
+                return customizing;
+            case("enemy"):
+                return enemy;
+            case("difficulty"):
+                return difficulty;
+            case("curve"):
+                return curve;
+            case("feel"):
+                return feel;
+            case("communities"):
+                return communities;
+            case("achievement"):
+                return achievement;
             default:
                 return null;
         }

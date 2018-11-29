@@ -1,6 +1,7 @@
 package forkbomb.scrambledeggs;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -43,121 +44,123 @@ public class XmlReader {
 
         //iterates until end of document
         while (eventType != XmlPullParser.END_DOCUMENT){
-            String tagName;
+            String tagName = parser.getName();
             if (eventType == XmlPullParser.START_TAG) {
-                tagName = parser.getName();
                 //searches through tag names and adds to game obj
                 switch (tagName) {
-                    case ("game"):
-                        games.add(game);
-                        game = new Game();
-                        break;
                     case ("title"):
-                        game.title = parser.nextText();
+                        game.title = parser.nextText().trim().trim();
                         break;
                     case ("description"):
-                        game.description = parser.nextText();
+                        game.description = parser.nextText().trim().trim();
                         break;
                     case ("year"):
-                        game.year = parser.nextText();
+                        game.year = parser.nextText().trim().trim();
                         break;
                     case ("publisher"):
-                        game.publisher = parser.nextText();
+                        game.publisher = parser.nextText().trim().trim();
                         break;
                     case ("developer"):
-                        game.developer = parser.nextText();
+                        game.developer = parser.nextText().trim().trim();
                         break;
                     case ("genre"):
-                        game.genre = parser.nextText();
+                        game.genre = parser.nextText().trim();
                         break;
                     case ("platforms"):
-                        game.platforms = parser.nextText();
+                        game.platforms = parser.nextText().trim();
                         break;
-                    case ("regin"):
-                        game.region = parser.nextText();
+                    case ("region"):
+                        game.region = parser.nextText().trim();
                         break;
                     case ("rating"):
-                        game.rating = parser.nextText();
+                        game.rating = parser.nextText().trim();
                         break;
                     case ("visuals"):
-                        game.visuals = parser.nextText();
+                        game.visuals = parser.nextText().trim();
                         break;
                     case ("music"):
-                        game.music = parser.nextText();
+                        game.music = parser.nextText().trim();
                         break;
                     case ("tone"):
-                        game.tone = parser.nextText();
+                        game.tone = parser.nextText().trim();
                         break;
                     case ("pace"):
-                        game.pace = parser.nextText();
+                        game.pace = parser.nextText().trim();
                         break;
                     case ("length"):
-                        game.length = parser.nextText();
+                        game.length = parser.nextText().trim();
                         break;
                     case ("decade"):
-                        game.decade = parser.nextText();
+                        game.decade = parser.nextText().trim();
                         break;
                     case ("violence"):
-                        game.violence = parser.nextText();
+                        game.violence = parser.nextText().trim();
                         break;
                     case ("protag"):
-                        game.protag = parser.nextText();
+                        game.protag = parser.nextText().trim();
                         break;
                     case ("dimension"):
-                        game.dimension = parser.nextText();
+                        game.dimension = parser.nextText().trim();
                         break;
                     case ("camera"):
-                        game.camera = parser.nextText();
+                        game.camera = parser.nextText().trim();
                         break;
                     case ("setting"):
-                        game.setting = parser.nextText();
+                        game.setting = parser.nextText().trim();
                         break;
                     case ("standard"):
-                        game.standard = parser.nextText();
+                        game.standard = parser.nextText().trim();
                         break;
                     case ("players"):
-                        game.players = parser.nextText();
+                        game.players = parser.nextText().trim();
                         break;
                     case ("goal"):
-                        game.goal = parser.nextText();
+                        game.goal = parser.nextText().trim();
                         break;
                     case ("weapon"):
-                        game.weapon = parser.nextText();
+                        game.weapon = parser.nextText().trim();
                         break;
                     case ("period"):
-                        game.period = parser.nextText();
+                        game.period = parser.nextText().trim();
                         break;
                     case ("story"):
-                        game.story = parser.nextText();
+                        game.story = parser.nextText().trim();
                         break;
                     case ("accessories"):
-                        game.accessories = parser.nextText();
+                        game.accessories = parser.nextText().trim();
                         break;
                     case ("customizing"):
-                        game.customizing = parser.nextText();
+                        game.customizing = parser.nextText().trim();
                         break;
                     case ("enemy"):
-                        game.enemy = parser.nextText();
+                        game.enemy = parser.nextText().trim();
                         break;
                     case ("difficulty"):
-                        game.difficulty = parser.nextText();
+                        game.difficulty = parser.nextText().trim();
                         break;
                     case ("curve"):
-                        game.curve = parser.nextText();
+                        game.curve = parser.nextText().trim();
                         break;
                     case ("feel"):
-                        game.feel = parser.nextText();
+                        game.feel = parser.nextText().trim();
                         break;
                     case ("communities"):
-                        game.communities = parser.nextText();
+                        game.communities = parser.nextText().trim();
                         break;
                     case ("achievement"):
-                        game.achievement = parser.nextText();
+                        game.achievement = parser.nextText().trim();
                         break;
 
                 }
 
+            } else if (eventType == XmlPullParser.END_TAG) {
+                if (tagName.equals("game")){
+                    games.add(game);
+                    game = new Game();
+                }
             }
+
+            eventType = parser.next();
         }
 
         return games;

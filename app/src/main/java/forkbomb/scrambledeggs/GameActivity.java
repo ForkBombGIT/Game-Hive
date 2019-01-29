@@ -1,10 +1,10 @@
 package forkbomb.scrambledeggs;
 
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
@@ -101,14 +101,14 @@ public class GameActivity extends AppCompatActivity {
         String[] genres = gameData.get(index).genre.split(",");
         String genreText = "";
         for (int i = 0; i < genres.length; i++)
-            genreText += genres[i] + ((i == (genres.length - 1)) ? "" : "\n");
+            genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
         genreEntries.setText(genreText);
 
         platformsEntries = (TextView) findViewById(R.id.platform_entries);
         String[] platformEntries = gameData.get(index).platforms.split(",");
         String platformText = "";
         for (int i = 0; i < platformEntries.length; i++)
-            platformText += platformEntries[i] + ((i == (platformEntries.length - 1)) ? "" : "\n");
+            platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");
         platformsEntries.setText(platformText);
     }
 

@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.text.Html;
 import android.view.Menu;
@@ -213,14 +213,14 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         String[] genres = gameDatabase.get(index).genre.split(",");
         String genreText = "";
         for (int i = 0; i < genres.length; i++)
-            genreText += genres[i] + ((i == (genres.length - 1)) ? "" : "\n");
+            genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
         genreEntries.setText(genreText);
 
         platformsEntries = (TextView) findViewById(R.id.platform_entries);
         String[] platformEntries = gameDatabase.get(index).platforms.split(",");
         String platformText = "";
         for (int i = 0; i < platformEntries.length; i++)
-            platformText += platformEntries[i] + ((i == (platformEntries.length - 1)) ? "" : "\n");
+            platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");
         platformsEntries.setText(platformText);
     }
 

@@ -3,8 +3,10 @@ package forkbomb.scrambledeggs;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.gridlayout.widget.GridLayout;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -21,7 +23,7 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
     //games
     ArrayList<Game> database;
     //used to display eggs
-    android.support.v7.widget.GridLayout imgGrid;
+    GridLayout imgGrid;
     ImageView[] eggs = new ImageView[12];
     //holds length of quiz
     int quizLength;
@@ -34,6 +36,7 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
     };
 
     @Override
+    @SuppressWarnings("unchecked")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrambledeggs_quiz);
@@ -87,7 +90,8 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
         //sets up toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     //back button press event

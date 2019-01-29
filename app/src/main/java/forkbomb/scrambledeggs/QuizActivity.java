@@ -3,9 +3,9 @@ package forkbomb.scrambledeggs;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -94,7 +94,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 TextView textView = (TextView) super.getView(position, convertView, parent);
-                float fontSize = android.support.v4.math.MathUtils .clamp(((TextView)findViewById(R.id.tv_question)).getTextSize()/4,24,44);
+                float fontSize = androidx.core.math.MathUtils .clamp(((TextView)findViewById(R.id.tv_question)).getTextSize()/4,24,44);
                 textView.setTextSize(fontSize);
                 textView.setTextAlignment(convertView.TEXT_ALIGNMENT_CENTER);
                 textView.setBackground(getContext().getDrawable(R.drawable.listview_entries_default));

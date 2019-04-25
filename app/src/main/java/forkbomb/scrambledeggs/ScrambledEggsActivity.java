@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Debug;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,14 +29,14 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     //var to hold the top toolbar
     Toolbar toptoolbar;
     //title of GameActivity
-    TextView title, dev, pub, release, genreEntries, platformsEntries,genre,platforms;
+    TextView title, description, dev, pub, release, genreEntries, platformsEntries,genre,platforms;
     //used to hold date data, to check if its a new day
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     //holds GameActivity database
     ArrayList<Game> gameDatabase;
 
-    int DB_LENGTH;
+    int DB_LENGTH = 0;
     ArrayList<Integer> seenGames;
 
     //on create function, when the app is initially created
@@ -136,11 +137,11 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     //gets the correct index
     public int getIndex(){
         preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-        if (preferences.contains("index")){return preferences.getInt("index",0);}
-        return 2;
+        return preferences.getInt("index",0);
     }
 
     //checks to see if the app is ran on a new day
+    //to-do: update this function, clean up
     public void checkForNewDate(){
         //index used to display GameActivity
         int index = getIndex();
@@ -190,6 +191,9 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         //displays text for GameActivity of the day
         title = (TextView) findViewById(R.id.game_title);
         title.setText(gameDatabase.get(index).title);
+
+        description = (TextView) findViewById(R.id.game_desc);
+        description.setText(gameDatabase.get(index).description);
 
         release = (TextView) findViewById(R.id.game_release);
         release.setText(Html.fromHtml("<b>REL:</b>"));

@@ -31,7 +31,7 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
     //possible flavor text
     TextView flavorText;
     String[] flavor = {
-            "How many eggs do you want?",
+            "How many questions do you want?",
             "How big do you want your omelette?",
     };
 
@@ -75,10 +75,10 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //seekVal.setText(String.valueOf(progress + 2));
-                quizLength = progress + 1;
-                for (int i = 0; i < quizLength;i++){
+                quizLength = ++progress;
+                for (int i = 0; i < quizLength; i++){
                     eggs[i].setColorFilter(Color.TRANSPARENT);
                 }
                 for (int i = quizLength; i < 12; i++){

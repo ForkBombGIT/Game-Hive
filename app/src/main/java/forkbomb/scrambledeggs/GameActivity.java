@@ -16,7 +16,7 @@ public class GameActivity extends AppCompatActivity {
     //random gen
     Random rand = new Random();
     //title of GameActivity
-    TextView title, dev, pub, release, genre, platforms,genreEntries,platformsEntries;
+    TextView title, description, dev, pub, release, genre, platforms,genreEntries,platformsEntries;
     //data used to display the GameActivity
     ArrayList<Game> gameData;
     //used to tell what started activity
@@ -39,18 +39,18 @@ public class GameActivity extends AppCompatActivity {
         gameData = (ArrayList<Game>) bundle.getSerializable("gameDatabase");
 
         if (origin.equals("quiz")) {
-            findViewById(R.id.button).setVisibility(View.GONE);
-            displayData(getIntent().getIntExtra("index",0));
-
-            platformsEntries = (TextView) findViewById(R.id.platform_entries);
-            ConstraintLayout mConstraintLayout  = (ConstraintLayout)findViewById(R.id.constraint);
-            ConstraintSet set = new ConstraintSet();
-
-            mConstraintLayout.removeView(platformsEntries);
-            mConstraintLayout.addView(platformsEntries,0);
-            set.clone(mConstraintLayout);
-            set.connect(platformsEntries.getId(), ConstraintSet.BOTTOM, mConstraintLayout.getId(), ConstraintSet.BOTTOM, 32);
-            set.applyTo(mConstraintLayout);
+//            findViewById(R.id.button).setVisibility(View.GONE);
+              displayData(getIntent().getIntExtra("index",0));
+//
+//            platformsEntries = (TextView) findViewById(R.id.platform_entries);
+//            ConstraintLayout mConstraintLayout  = (ConstraintLayout)findViewById(R.id.constraint);
+//            ConstraintSet set = new ConstraintSet();
+//
+//            mConstraintLayout.removeView(platformsEntries);
+//            mConstraintLayout.addView(platformsEntries,0);
+//            set.clone(mConstraintLayout);
+//            set.connect(platformsEntries.getId(), ConstraintSet.BOTTOM, mConstraintLayout.getId(), ConstraintSet.BOTTOM, 32);
+//            set.applyTo(mConstraintLayout);
 
         } else {
             DB_LENGTH = gameData.size();
@@ -78,6 +78,9 @@ public class GameActivity extends AppCompatActivity {
         //displays text for GameActivity of the day
         title = (TextView) findViewById(R.id.game_title);
         title.setText(gameData.get(index).title);
+
+        description = (TextView) findViewById(R.id.game_desc);
+        description.setText(gameData.get(index).description);
 
         release = (TextView) findViewById(R.id.game_release);
         release.setText(Html.fromHtml("<b>REL:</b>"));

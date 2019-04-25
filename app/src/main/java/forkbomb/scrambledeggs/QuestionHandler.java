@@ -12,7 +12,6 @@ public class QuestionHandler {
     public int quizLength;
     //holds all possible questions
     private Question[] questionList = new Question[]{
-
             new Question("Any regional preferences for developers?",new String[]{"Asian","North American","European","Other"},"region"),
             new Question("What should the game's length be?",new String[]{"Short","Medium","Long","Infinite"},"length"),
             new Question("Do you want to see violence?",new String[]{"Not at all","Cartoon violence is okay","A bit of blood won't hurt","Casual violence is fine","Gratuitous amounts"},"violence"),
@@ -20,7 +19,7 @@ public class QuestionHandler {
             new Question("Where's the camera?",new String[]{"First-person","Behind your back","Side view","Top down"},"camera"),
             new Question("What development standard do you prefer?",new String[]{"AAA","Indie","Regular","Freeware"},"standard"),
             new Question("Who do you wanna play with?",new String[]{"Nobody","A friend","A group","The whole world"},"players"),
-            new Question("What decade was this game released?",new String[]{"1980s","1990s","2000s","2010s"},"decade"),
+            new Question("What decade was this game released?",new String[]{"1980","1990","2000","2010"},"decade"),
             new Question("Do you have any accessories you want to play with?",new String[]{"Motion controls","Steering wheel","Flight stick","Musical instrument","Light gun","Arcade stick","Other"},"accessories"),
             new Question("What's the game's difficulty?",new String[]{"Easy","Normal","Hard","Extreme","I get to choose"},"difficulty"),
             new Question("What's the learning curve?",new String[]{"A baby could do this","Easy to learn; hard to master","Takes a bit of practice","Takes a lot of practice","Accustomed for experts"},"curve"),

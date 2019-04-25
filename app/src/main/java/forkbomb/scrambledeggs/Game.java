@@ -22,7 +22,6 @@ public class Game implements Serializable {
     public String camera;
     public String setting;
     public String dimension;
-    public String decade;
     public String standard;
     public String players;
     public String goal;
@@ -84,7 +83,7 @@ public class Game implements Serializable {
             case ("dimension"):
                 return dimension;
             case("decade"):
-                return decade;
+                return String.valueOf(Integer.parseInt(year) - (Integer.parseInt(year) % 10));
             case("standard"):
                 return standard;
             case("players"):

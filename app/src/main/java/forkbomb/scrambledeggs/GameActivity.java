@@ -1,14 +1,11 @@
 package forkbomb.scrambledeggs;
 
 import android.os.Bundle;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -39,19 +36,8 @@ public class GameActivity extends AppCompatActivity {
         gameData = (ArrayList<Game>) bundle.getSerializable("gameDatabase");
 
         if (origin.equals("quiz")) {
-//            findViewById(R.id.button).setVisibility(View.GONE);
+              findViewById(R.id.button).setVisibility(View.GONE);
               displayData(getIntent().getIntExtra("index",0));
-//
-//            platformsEntries = (TextView) findViewById(R.id.platform_entries);
-//            ConstraintLayout mConstraintLayout  = (ConstraintLayout)findViewById(R.id.constraint);
-//            ConstraintSet set = new ConstraintSet();
-//
-//            mConstraintLayout.removeView(platformsEntries);
-//            mConstraintLayout.addView(platformsEntries,0);
-//            set.clone(mConstraintLayout);
-//            set.connect(platformsEntries.getId(), ConstraintSet.BOTTOM, mConstraintLayout.getId(), ConstraintSet.BOTTOM, 32);
-//            set.applyTo(mConstraintLayout);
-
         } else {
             DB_LENGTH = gameData.size();
             seenGames = new ArrayList<>();
@@ -117,16 +103,16 @@ public class GameActivity extends AppCompatActivity {
 
     //generates a new random GameActivity
     public void generateRandomGame(){
-       if (gameData.size() > 0) {
-           int index = rand.nextInt(gameData.size());
-           if (seenGames.size() >= DB_LENGTH)
-               seenGames.clear();
-           if (!(seenGames.contains(index))) {
-               displayData(index);
-               seenGames.add(index);
-               return;
-           }
-           generateRandomGame();
+        if (gameData.size() > 0) {
+            int index = rand.nextInt(gameData.size());
+            if (seenGames.size() == DB_LENGTH)
+                seenGames.clear();
+            else if (!(seenGames.contains(index))) {
+                displayData(index);
+                seenGames.add(index);
+                return;
+            }
+            generateRandomGame();
        }
     }
 

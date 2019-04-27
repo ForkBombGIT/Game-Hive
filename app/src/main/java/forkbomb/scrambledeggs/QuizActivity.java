@@ -156,7 +156,7 @@ public class QuizActivity extends AppCompatActivity {
             for (int j = 0; j < questionHandler.quizLength; j++){
                 for (int k = 0; k < questionHandler.quizQuestions[j].userAnswers.size(); k++){
                     String tag = (database.get(i).get(questionHandler.quizQuestions[j].tag) != null) ? database.get(i).get(questionHandler.quizQuestions[j].tag) : "";
-                    if ((tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k).toLowerCase())){
+                    if ((tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k))){
                         counter++;
                     }
                 }
@@ -170,8 +170,7 @@ public class QuizActivity extends AppCompatActivity {
         }
         if (matches.size() > 0)
             return (matches.get(rnd.nextInt(matches.size())));
-        return 0;
-
+        return -1;
     }
 
     //navbar back button press

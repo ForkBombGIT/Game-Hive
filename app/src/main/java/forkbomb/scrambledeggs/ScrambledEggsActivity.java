@@ -24,6 +24,7 @@ import java.util.Random;
 import java.util.TimeZone;
 
 public class ScrambledEggsActivity extends AppCompatActivity {
+    Boolean switchingActivity;
     //random val gen
     Random rnd = new Random();
     //var to hold the top toolbar
@@ -43,6 +44,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        switchingActivity = false;
         setContentView(R.layout.activity_scrambledeggs);
 
         //sets up toolbar
@@ -63,6 +65,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     protected void onStart(){
         checkForNewDate();
         displayGame(getIndex());
+        switchingActivity = false;
         super.onStart();
     }
 
@@ -72,6 +75,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.eggonlyicon512);
         ActivityManager.TaskDescription td = new ActivityManager.TaskDescription(null, bm, getResources().getColor(R.color.colorPrimary));
         this.setTaskDescription(td);
+        switchingActivity = false;
 
         checkForNewDate();
         displayGame(getIndex());
@@ -112,26 +116,35 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.navigation_random:
-                activityStart(ScrambledEggsRandomActivity.class);
+                if (!switchingActivity) {
+                    activityStart(ScrambledEggsRandomActivity.class);
+                    switchingActivity = true;
+                }
                 return true;
             case R.id.navigation_quiz:
-                activityStart(ScrambledEggsQuizActivity.class);
+                if (!switchingActivity) {
+                    activityStart(ScrambledEggsQuizActivity.class);
+                    switchingActivity = true;
+                }
                 return true;
             default:
                 return false;
         }
     }
 
-    //generates a new random GameActivity
+    //generates a new random game
     public int generateRandomGame(){
-        int index = rnd.nextInt(gameDatabase.size());
-        if (seenGames.size() >= DB_LENGTH)
-            seenGames.clear();
-        if (!(seenGames.contains(index))) {
-            seenGames.add(index);
-            return index;
+        if (gameDatabase.size() > 0) {
+            int index = rnd.nextInt(gameDatabase.size());
+            if (seenGames.size() == DB_LENGTH)
+                seenGames.clear();
+            else if (!(seenGames.contains(index))) {
+                seenGames.add(index);
+                return index;
+            }
+            generateRandomGame();
         }
-        return generateRandomGame();
+        return 0;
     }
 
     //gets the correct index
@@ -152,8 +165,8 @@ public class ScrambledEggsActivity extends AppCompatActivity {
                 int day = preferences.getInt("day",-1);
                 int month = preferences.getInt("month",-1);
                 int year = preferences.getInt("year",-1);
+
                 //checks if theres a difference in days
-                //to-do: check for year change
                 if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) {
                     if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH)) {
                         if ((day < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))

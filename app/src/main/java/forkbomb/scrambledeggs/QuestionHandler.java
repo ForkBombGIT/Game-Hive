@@ -14,7 +14,7 @@ public class QuestionHandler {
     private Question[] questionList = new Question[]{
             new Question("Any regional preferences for developers?",new String[]{"Asian","North American","European","Other"},"region"),
             new Question("What should the game's length be?",new String[]{"Short","Medium","Long","Infinite"},"length"),
-            new Question("Do you want to see violence?",new String[]{"Not at all","Cartoon violence is okay","A bit of blood won't hurt","Casual violence is fine","Gratuitous amounts"},"violence"),
+            new Question("Do you want to see violence?",new String[]{"Not at all","Cartoon violence is okay","A bit of blood won't hurt","Gratuitous amounts"},"violence"),
             new Question("What dimension do you wanna move around in?",new String[]{"2D","2.5D","3D","I don't want to move around"},"dimension"),
             new Question("Where's the camera?",new String[]{"First-person","Behind your back","Side view","Top down"},"camera"),
             new Question("What development standard do you prefer?",new String[]{"AAA","Indie","Regular","Freeware"},"standard"),

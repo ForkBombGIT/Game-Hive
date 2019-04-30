@@ -72,9 +72,6 @@ public class XmlReader {
                     case ("region"):
                         game.region = parser.nextText().trim();
                         break;
-                    case ("rating"):
-                        game.rating = parser.nextText().trim();
-                        break;
                     case ("visuals"):
                         game.visuals = parser.nextText().trim();
                         break;

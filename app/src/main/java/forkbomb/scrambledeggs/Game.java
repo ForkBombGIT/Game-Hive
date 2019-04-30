@@ -10,8 +10,6 @@ public class Game implements Serializable {
     public String genre;
     public String platforms;
     public String region;
-    public String rating;
-    public String multiplayer;
     public String visuals;
     public String music;
     public String tone;
@@ -56,10 +54,6 @@ public class Game implements Serializable {
                 return genre;
             case ("platforms"):
                 return platforms;
-            case ("rating"):
-                return rating ;
-            case ("multiplayer"):
-                return multiplayer;
             case ("visuals"):
                 return visuals;
             case ("region"):

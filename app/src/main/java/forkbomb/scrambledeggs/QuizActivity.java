@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -156,9 +157,7 @@ public class QuizActivity extends AppCompatActivity {
             for (int j = 0; j < questionHandler.quizLength; j++){
                 for (int k = 0; k < questionHandler.quizQuestions[j].userAnswers.size(); k++){
                     String tag = (database.get(i).get(questionHandler.quizQuestions[j].tag) != null) ? database.get(i).get(questionHandler.quizQuestions[j].tag) : "";
-                    if ((tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k))){
-                        counter++;
-                    }
+                    if ((tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k))) counter++;
                 }
             }
             if (counter > highest){
@@ -168,8 +167,8 @@ public class QuizActivity extends AppCompatActivity {
             }
             else if (counter == highest) matches.add(i);
         }
-        if (matches.size() > 0)
-            return (matches.get(rnd.nextInt(matches.size())));
+        if (highest == 0) return -1;
+        if (matches.size() > 0) return (matches.get(rnd.nextInt(matches.size())));
         return -1;
     }
 

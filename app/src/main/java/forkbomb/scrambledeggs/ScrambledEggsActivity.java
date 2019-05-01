@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Debug;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -63,8 +64,6 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     //called when the activity starts
     @Override
     protected void onStart(){
-        checkForNewDate();
-        displayGame(getIndex());
         switchingActivity = false;
         super.onStart();
     }
@@ -76,9 +75,6 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         ActivityManager.TaskDescription td = new ActivityManager.TaskDescription(null, bm, getResources().getColor(R.color.colorPrimary));
         this.setTaskDescription(td);
         switchingActivity = false;
-
-        checkForNewDate();
-        displayGame(getIndex());
         super.onResume();
     }
 
@@ -132,8 +128,36 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         }
     }
 
+    //checks to see if the app is ran on a new day
+    //to-do: update this function, clean up
+    public void checkForNewDate(){
+        //index used to display GameActivity
+        int index = getIndex();
+        preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        editor = preferences.edit();
+        if (gameDatabase != null) {
+            if (preferences.contains("day") && preferences.contains("month") && preferences.contains("year")) {
+                int day = preferences.getInt("day",-1);
+                int month = preferences.getInt("month",-1);
+                int year = preferences.getInt("year",-1);
+                //checks if theres a difference in days
+                if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) {
+                    if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH)) {
+                        if ((day < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))
+                            index = generateRandomGame();
+                    }
+                    else index = generateRandomGame();
+                }
+                else index = generateRandomGame();
+            }
+        }
+        //adds current index to preferences
+        editor.putInt("index",index);
+        editor.commit();
+    }
     //generates a new random game
     public int generateRandomGame(){
+        Log.i("main","new game");
         if (gameDatabase.size() > 0) {
             int index = rnd.nextInt(gameDatabase.size());
             if (seenGames.size() == DB_LENGTH)
@@ -151,36 +175,6 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     public int getIndex(){
         preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         return preferences.getInt("index",0);
-    }
-
-    //checks to see if the app is ran on a new day
-    //to-do: update this function, clean up
-    public void checkForNewDate(){
-        //index used to display GameActivity
-        int index = getIndex();
-        preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-        editor = preferences.edit();
-        if (gameDatabase != null) {
-            if (preferences.contains("day") && preferences.contains("month") && preferences.contains("year")) {
-                int day = preferences.getInt("day",-1);
-                int month = preferences.getInt("month",-1);
-                int year = preferences.getInt("year",-1);
-
-                //checks if theres a difference in days
-                if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) {
-                    if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH)) {
-                        if ((day < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))
-                            index = generateRandomGame();
-                    }
-                    else if (month < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH))
-                        index = generateRandomGame();
-                }
-                else if (year < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) index = generateRandomGame();
-            }
-        }
-        //adds current index to preferences
-        editor.putInt("index",index);
-        editor.commit();
     }
 
     //gets the current date

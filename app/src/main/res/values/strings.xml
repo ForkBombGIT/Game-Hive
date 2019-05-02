@@ -11,7 +11,7 @@
     <string name="label_genre">GENRE(S):</string>
     <string name="label_platforms">PLATFORM(S):</string>
     <string name="activity_scrambledeggs_random_btn">GENERATE</string>
-    <string name="activity_game_noresult_title">Nothing here!</string>
+    <string name="activity_game_noresult_title">No eggs in this basket</string>
     <string name="activity_game_noresult_desc">Either your perfect game doesn\'t exist, or we don\'t know it yet!</string>
     <string name="activity_scrambledeggs_quiz_length">How many questions?</string>
     <string name="activity_scrambledeggs_quiz_btn">START</string>

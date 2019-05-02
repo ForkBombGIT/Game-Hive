@@ -143,7 +143,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
                 //checks if theres a difference in days
                 if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) {
                     if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH)) {
-                        if ((day < Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))
+                        if ((day != Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))
                             index = generateRandomGame();
                     }
                     else index = generateRandomGame();

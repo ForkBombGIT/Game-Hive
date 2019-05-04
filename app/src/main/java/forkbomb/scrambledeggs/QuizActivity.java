@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -49,7 +48,7 @@ public class QuizActivity extends AppCompatActivity {
         database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
 
         //used for handling questions, answers, and user selections
-        questionHandler = new QuestionHandler(getIntent().getIntExtra("length", 2));
+        questionHandler = new QuestionHandler(getIntent().getIntExtra("length", 2),database);
 
         //sets up activity elements
         question = (TextView) findViewById(R.id.tv_question);

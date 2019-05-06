@@ -30,6 +30,7 @@ public class QuizActivity extends AppCompatActivity {
     //changes the text for the question
     TextView question;
     ListView answers;
+    int answerSize;
 
     //adapter for filling listview
     ArrayAdapter<String> adapter;
@@ -53,6 +54,8 @@ public class QuizActivity extends AppCompatActivity {
         //sets up activity elements
         question = (TextView) findViewById(R.id.tv_question);
         answers = (ListView) findViewById(R.id.answers);
+        answerSize = (questionHandler.quizQuestions[questionNumber].possibleAnswers.size() < 4) ? questionHandler.quizQuestions[questionNumber].possibleAnswers.size() : 4;
+        questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
 
         //event handling for when item in list view is clicked
         answers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -78,12 +81,12 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }
         });
-        generateAnswers();
+        generateAnswers(answerSize);
         handleQuiz();
     }
 
-    public void generateAnswers(){
-        for (int i = 0; i < 4; i++)
+    public void generateAnswers(int size){
+        for (int i = 0; i < size; i++)
             questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
     }
 
@@ -112,10 +115,11 @@ public class QuizActivity extends AppCompatActivity {
                     //increments question number
                     if (questionNumber < questionHandler.quizLength - 1) {
                         //resets displayed answers array
-                        questionHandler.quizQuestions[++questionNumber].displayedAnswers = new String[4];
+                        answerSize = (questionHandler.quizQuestions[++questionNumber].possibleAnswers.size() < 4) ? questionHandler.quizQuestions[questionNumber].possibleAnswers.size() : 4;
+                        questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
 
                         //generates new answers
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < answerSize; i++)
                             questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
 
                         ((Button)getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_refresh);
@@ -135,8 +139,8 @@ public class QuizActivity extends AppCompatActivity {
                 }
                 else {
                     //resets displayed answers array
-                    questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[4];
-                    for (int i = 0; i < 4; i++) {
+                    questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
+                    for (int i = 0; i < answerSize; i++) {
                         questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
                     }
                 }

@@ -26,6 +26,7 @@ public class Game implements Serializable {
     public String weapon;
     public String period;
     public String story;
+    public String decade;
     public String accessories;
     public String customizing;
     public String enemy;
@@ -77,7 +78,7 @@ public class Game implements Serializable {
             case ("dimension"):
                 return dimension;
             case("decade"):
-                return String.valueOf(Integer.parseInt(year) - (Integer.parseInt(year) % 10));
+                return decade;
             case("standard"):
                 return standard;
             case("players"):

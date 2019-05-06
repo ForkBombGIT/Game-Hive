@@ -120,6 +120,9 @@ public class XmlReader {
                     case ("story"):
                         game.story = parser.nextText().trim();
                         break;
+                    case ("decade"):
+                        game.decade = parser.nextText().trim();
+                        break;
                     case ("accessories"):
                         game.accessories = parser.nextText().trim();
                         break;

@@ -17,4 +17,6 @@
     <string name="activity_scrambledeggs_quiz_btn">START</string>
     <string name="activity_quiz_button_refresh">REFRESH</string>
     <string name="activity_quiz_button_next">NEXT</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_interstitial_id">ca-app-pub-3940256099942544/1033173712</string>
 </resources>

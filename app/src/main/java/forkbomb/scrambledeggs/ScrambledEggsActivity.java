@@ -15,6 +15,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
@@ -40,6 +46,8 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     int DB_LENGTH = 0;
     //holds seen random games
     ArrayList<Integer> seenGames;
+    //controls the add object
+    InterstitialAd mInterstitialAd;
 
     //on create function, when the app is initially created
     @Override

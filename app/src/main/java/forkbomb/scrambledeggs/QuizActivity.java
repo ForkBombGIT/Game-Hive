@@ -14,6 +14,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -32,6 +36,8 @@ public class QuizActivity extends AppCompatActivity {
     int answerSize;
     //adapter for filling listview
     ArrayAdapter<String> adapter;
+    //controls the add object
+    InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,16 +132,29 @@ public class QuizActivity extends AppCompatActivity {
                         ((Button)getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_refresh);
                     }
                     else {
-                        Intent intent = new Intent(this, GameActivity.class);
+                        final Intent intent = new Intent(this, GameActivity.class);
                         //creates a bundle to send
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("gameDatabase",database);
                         intent.putExtra("gameDatabase",bundle);
                         intent.putExtra("index", generateGame());
                         intent.putExtra("origin","quiz");
-                        //starts the new activity
-                        startActivity(intent);
-                        finish();
+                        MobileAds.initialize(this, getString(R.string.admob_app_id));
+                        mInterstitialAd = new InterstitialAd(QuizActivity.this);
+                        mInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
+                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                        mInterstitialAd.setAdListener(new AdListener() {
+                            public void onAdLoaded() {
+                                if (mInterstitialAd.isLoaded()) {
+                                    mInterstitialAd.show();
+                                }
+                            }
+                            public void onAdClosed() {
+                                //starts the new activity
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
                     }
                 }
                 else {

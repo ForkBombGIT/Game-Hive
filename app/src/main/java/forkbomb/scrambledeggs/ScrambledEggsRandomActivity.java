@@ -7,6 +7,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,6 +26,8 @@ public class ScrambledEggsRandomActivity extends AppCompatActivity {
             "Find a game, with no frills!",
             "What's gonna hatch from this one?"
     };
+    //controls the add object
+    InterstitialAd mInterstitialAd;
 
     //on create event
     @Override
@@ -40,15 +46,29 @@ public class ScrambledEggsRandomActivity extends AppCompatActivity {
         //sets toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        MobileAds.initialize(this, getString(R.string.admob_app_id));
     }
 
     //handles button press
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                activityStart(GameActivity.class);
+                mInterstitialAd = new InterstitialAd(ScrambledEggsRandomActivity.this);
+                mInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                mInterstitialAd.setAdListener(new AdListener() {
+                    public void onAdLoaded() {
+                        if (mInterstitialAd.isLoaded()) {
+                            mInterstitialAd.show();
+                        }
+                    }
+                    public void onAdClosed() {
+                        activityStart(GameActivity.class);
+                    }
+
+                });
                 break;
             default:
                 break;

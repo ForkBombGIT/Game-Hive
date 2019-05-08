@@ -26,7 +26,6 @@ public class GameActivity extends AppCompatActivity {
     //used for generating random games
     int DB_LENGTH;
     ArrayList<Integer> seenGames;
-
     //on create event
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -19,7 +19,6 @@ public class ScrambledEggsRandomActivity extends AppCompatActivity {
     //possible flavor text
     TextView flavorText;
     String[] flavor = {
-            "Pick a game, but no peeking!",
             "Find a game, with no frills!",
             "What's gonna hatch from this one?"
     };

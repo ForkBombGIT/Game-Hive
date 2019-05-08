@@ -18,6 +18,7 @@ public class Question {
         userAnswers = new ArrayList<>();
     }
 
+    //adds a possible answer if not in the array
     public void addAnswer(String a){
         if (!possibleAnswers.contains(a))
             possibleAnswers.add(a);

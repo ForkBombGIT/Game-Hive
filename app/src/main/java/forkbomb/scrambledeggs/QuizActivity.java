@@ -5,7 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,13 +25,11 @@ public class QuizActivity extends AppCompatActivity {
     private int questionNumber = 0;
     //used to hold the games
     ArrayList<Game> database;
-
     //view elements
     //changes the text for the question
     TextView question;
     ListView answers;
     int answerSize;
-
     //adapter for filling listview
     ArrayAdapter<String> adapter;
 
@@ -39,12 +37,15 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        //toolbar setup
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_downicon512));
+        toolbar.setNavigationIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_downicon512, null));
 
+        //load database
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
         database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
 
@@ -52,8 +53,8 @@ public class QuizActivity extends AppCompatActivity {
         questionHandler = new QuestionHandler(getIntent().getIntExtra("length", 2),database);
 
         //sets up activity elements
-        question = (TextView) findViewById(R.id.tv_question);
-        answers = (ListView) findViewById(R.id.answers);
+        question = findViewById(R.id.tv_question);
+        answers = findViewById(R.id.answers);
         answerSize = (questionHandler.quizQuestions[questionNumber].possibleAnswers.size() < 4) ? questionHandler.quizQuestions[questionNumber].possibleAnswers.size() : 4;
         questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
 
@@ -64,8 +65,8 @@ public class QuizActivity extends AppCompatActivity {
                 //checks if question is not selected
                 if (!questionHandler.quizQuestions[questionNumber].userAnswers.contains(answers.getItemAtPosition(position).toString())) {
                     //switches color, adds to array
-                    ((TextView)view).setBackground(getDrawable(R.drawable.listview_entries_selected));
-                    ((TextView)view).setTextColor(getResources().getColor(R.color.colorWhite));
+                    view.setBackground(getDrawable(R.drawable.listview_entries_selected));
+                    ((TextView)view).setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorWhite));
                     ((Button)getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_next);
                     questionHandler.quizQuestions[questionNumber].userAnswers.add(answers.getItemAtPosition(position).toString());
                 }
@@ -73,8 +74,8 @@ public class QuizActivity extends AppCompatActivity {
                 else {
                     //switches color, removes from array
                     view.setBackgroundColor(Color.TRANSPARENT);
-                    ((TextView)view).setTextColor(getResources().getColor(R.color.colorBlack));
-                    ((TextView)view).setBackground(getDrawable(R.drawable.listview_entries_default));
+                    view.setBackground(getDrawable(R.drawable.listview_entries_default));
+                    ((TextView)view).setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorBlack));
                     questionHandler.quizQuestions[questionNumber].userAnswers.remove(answers.getItemAtPosition(position).toString());
                     if (questionHandler.quizQuestions[questionNumber].userAnswers.size() == 0)
                         ((Button)getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_refresh);
@@ -144,7 +145,6 @@ public class QuizActivity extends AppCompatActivity {
                         questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
                     }
                 }
-
                 handleQuiz();
                 break;
             default:

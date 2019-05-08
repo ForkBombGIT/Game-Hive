@@ -9,22 +9,19 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.os.Debug;
-import android.text.Html;
-import android.util.Log;
+import androidx.cardview.widget.CardView;
+import androidx.core.text.HtmlCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import java.util.Calendar;
 import java.util.Random;
 import java.util.TimeZone;
 
 public class ScrambledEggsActivity extends AppCompatActivity {
+    //controls whether or not the app is transitioning between activities
     Boolean switchingActivity;
     //random val gen
     Random rnd = new Random();
@@ -32,20 +29,22 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     Toolbar toptoolbar;
     //title of GameActivity
     TextView title, description, dev, pub, release, genreEntries, platformsEntries,genre,platforms;
+    //cards in view
+    CardView card1, card2;
     //used to hold date data, to check if its a new day
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     //holds GameActivity database
     ArrayList<Game> gameDatabase;
-
+    //holds length of database
     int DB_LENGTH = 0;
+    //holds seen random games
     ArrayList<Integer> seenGames;
 
     //on create function, when the app is initially created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        switchingActivity = false;
         setContentView(R.layout.activity_scrambledeggs);
 
         //sets up toolbar
@@ -57,8 +56,11 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         DB_LENGTH = gameDatabase.size();
         seenGames = new ArrayList<>();
 
+        //checks if there is a new day
         checkForNewDate();
-        displayGame(getIndex());
+        //displays game of the day
+        displayData(getIndex());
+        switchingActivity = false;
     }
 
     //called when the activity starts
@@ -129,7 +131,6 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     }
 
     //checks to see if the app is ran on a new day
-    //to-do: update this function, clean up
     public void checkForNewDate(){
         //index used to display GameActivity
         int index = getIndex();
@@ -155,9 +156,9 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         editor.putInt("index",index);
         editor.commit();
     }
+
     //generates a new random game
     public int generateRandomGame(){
-        Log.i("main","new game");
         if (gameDatabase.size() > 0) {
             int index = rnd.nextInt(gameDatabase.size());
             if (seenGames.size() == DB_LENGTH)
@@ -193,46 +194,49 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         editor.commit();
     }
 
-    //displays GameActivity
-    public void displayGame(int index){
-        //displays text for GameActivity of the day
-        title = (TextView) findViewById(R.id.game_title);
+    //displays game data
+    public void displayData(int index){
+        //finds views
+        title = findViewById(R.id.game_title);
+        description = findViewById(R.id.game_desc);
+        release = findViewById(R.id.game_release);
+        dev = findViewById(R.id.game_dev);
+        pub = findViewById(R.id.game_pub);
+        genre = findViewById(R.id.game_genre);
+        platforms = findViewById(R.id.game_platform);
+        genreEntries = findViewById(R.id.genre_entries);
+        platformsEntries = findViewById(R.id.platform_entries);
+
+        //title text
         title.setText(gameDatabase.get(index).title);
-
-        description = (TextView) findViewById(R.id.game_desc);
+        //description text
         description.setText(gameDatabase.get(index).description);
-
-        release = (TextView) findViewById(R.id.game_release);
-        release.setText(Html.fromHtml("<b>REL:</b>"));
+        //release text
+        release.setText(HtmlCompat.fromHtml("<b>REL:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
         release.append(" " + gameDatabase.get(index).year);
-
-        dev = (TextView) findViewById(R.id.game_dev);
-        dev.setText(Html.fromHtml("<b>DEV:</b>"));
+        //developer text
+        dev.setText(HtmlCompat.fromHtml("<b>DEV:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
         dev.append(" " + gameDatabase.get(index).developer);
-
-        pub = (TextView) findViewById(R.id.game_pub);
-        pub.setText(Html.fromHtml("<b>PUB:</b>"));
+        //publisher text
+        pub.setText(HtmlCompat.fromHtml("<b>PUB:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
         pub.append(" " + gameDatabase.get(index).publisher);
-
-        genre = (TextView) findViewById(R.id.game_genre);
-        genre.setText(Html.fromHtml("<b>GENRE(S):</b>"));
-
-        platforms = (TextView) findViewById(R.id.game_platform);
-        platforms.setText(Html.fromHtml("<b>PLATFORM(S):</b>"));
-
-        genreEntries = (TextView) findViewById(R.id.genre_entries);
+        //genre title text
+        genre.setText(HtmlCompat.fromHtml("<b>GENRE:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        //platform title text
+        platforms.setText(HtmlCompat.fromHtml("<b>PLATFORM(S):</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        //genre entry text
         String[] genres = gameDatabase.get(index).genre.split(",");
         String genreText = "";
         for (int i = 0; i < genres.length; i++)
             genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
         genreEntries.setText(genreText);
-
-        platformsEntries = (TextView) findViewById(R.id.platform_entries);
+        //platform entry text
         String[] platformEntries = gameDatabase.get(index).platforms.split(",");
         String platformText = "";
         for (int i = 0; i < platformEntries.length; i++)
             platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");
         platformsEntries.setText(platformText);
+
     }
 
     //starts an activity

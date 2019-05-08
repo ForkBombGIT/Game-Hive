@@ -1,7 +1,5 @@
 package forkbomb.scrambledeggs;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -60,7 +58,6 @@ public class QuestionHandler {
         Integer[] arr = selectedIndexs.toArray(new Integer[quizLength]);
         for (int i = 0; i < quizLength; i++) {
             temp[i] = questionList[arr[i]];
-            Log.i("questionhandle",temp[i].tag);
             for (int j = 0; j < db.size(); j++) {
                 String[] result = db.get(j).get(temp[i].tag).split(",");
                 for (int k = 0; k < result.length; k++) {

@@ -4,12 +4,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
-
-import android.text.Html;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.text.HtmlCompat;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,12 +14,15 @@ import java.util.Random;
 public class GameActivity extends AppCompatActivity {
     //random gen
     Random rand = new Random();
-    //title of GameActivity
+    //gameactivity text fields
     TextView title, description, dev, pub, release, genre, platforms,genreEntries,platformsEntries;
+    //cards in view
+    CardView card1, card2;
     //data used to display the GameActivity
     ArrayList<Game> gameData;
     //used to tell what started activity
     String origin;
+    //
     //used for generating random games
     int DB_LENGTH;
     ArrayList<Integer> seenGames;
@@ -40,6 +40,9 @@ public class GameActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getBundleExtra("gameDatabase");
         gameData = (ArrayList<Game>) bundle.getSerializable("gameDatabase");
 
+        //checks the origin of the activity
+        //if its created from the quiz activity, the fad must be hidden, then the matched game will be displayed
+        //otherwise a random game will be generated
         if (origin.equals("quiz")) {
               findViewById(R.id.button).setVisibility(View.GONE);
               displayData(getIntent().getIntExtra("index",-1));
@@ -53,9 +56,8 @@ public class GameActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_downicon512));
+        toolbar.setNavigationIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_downicon512, null));
     }
 
     //navbar back button press
@@ -65,62 +67,65 @@ public class GameActivity extends AppCompatActivity {
         return true;
     }
 
+    //displays game data
     public void displayData(int index){
         if (index == -1){
+            //gets views by id
             title = (TextView) findViewById(R.id.game_title);
-            title.setText(R.string.activity_game_noresult_title);
-
             description = (TextView) findViewById(R.id.game_desc);
+
+            //set title text
+            title.setText(R.string.activity_game_noresult_title);
+            //set description text
             description.setText(R.string.activity_game_noresult_desc);
 
             //sets cards invisible
-            CardView card1 = (CardView) findViewById(R.id.cardView1);
+            card1 = findViewById(R.id.cardView1);
+            card2 = findViewById(R.id.cardView2);
             card1.setVisibility(View.GONE);
-
-            CardView card2 = (CardView) findViewById(R.id.cardView2);
             card2.setVisibility(View.GONE);
         }
         else {
-            //sets cards visible
-            CardView card1 = (CardView) findViewById(R.id.cardView1);
-            card1.setVisibility(View.VISIBLE);
+            //finds views
+            card1 = findViewById(R.id.cardView1);
+            card2 = findViewById(R.id.cardView2);
+            title = findViewById(R.id.game_title);
+            description = findViewById(R.id.game_desc);
+            release = findViewById(R.id.game_release);
+            dev = findViewById(R.id.game_dev);
+            pub = findViewById(R.id.game_pub);
+            genre = findViewById(R.id.game_genre);
+            platforms = findViewById(R.id.game_platform);
+            genreEntries = findViewById(R.id.genre_entries);
+            platformsEntries = findViewById(R.id.platform_entries);
 
-            CardView card2 = (CardView) findViewById(R.id.cardView2);
+            card1.setVisibility(View.VISIBLE);
             card2.setVisibility(View.VISIBLE);
 
-            //displays text for GameActivity of the day
-            title = (TextView) findViewById(R.id.game_title);
+            //title text
             title.setText(gameData.get(index).title);
-
-            description = (TextView) findViewById(R.id.game_desc);
+            //description text
             description.setText(gameData.get(index).description);
-
-            release = (TextView) findViewById(R.id.game_release);
-            release.setText(Html.fromHtml("<b>REL:</b>"));
+            //release text
+            release.setText(HtmlCompat.fromHtml("<b>REL:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
             release.append(" " + gameData.get(index).year);
-
-            dev = (TextView) findViewById(R.id.game_dev);
-            dev.setText(Html.fromHtml("<b>DEV:</b>"));
+            //developer text
+            dev.setText(HtmlCompat.fromHtml("<b>DEV:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
             dev.append(" " + gameData.get(index).developer);
-
-            pub = (TextView) findViewById(R.id.game_pub);
-            pub.setText(Html.fromHtml("<b>PUB:</b>"));
+            //publisher text
+            pub.setText(HtmlCompat.fromHtml("<b>PUB:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
             pub.append(" " + gameData.get(index).publisher);
-
-            genre = (TextView) findViewById(R.id.game_genre);
-            genre.setText(Html.fromHtml("<b>GENRE(S):</b>"));
-
-            platforms = (TextView) findViewById(R.id.game_platform);
-            platforms.setText(Html.fromHtml("<b>PLATFORM(S):</b>"));
-
-            genreEntries = (TextView) findViewById(R.id.genre_entries);
+            //genre title text
+            genre.setText(HtmlCompat.fromHtml("<b>GENRE:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            //platform title text
+            platforms.setText(HtmlCompat.fromHtml("<b>PLATFORM(S):</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            //genre entry text
             String[] genres = gameData.get(index).genre.split(",");
             String genreText = "";
             for (int i = 0; i < genres.length; i++)
                 genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
             genreEntries.setText(genreText);
-
-            platformsEntries = (TextView) findViewById(R.id.platform_entries);
+            //platform entry text
             String[] platformEntries = gameData.get(index).platforms.split(",");
             String platformText = "";
             for (int i = 0; i < platformEntries.length; i++)

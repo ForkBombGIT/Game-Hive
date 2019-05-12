@@ -5,16 +5,11 @@
     <item name="android:colorPrimary">@color/colorPrimary</item>
     <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="android:colorSecondary">@color/colorSecondary</item>
-    <item name="android:itemBackground">@color/colorSecondary</item>
+    <item name="android:itemBackground">@color/colorWhite</item>
     <item name="android:windowBackground">@color/background</item>
     <item name="android:textColor">@color/colorBlack</item>
     <item name="android:colorAccent">@color/colorPrimary</item>
 </style>
-
-<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-</style>
-
-
+<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

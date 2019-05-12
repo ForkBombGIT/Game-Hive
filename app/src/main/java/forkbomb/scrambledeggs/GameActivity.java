@@ -8,6 +8,12 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.text.HtmlCompat;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,7 +28,8 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<Game> gameData;
     //used to tell what started activity
     String origin;
-    //
+    //ad
+    InterstitialAd mInterstitialAd;
     //used for generating random games
     int DB_LENGTH;
     ArrayList<Integer> seenGames;
@@ -57,13 +64,34 @@ public class GameActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_downicon512, null));
+
+        //init ads
+        MobileAds.initialize(this, getString(R.string.admob_app_id));
+        mInterstitialAd = new InterstitialAd(GameActivity.this);
+        mInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
+        mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("FECC64101B6F54F6DD54A045D1CEBEEC").build());
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdClosed() {
+                finish();
+            }
+        });
     }
 
     //navbar back button press
     @Override
     public boolean onSupportNavigateUp() {
-        finish();
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else finish();
         return true;
+    }
+
+    //back button press event
+    @Override
+    public void onBackPressed() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else finish();
     }
 
     //displays game data

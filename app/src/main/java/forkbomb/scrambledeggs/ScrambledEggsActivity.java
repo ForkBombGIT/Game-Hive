@@ -7,20 +7,13 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.text.HtmlCompat;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
@@ -35,8 +28,6 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     Toolbar toptoolbar;
     //title of GameActivity
     TextView title, description, dev, pub, release, genreEntries, platformsEntries,genre,platforms;
-    //cards in view
-    CardView card1, card2;
     //used to hold date data, to check if its a new day
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -46,8 +37,6 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     int DB_LENGTH = 0;
     //holds seen random games
     ArrayList<Integer> seenGames;
-    //controls the add object
-    InterstitialAd mInterstitialAd;
 
     //on create function, when the app is initially created
     @Override
@@ -64,17 +53,36 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         DB_LENGTH = gameDatabase.size();
         seenGames = new ArrayList<>();
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.getMenu().findItem(R.id.navigation_quiz).setChecked(false);
+        bottomNavigationView.getMenu().findItem(R.id.navigation_gotd).setChecked(true);
+        bottomNavigationView.setOnNavigationItemSelectedListener
+        (new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_quiz:
+                        activityStart(ScrambledEggsQuizActivity.class);
+                        break;
+                    case R.id.navigation_gotd:
+                        break;
+                    case R.id.navigation_random:
+                        activityStart(ScrambledEggsRandomActivity.class);
+                        break;
+                }
+                return true;
+            }
+        });
+
         //checks if there is a new day
         checkForNewDate();
         //displays game of the day
         displayData(getIndex());
-        switchingActivity = false;
     }
 
     //called when the activity starts
     @Override
     protected void onStart(){
-        switchingActivity = false;
         super.onStart();
     }
 
@@ -107,35 +115,6 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     protected void onDestroy(){
         getDate(getIndex());
         super.onDestroy();
-    }
-
-    //sets up drop down menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.navigation, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    //checks for drop down menu clicks
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.navigation_random:
-                if (!switchingActivity) {
-                    activityStart(ScrambledEggsRandomActivity.class);
-                    switchingActivity = true;
-                }
-                return true;
-            case R.id.navigation_quiz:
-                if (!switchingActivity) {
-                    activityStart(ScrambledEggsQuizActivity.class);
-                    switchingActivity = true;
-                }
-                return true;
-            default:
-                return false;
-        }
     }
 
     //checks to see if the app is ran on a new day

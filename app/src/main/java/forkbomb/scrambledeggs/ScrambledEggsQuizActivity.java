@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.gridlayout.widget.GridLayout;
 
 import android.view.View;
@@ -86,30 +85,6 @@ public class ScrambledEggsQuizActivity extends AppCompatActivity {
                 }
             }
         });
-
-        //sets up toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    //back button press event
-    @Override
-    public void onBackPressed() {
-        //kills the activity
-        finish();
-        //animation
-        overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out);
-    }
-
-    //navbar back button press
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        //animation
-        overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out);
-        return true;
     }
 
     //handles button press

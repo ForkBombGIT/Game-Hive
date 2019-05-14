@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_quiz"
         android:icon="@drawable/ic_quiziconc512"
-        android:title="@string/activity_scrambledeggs_quiz_title"
-        app:showAsAction="ifRoom" />
+        android:title="@string/activity_scrambledeggs_quiz_title"/>
+
+    <item
+        android:id="@+id/navigation_gotd"
+        android:icon="@drawable/ic_gotdicon"
+        android:title="@string/activity_scrambledeggs_gotd_title"/>
 
     <item
         android:id="@+id/navigation_random"
         android:icon="@drawable/ic_randomicon512"
-        android:title="@string/activity_scrambledeggs_random_title"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/activity_scrambledeggs_random_title"/>
 </menu>

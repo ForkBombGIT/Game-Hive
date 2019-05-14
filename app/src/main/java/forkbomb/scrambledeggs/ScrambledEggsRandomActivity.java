@@ -3,7 +3,6 @@ package forkbomb.scrambledeggs;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -35,11 +34,6 @@ public class ScrambledEggsRandomActivity extends AppCompatActivity {
         //processes gamedatabase
         Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
         database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
-
-        //sets toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     //handles button press
@@ -66,24 +60,6 @@ public class ScrambledEggsRandomActivity extends AppCompatActivity {
             //starts the new activity
             startActivity(intent);
         }
-    }
-
-    //back button press event
-    @Override
-    public void onBackPressed() {
-        //kills the activity
-        finish();
-        //animation
-        overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out);
-    }
-
-    //navbar back button press
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        //animation
-        overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out);
-        return true;
     }
 
 }

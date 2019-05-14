@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import java.util.ArrayList;
 
 public class GameOfTheDay extends Fragment {
 
@@ -12,8 +13,9 @@ public class GameOfTheDay extends Fragment {
         // Required empty public constructor
     }
 
-    public static GameOfTheDay newInstance(String param1, String param2) {
+    public static GameOfTheDay newInstance(ArrayList<Game> games) {
         GameOfTheDay fragment = new GameOfTheDay();
+        ArrayList<Game> db = games;
         return fragment;
     }
 

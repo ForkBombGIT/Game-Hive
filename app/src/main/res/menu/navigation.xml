@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_quiz"
-        android:icon="@drawable/ic_quiziconc512"
+        android:icon="@drawable/ic_quiz"
         android:title="@string/activity_scrambledeggs_quiz_title"/>
 
     <item
         android:id="@+id/navigation_gotd"
-        android:icon="@drawable/ic_gotdicon"
+        android:icon="@drawable/ic_gotd"
         android:title="@string/activity_scrambledeggs_gotd_title"/>
 
     <item
         android:id="@+id/navigation_random"
-        android:icon="@drawable/ic_randomicon512"
+        android:icon="@drawable/ic_random"
         android:title="@string/activity_scrambledeggs_random_title"/>
 </menu>

@@ -11,8 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.text.HtmlCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,28 +65,47 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.getMenu().findItem(R.id.navigation_quiz).setChecked(false);
         bottomNavigationView.getMenu().findItem(R.id.navigation_gotd).setChecked(true);
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+        for (int i = 0; i < menuView.getChildCount(); i++) {
+            final View iconView = menuView.getChildAt(i).findViewById(R.id.icon);
+            final ViewGroup.LayoutParams layoutParams = iconView.getLayoutParams();
+            final DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+            layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
+            layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
+            iconView.setLayoutParams(layoutParams);
+        }
         bottomNavigationView.setOnNavigationItemSelectedListener
         (new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
                 switch (item.getItemId()) {
                     case R.id.navigation_quiz:
-                        activityStart(ScrambledEggsQuizActivity.class);
+                        selectedFragment = Quiz.newInstance();
                         break;
                     case R.id.navigation_gotd:
+                        selectedFragment = GameOfTheDay.newInstance(gameDatabase);
                         break;
                     case R.id.navigation_random:
-                        activityStart(ScrambledEggsRandomActivity.class);
+                        selectedFragment = forkbomb.scrambledeggs.Random.newInstance();
                         break;
                 }
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout, selectedFragment);
+                transaction.commit();
                 return true;
             }
         });
 
+        //Manually displaying the first fragment - one time only
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameLayout, GameOfTheDay.newInstance(gameDatabase));
+        transaction.commit();
+
         //checks if there is a new day
-        checkForNewDate();
+        //checkForNewDate();
         //displays game of the day
-        displayData(getIndex());
+        //displayData(getIndex());
     }
 
     //called when the activity starts
@@ -223,20 +251,5 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         for (int i = 0; i < platformEntries.length; i++)
             platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");
         platformsEntries.setText(platformText);
-
-    }
-
-    //starts an activity
-    public void activityStart(Class t){
-        //creates a new intent
-        Intent intent = new Intent(this,t);
-        //creates a bundle to send
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("gameDatabase",gameDatabase);
-        intent.putExtra("gameDatabase",bundle);
-        //starts the new activity
-        startActivity(intent);
-        //overrides default animation
-        overridePendingTransition(R.anim.activity_slide_in_home, R.anim.activity_slide_out_home);
     }
 }

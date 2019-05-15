@@ -20,7 +20,4 @@
     <string name="activity_quiz_button_next">NEXT</string>
     <string name="admob_app_id">ca-app-pub-8895623520138376~9145503020</string>
     <string name="admob_interstitial_id">ca-app-pub-8895623520138376/7678408490</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

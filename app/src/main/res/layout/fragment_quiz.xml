@@ -200,10 +200,10 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
-                        android:id="@+id/btn_start"
+                        android:id="@+id/button"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="175dp"
-                        android:layout_height="53dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="16dp"
@@ -226,7 +226,7 @@
                         android:progress="0"
                         android:progressTint="@color/colorSecondary"
                         android:thumb="@drawable/ic_slidericon512"
-                        app:layout_constraintBottom_toTopOf="@+id/btn_start"
+                        app:layout_constraintBottom_toTopOf="@+id/button"
                         app:layout_constraintEnd_toEndOf="@+id/txt_title"
                         app:layout_constraintHorizontal_bias="0.509"
                         app:layout_constraintStart_toStartOf="@+id/txt_title" />

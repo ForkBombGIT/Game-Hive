@@ -1,23 +1,22 @@
 package forkbomb.scrambledeggs;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.gridlayout.widget.GridLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Quiz extends Fragment {
+public class Quiz extends Fragment implements View.OnClickListener {
     //random number gen
     java.util.Random rnd = new Random();
     //games
@@ -52,8 +51,10 @@ public class Quiz extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quiz, container, false);
+        View view = inflater.inflate(R.layout.fragment_quiz, container, false);
+        Button button = view.findViewById(R.id.button);
+        button.setOnClickListener(this);
+        return view;
     }
 
     @Override
@@ -99,5 +100,31 @@ public class Quiz extends Fragment {
                 }
             }
         });
+    }
+
+    //handles button press
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.button:
+                //activityStart(QuizActivity.class);
+                break;
+            default:
+                break;
+        }
+    }
+
+    //starts an activity
+    public void activityStart(Class t){
+        if (database.size() > 0) {
+            //creates a new intent
+            Intent intent = new Intent(getActivity(), t);
+            //creates a bundle to send
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("gameDatabase", database);
+            intent.putExtra("gameDatabase", bundle);
+            intent.putExtra("length",quizLength);
+            //starts the new activity
+            startActivity(intent);
+        }
     }
 }

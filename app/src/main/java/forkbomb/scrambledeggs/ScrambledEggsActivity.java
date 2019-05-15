@@ -20,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
@@ -29,14 +28,10 @@ import java.util.Random;
 import java.util.TimeZone;
 
 public class ScrambledEggsActivity extends AppCompatActivity {
-    //controls whether or not the app is transitioning between activities
-    Boolean switchingActivity;
     //random val gen
     Random rnd = new Random();
     //var to hold the top toolbar
     Toolbar toptoolbar;
-    //title of GameActivity
-    TextView title, description, dev, pub, release, genreEntries, platformsEntries,genre,platforms;
     //used to hold date data, to check if its a new day
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -61,6 +56,8 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         gameDatabase = XmlReader.readXml(ScrambledEggsActivity.this, R.raw.gamedatabase);
         DB_LENGTH = gameDatabase.size();
         seenGames = new ArrayList<>();
+        //checks if there is a new day
+        checkForNewDate();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.getMenu().findItem(R.id.navigation_quiz).setChecked(false);
@@ -84,10 +81,10 @@ public class ScrambledEggsActivity extends AppCompatActivity {
                         selectedFragment = Quiz.newInstance();
                         break;
                     case R.id.navigation_gotd:
-                        selectedFragment = GameOfTheDay.newInstance(gameDatabase);
+                        selectedFragment = GameOfTheDay.newInstance(gameDatabase,getIndex());
                         break;
                     case R.id.navigation_random:
-                        selectedFragment = forkbomb.scrambledeggs.Random.newInstance();
+                        selectedFragment = forkbomb.scrambledeggs.Random.newInstance(gameDatabase);
                         break;
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -99,13 +96,8 @@ public class ScrambledEggsActivity extends AppCompatActivity {
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frameLayout, GameOfTheDay.newInstance(gameDatabase));
+        transaction.replace(R.id.frameLayout, GameOfTheDay.newInstance(gameDatabase,getIndex()));
         transaction.commit();
-
-        //checks if there is a new day
-        //checkForNewDate();
-        //displays game of the day
-        //displayData(getIndex());
     }
 
     //called when the activity starts
@@ -120,7 +112,6 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.eggonlyicon512);
         ActivityManager.TaskDescription td = new ActivityManager.TaskDescription(null, bm, getResources().getColor(R.color.colorPrimary));
         this.setTaskDescription(td);
-        switchingActivity = false;
         super.onResume();
     }
 
@@ -209,47 +200,5 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         editor.commit();
     }
 
-    //displays game data
-    public void displayData(int index){
-        //finds views
-        title = findViewById(R.id.game_title);
-        description = findViewById(R.id.game_desc);
-        release = findViewById(R.id.game_release);
-        dev = findViewById(R.id.game_dev);
-        pub = findViewById(R.id.game_pub);
-        genre = findViewById(R.id.game_genre);
-        platforms = findViewById(R.id.game_platform);
-        genreEntries = findViewById(R.id.genre_entries);
-        platformsEntries = findViewById(R.id.platform_entries);
 
-        //title text
-        title.setText(gameDatabase.get(index).title);
-        //description text
-        description.setText(gameDatabase.get(index).description);
-        //release text
-        release.setText(HtmlCompat.fromHtml("<b>REL:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        release.append(" " + gameDatabase.get(index).year);
-        //developer text
-        dev.setText(HtmlCompat.fromHtml("<b>DEV:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        dev.append(" " + gameDatabase.get(index).developer);
-        //publisher text
-        pub.setText(HtmlCompat.fromHtml("<b>PUB:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        pub.append(" " + gameDatabase.get(index).publisher);
-        //genre title text
-        genre.setText(HtmlCompat.fromHtml("<b>GENRE:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        //platform title text
-        platforms.setText(HtmlCompat.fromHtml("<b>PLATFORM(S):</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        //genre entry text
-        String[] genres = gameDatabase.get(index).genre.split(",");
-        String genreText = "";
-        for (int i = 0; i < genres.length; i++)
-            genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
-        genreEntries.setText(genreText);
-        //platform entry text
-        String[] platformEntries = gameDatabase.get(index).platforms.split(",");
-        String platformText = "";
-        for (int i = 0; i < platformEntries.length; i++)
-            platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");
-        platformsEntries.setText(platformText);
-    }
 }

@@ -26,7 +26,6 @@ public class Quiz extends Fragment implements View.OnClickListener {
     ImageView[] eggs = new ImageView[12];
     //holds length of quiz
     int quizLength;
-
     //possible flavor text
     TextView flavorText;
     String[] flavor = {
@@ -38,14 +37,19 @@ public class Quiz extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-    public static Quiz newInstance() {
+    public static Quiz newInstance(ArrayList<Game> games) {
         Quiz fragment = new Quiz();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("games", games);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle args = getArguments();
+        database = (ArrayList<Game>) args.getSerializable("games");
     }
 
     @Override
@@ -106,7 +110,7 @@ public class Quiz extends Fragment implements View.OnClickListener {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                //activityStart(QuizActivity.class);
+                activityStart(QuizActivity.class);
                 break;
             default:
                 break;

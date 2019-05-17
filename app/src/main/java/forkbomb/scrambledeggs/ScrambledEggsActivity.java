@@ -78,7 +78,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
                 Fragment selectedFragment = null;
                 switch (item.getItemId()) {
                     case R.id.navigation_quiz:
-                        selectedFragment = Quiz.newInstance();
+                        selectedFragment = Quiz.newInstance(gameDatabase);
                         break;
                     case R.id.navigation_gotd:
                         selectedFragment = GameOfTheDay.newInstance(gameDatabase,getIndex());

@@ -35,18 +35,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/GameOfTheDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/GameOfTheDay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Quiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Random.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Random.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsQuizActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsRandomActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_scrambledeggs_quiz.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_scrambledeggs_random.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_scrambledeggs_quiz.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_scrambledeggs_random.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_quiz.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_quiz.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_of_the_day.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_of_the_day.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_quiz.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_quiz.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_random.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_random.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,8 +92,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scrambledeggs.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
+            <state relative-caret-position="34">
+              <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_quiz.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-775">
+              <caret line="189" column="42" selection-start-line="189" selection-start-column="42" selection-end-line="189" selection-end-column="42" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
@@ -106,81 +121,52 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_quiz.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="3553">
-              <caret line="209" column="61" selection-start-line="209" selection-start-column="61" selection-end-line="209" selection-end-column="61" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="34" selection-end-column="42" />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game_of_the_day.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="203" column="14" lean-forward="true" selection-start-line="203" selection-start-column="14" selection-end-line="203" selection-end-column="14" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_random.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_game.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
+            <state relative-caret-position="170">
+              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_quiz.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-973">
-              <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="772">
+              <caret line="101" column="43" selection-start-line="101" selection-start-column="39" selection-end-line="101" selection-end-column="43" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Quiz.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Random.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="60" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/GameOfTheDay.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1505#1506#0" expanded="true" />
-                <element signature="e#1534#1535#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -194,7 +180,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>answers</find>
       <find>undefined</find>
       <find>deca</find>
       <find>split</find>
@@ -224,6 +209,7 @@
       <find>button</find>
       <find>ffffff</find>
       <find>switching</find>
+      <find>card</find>
     </findStrings>
     <replaceStrings>
       <replace>androidx.constraintlayout.widget.ConstraintLayout</replace>
@@ -248,11 +234,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/cards.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_game.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_quiz.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_scrambledeggs_quiz.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Game.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/XmlReader.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/raw/gamedatabase" />
         <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Question.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/QuestionHandler.java" />
@@ -270,18 +254,20 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_scrambledeggs_random.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsRandomActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_scrambledeggs_random.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_of_the_day.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/navigation.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_random.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_scrambledeggs.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsQuizActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_random.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_quiz.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Quiz.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Random.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/GameOfTheDay.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Quiz.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_scrambledeggs.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_quiz.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_random.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_quiz.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_game_of_the_day.xml" />
       </list>
     </option>
   </component>
@@ -299,9 +285,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -312,23 +297,19 @@
             <path>
               <item name="ScrambledEggs" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="ScrambledEggs" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="scrambledeggs" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="ScrambledEggs" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,7 +319,7 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="C:/Android/android-sdk" />
-    <property name="device.picker.selection" value="FA84R1A00383" />
+    <property name="device.picker.selection" value="Pixel_2_API_25" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/keystore.jks" />
   </component>
   <component name="RecentsManager">
@@ -537,7 +518,7 @@
       <window_info id="Resources Explorer" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4914712" visible="true" weight="0.21668473" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4904051" weight="0.21668473" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -545,8 +526,8 @@
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.3286334" />
       <window_info anchor="bottom" id="Logcat" order="8" sideWeight="0.4989339" weight="0.32827735" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4989339" weight="0.32827735" />
-      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.48827294" weight="0.1419285" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50852877" side_tool="true" visible="true" weight="0.21668473" />
+      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.48720682" weight="0.1419285" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50959486" side_tool="true" visible="true" weight="0.21668473" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4989339" weight="0.32827735" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -649,30 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_game.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_quiz.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="84" column="49" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/QuizActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2040">
@@ -685,23 +642,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_blank.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/BlankFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_quiz.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_scrambledeggs_random.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game_of_the_day.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/eggonlyicon512.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -765,26 +706,41 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scrambledeggs_quiz.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsQuizActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_scrambledeggs_quiz.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsRandomActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/navigation.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scrambledeggs.xml">
       <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/GameOfTheDay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
+        <state relative-caret-position="595">
+          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1501#1502#0" expanded="true" />
+            <element signature="e#1534#1535#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsRandomActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="43" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+          <caret line="84" column="30" lean-forward="true" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -798,63 +754,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_random.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Quiz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_quiz.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="3553">
-          <caret line="209" column="61" selection-start-line="209" selection-start-column="61" selection-end-line="209" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Random.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="60" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="391">
+          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="34" selection-end-column="42" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/ScrambledEggsActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_random.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-973">
-          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="476">
+          <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/GameOfTheDay.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scrambledeggs.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1505#1506#0" expanded="true" />
-            <element signature="e#1534#1535#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/forkbomb/scrambledeggs/Quiz.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-775">
+          <caret line="189" column="42" selection-start-line="189" selection-start-column="42" selection-end-line="189" selection-end-column="42" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_quiz.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_game.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_quiz.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="772">
+          <caret line="101" column="43" selection-start-line="101" selection-start-column="39" selection-end-line="101" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_game_of_the_day.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="203" column="14" lean-forward="true" selection-start-line="203" selection-start-column="14" selection-end-line="203" selection-end-column="14" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
 </project>

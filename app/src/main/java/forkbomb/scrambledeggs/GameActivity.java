@@ -20,12 +20,8 @@ import java.util.Random;
 public class GameActivity extends AppCompatActivity {
     //random gen
     Random rand = new Random();
-    //gameactivity text fields
-    TextView title, description, dev, pub, release, genre, platforms,genreEntries,platformsEntries;
-    //cards in view
-    CardView card1, card2;
     //data used to display the GameActivity
-    ArrayList<Game> gameData;
+    ArrayList<Game> database;
     //used to tell what started activity
     String origin;
     //ad
@@ -33,6 +29,7 @@ public class GameActivity extends AppCompatActivity {
     //used for generating random games
     int DB_LENGTH;
     ArrayList<Integer> seenGames;
+
     //on create event
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +41,7 @@ public class GameActivity extends AppCompatActivity {
 
         //gets bundle
         Bundle bundle = getIntent().getBundleExtra("gameDatabase");
-        gameData = (ArrayList<Game>) bundle.getSerializable("gameDatabase");
+        database = (ArrayList<Game>) bundle.getSerializable("gameDatabase");
 
         //checks the origin of the activity
         //if its created from the quiz activity, the fad must be hidden, then the matched game will be displayed
@@ -53,7 +50,7 @@ public class GameActivity extends AppCompatActivity {
               findViewById(R.id.button).setVisibility(View.GONE);
               displayData(getIntent().getIntExtra("index",-1));
         } else {
-            DB_LENGTH = gameData.size();
+            DB_LENGTH = database.size();
             seenGames = new ArrayList<>();
             generateRandomGame();
         }
@@ -96,75 +93,53 @@ public class GameActivity extends AppCompatActivity {
 
     //displays game data
     public void displayData(int index){
-        if (index == -1){
-            //gets views by id
-            title = (TextView) findViewById(R.id.game_title);
-            description = (TextView) findViewById(R.id.game_desc);
+        //finds views
+        TextView title = findViewById(R.id.game_title);
+        TextView description = findViewById(R.id.game_desc);
+        TextView release = findViewById(R.id.game_release);
+        TextView dev = findViewById(R.id.game_dev);
+        TextView pub = findViewById(R.id.game_pub);
+        TextView genre = findViewById(R.id.game_genre);
+        TextView platforms = findViewById(R.id.game_platform);
+        TextView genreEntries = findViewById(R.id.genre_entries);
+        TextView platformsEntries = findViewById(R.id.platform_entries);
 
-            //set title text
-            title.setText(R.string.activity_game_noresult_title);
-            //set description text
-            description.setText(R.string.activity_game_noresult_desc);
+        //title text
+        title.setText(database.get(index).title);
+        //description text
+        description.setText(database.get(index).description);
+        //release text
+        release.setText(HtmlCompat.fromHtml("<b>REL:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        release.append(" " + database.get(index).year.replace("|",", "));
+        //developer text
+        dev.setText(HtmlCompat.fromHtml("<b>DEV:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        dev.append(" " + database.get(index).developer.replace("|",", "));
+        //publisher text
+        pub.setText(HtmlCompat.fromHtml("<b>PUB:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        pub.append(" " + database.get(index).publisher.replace("|",", "));
+        //genre title text
+        genre.setText(HtmlCompat.fromHtml("<b>GENRE:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        //platform title text
+        platforms.setText(HtmlCompat.fromHtml("<b>PLATFORM(S):</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
 
-            //sets cards invisible
-            card1 = findViewById(R.id.cardView1);
-            card2 = findViewById(R.id.cardView2);
-            card1.setVisibility(View.GONE);
-            card2.setVisibility(View.GONE);
-        }
-        else {
-            //finds views
-            card1 = findViewById(R.id.cardView1);
-            card2 = findViewById(R.id.cardView2);
-            title = findViewById(R.id.game_title);
-            description = findViewById(R.id.game_desc);
-            release = findViewById(R.id.game_release);
-            dev = findViewById(R.id.game_dev);
-            pub = findViewById(R.id.game_pub);
-            genre = findViewById(R.id.game_genre);
-            platforms = findViewById(R.id.game_platform);
-            genreEntries = findViewById(R.id.genre_entries);
-            platformsEntries = findViewById(R.id.platform_entries);
-
-            card1.setVisibility(View.VISIBLE);
-            card2.setVisibility(View.VISIBLE);
-
-            //title text
-            title.setText(gameData.get(index).title);
-            //description text
-            description.setText(gameData.get(index).description);
-            //release text
-            release.setText(HtmlCompat.fromHtml("<b>REL:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-            release.append(" " + gameData.get(index).year);
-            //developer text
-            dev.setText(HtmlCompat.fromHtml("<b>DEV:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-            dev.append(" " + gameData.get(index).developer);
-            //publisher text
-            pub.setText(HtmlCompat.fromHtml("<b>PUB:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-            pub.append(" " + gameData.get(index).publisher);
-            //genre title text
-            genre.setText(HtmlCompat.fromHtml("<b>GENRE:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-            //platform title text
-            platforms.setText(HtmlCompat.fromHtml("<b>PLATFORM(S):</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-            //genre entry text
-            String[] genres = gameData.get(index).genre.split(",");
-            String genreText = "";
-            for (int i = 0; i < genres.length; i++)
-                genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
-            genreEntries.setText(genreText);
-            //platform entry text
-            String[] platformEntries = gameData.get(index).platforms.split(",");
-            String platformText = "";
-            for (int i = 0; i < platformEntries.length; i++)
-                platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");
-            platformsEntries.setText(platformText);
-        }
+        //genre entry text
+        String[] genres = database.get(index).genre.split("\\|");
+        String genreText = "";
+        for (int i = 0; i < genres.length; i++)
+            genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
+        genreEntries.setText(genreText);
+        //platform entry text
+        String[] platformEntries = database.get(index).platforms.split("\\|");
+        String platformText = "";
+        for (int i = 0; i < platformEntries.length; i++)
+            platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");
+        platformsEntries.setText(platformText);
     }
 
     //generates a new random GameActivity
     public void generateRandomGame(){
-        if (gameData.size() > 0) {
-            int index = rand.nextInt(gameData.size());
+        if (database.size() > 0) {
+            int index = rand.nextInt(database.size());
             if (seenGames.size() == DB_LENGTH)
                 seenGames.clear();
             else if (!(seenGames.contains(index))) {

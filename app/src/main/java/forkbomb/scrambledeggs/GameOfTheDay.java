@@ -69,25 +69,26 @@ public class GameOfTheDay extends Fragment {
         description.setText(database.get(index).description);
         //release text
         release.setText(HtmlCompat.fromHtml("<b>REL:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        release.append(" " + database.get(index).year);
+        release.append(" " + database.get(index).year.replace("|",", "));
         //developer text
         dev.setText(HtmlCompat.fromHtml("<b>DEV:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        dev.append(" " + database.get(index).developer);
+        dev.append(" " + database.get(index).developer.replace("|",", "));
         //publisher text
         pub.setText(HtmlCompat.fromHtml("<b>PUB:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        pub.append(" " + database.get(index).publisher);
+        pub.append(" " + database.get(index).publisher.replace("|",", "));
         //genre title text
         genre.setText(HtmlCompat.fromHtml("<b>GENRE:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
         //platform title text
         platforms.setText(HtmlCompat.fromHtml("<b>PLATFORM(S):</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+
         //genre entry text
-        String[] genres = database.get(index).genre.split(",");
+        String[] genres = database.get(index).genre.split("\\|");
         String genreText = "";
         for (int i = 0; i < genres.length; i++)
             genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
         genreEntries.setText(genreText);
         //platform entry text
-        String[] platformEntries = database.get(index).platforms.split(",");
+        String[] platformEntries = database.get(index).platforms.split("\\|");
         String platformText = "";
         for (int i = 0; i < platformEntries.length; i++)
             platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");

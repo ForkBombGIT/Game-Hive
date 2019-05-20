@@ -123,7 +123,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/game_title"
                         android:layout_width="match_parent"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:gravity="center"

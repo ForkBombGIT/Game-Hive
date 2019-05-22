@@ -114,9 +114,6 @@ public class XmlReader {
                     case ("weapon"):
                         game.weapon = parser.nextText().trim();
                         break;
-                    case ("period"):
-                        game.period = parser.nextText().trim();
-                        break;
                     case ("story"):
                         game.story = parser.nextText().trim();
                         break;

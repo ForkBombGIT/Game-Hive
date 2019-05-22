@@ -31,6 +31,7 @@ public class Quiz extends Fragment implements View.OnClickListener {
     String[] flavor = {
             "How many questions do you want?",
             "How big do you want your omelette?",
+            "How many eggs do you wanna scramble?"
     };
 
     public Quiz() {
@@ -124,8 +125,8 @@ public class Quiz extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(getActivity(), t);
             //creates a bundle to send
             Bundle bundle = new Bundle();
-            bundle.putSerializable("gameDatabase", database);
-            intent.putExtra("gameDatabase", bundle);
+            bundle.putSerializable("database", database);
+            intent.putExtra("database", bundle);
             intent.putExtra("length",quizLength);
             //starts the new activity
             startActivity(intent);

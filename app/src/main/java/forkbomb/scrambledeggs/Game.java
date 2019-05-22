@@ -1,41 +1,12 @@
 package forkbomb.scrambledeggs;
+
 import java.io.Serializable;
 
 public class Game implements Serializable {
-    public String title;
-    public String description;
-    public String year;
-    public String publisher;
-    public String developer;
-    public String genre;
-    public String platforms;
-    public String region;
-    public String visuals;
-    public String music;
-    public String tone;
-    public String pace;
-    public String length;
-    public String violence;
-    public String protag;
-    public String camera;
-    public String setting;
-    public String dimension;
-    public String standard;
-    public String players;
-    public String goal;
-    public String weapon;
-    public String period;
-    public String story;
-    public String decade;
-    public String accessories;
-    public String customizing;
-    public String enemy;
-    public String difficulty;
-    public String curve;
-    public String feel;
-    public String communities;
-    public String achievement;
-
+    public String title, description, year, publisher, developer, genre, platforms, region, visuals, music,
+                  tone, pace, length, violence, protag, camera, setting, dimension, standard, players, goal,
+                  weapon, story, decade, accessories, customizing, enemy, difficulty, curve, feel,
+                  communities, achievement;
 
     public Game(){ }
 
@@ -87,8 +58,6 @@ public class Game implements Serializable {
                 return goal;
             case("weapon"):
                 return weapon;
-            case("period"):
-                return period;
             case("story"):
                 return story;
             case("accessories"):

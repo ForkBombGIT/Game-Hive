@@ -21,8 +21,9 @@ public class Random extends Fragment implements View.OnClickListener {
     ArrayList<Game> database;
     //flavor text
     String[] flavor = {
-            "Find a game, with no frills!",
-            "What's gonna hatch from this one?"
+            "Crack it open, and see what's inside!",
+            "What's gonna hatch from this one?",
+            "What's inside? Who knows!"
     };
 
     public Random() {
@@ -78,8 +79,8 @@ public class Random extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(getActivity(), t);
             //creates a bundle to send
             Bundle bundle = new Bundle();
-            bundle.putSerializable("gameDatabase", database);
-            intent.putExtra("gameDatabase", bundle);
+            bundle.putSerializable("database", database);
+            intent.putExtra("database", bundle);
             intent.putExtra("origin", "random");
             //starts the new activity
             startActivity(intent);

@@ -56,8 +56,11 @@ public class GameOfTheDay extends Fragment {
         TextView title = v.findViewById(R.id.game_title);
         TextView description = v.findViewById(R.id.game_desc);
         TextView release = v.findViewById(R.id.game_release);
+        TextView relet = v.findViewById(R.id.release_entries);
         TextView dev = v.findViewById(R.id.game_dev);
+        TextView devet = v.findViewById(R.id.developer_entries);
         TextView pub = v.findViewById(R.id.game_pub);
+        TextView pubet = v.findViewById(R.id.publisher_entries);
         TextView genre = v.findViewById(R.id.game_genre);
         TextView platforms = v.findViewById(R.id.game_platform);
         TextView genreEntries = v.findViewById(R.id.genre_entries);
@@ -68,18 +71,18 @@ public class GameOfTheDay extends Fragment {
         //description text
         description.setText(database.get(index).description);
         //release text
-        release.setText(HtmlCompat.fromHtml("<b>REL:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        release.append(" " + database.get(index).year.replace("|",", "));
+        release.setText(HtmlCompat.fromHtml("<b>" + getResources().getString(R.string.label_rel) + "</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        relet.setText(database.get(index).year.replace("|",", "));
         //developer text
-        dev.setText(HtmlCompat.fromHtml("<b>DEV:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        dev.append(" " + database.get(index).developer.replace("|",", "));
+        dev.setText(HtmlCompat.fromHtml("<b>" + getResources().getString(R.string.label_dev) + "</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        devet.setText(database.get(index).developer.replace("|",", "));
         //publisher text
-        pub.setText(HtmlCompat.fromHtml("<b>PUB:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-        pub.append(" " + database.get(index).publisher.replace("|",", "));
+        pub.setText(HtmlCompat.fromHtml("<b>" + getResources().getString(R.string.label_pub) + "</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        pubet.setText(database.get(index).publisher.replace("|",", "));
         //genre title text
-        genre.setText(HtmlCompat.fromHtml("<b>GENRE:</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        genre.setText(HtmlCompat.fromHtml("<b>" + getResources().getString(R.string.label_genre) + "</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
         //platform title text
-        platforms.setText(HtmlCompat.fromHtml("<b>PLATFORM(S):</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        platforms.setText(HtmlCompat.fromHtml("<b>" + getResources().getString(R.string.label_platforms) + "</b>", HtmlCompat.FROM_HTML_MODE_LEGACY));
 
         //genre entry text
         String[] genres = database.get(index).genre.split("\\|");

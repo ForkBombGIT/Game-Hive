@@ -2,7 +2,6 @@ package forkbomb.scrambledeggs;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,16 +9,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.text.HtmlCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
@@ -28,6 +24,9 @@ import java.util.Random;
 import java.util.TimeZone;
 
 public class ScrambledEggsActivity extends AppCompatActivity {
+    //controls the state
+    int state = 0;
+    int lastState = state;
     //random val gen
     Random rnd = new Random();
     //var to hold the top toolbar
@@ -79,17 +78,23 @@ public class ScrambledEggsActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_quiz:
                         selectedFragment = Quiz.newInstance(gameDatabase);
+                        state = 1;
                         break;
                     case R.id.navigation_gotd:
+                        state = 0;
                         selectedFragment = GameOfTheDay.newInstance(gameDatabase,getIndex());
                         break;
                     case R.id.navigation_random:
+                        state = 2;
                         selectedFragment = forkbomb.scrambledeggs.Random.newInstance(gameDatabase);
                         break;
                 }
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout, selectedFragment);
-                transaction.commit();
+                if (lastState != state) {
+                    lastState = state;
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frameLayout, selectedFragment);
+                    transaction.commit();
+                }
                 return true;
             }
         });

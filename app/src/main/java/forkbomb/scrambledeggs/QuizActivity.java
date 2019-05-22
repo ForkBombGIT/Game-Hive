@@ -46,8 +46,8 @@ public class QuizActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_downicon512, null));
 
         //load database
-        Bundle gameDatabase = getIntent().getBundleExtra("gameDatabase");
-        database = (ArrayList<Game>) gameDatabase.getSerializable("gameDatabase");
+        Bundle gameDatabase = getIntent().getBundleExtra("database");
+        database = (ArrayList<Game>) gameDatabase.getSerializable("database");
 
         //used for handling questions, answers, and user selections
         questionHandler = new QuestionHandler(getIntent().getIntExtra("length", 2),database);
@@ -129,8 +129,8 @@ public class QuizActivity extends AppCompatActivity {
                         final Intent intent = new Intent(this, GameActivity.class);
                         //creates a bundle to send
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("gameDatabase",database);
-                        intent.putExtra("gameDatabase",bundle);
+                        bundle.putSerializable("database",database);
+                        intent.putExtra("database",bundle);
                         intent.putExtra("index", generateGame());
                         intent.putExtra("origin","quiz");
 

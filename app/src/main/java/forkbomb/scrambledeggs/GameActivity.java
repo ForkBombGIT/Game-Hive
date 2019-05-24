@@ -12,6 +12,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -43,7 +44,7 @@ public class GameActivity extends AppCompatActivity {
         database = (ArrayList<Game>) bundle.getSerializable("database");
 
         //checks the origin of the activity
-        //if its created from the quiz activity, the fad must be hidden, then the matched game will be displayed
+        //if its created from the quiz activity, the fab must be hidden, then the matched game will be displayed
         //otherwise a random game will be generated
         if (origin.equals("quiz")) {
               findViewById(R.id.button).setVisibility(View.GONE);
@@ -60,6 +61,9 @@ public class GameActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_downicon512, null));
+
+        //sets fab elevation
+        ((FloatingActionButton) findViewById(R.id.button)).setCompatElevation(0);
 
         //init ads
         MobileAds.initialize(this, getString(R.string.admob_app_id));

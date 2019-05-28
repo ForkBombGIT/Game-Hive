@@ -20,38 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="forkbomb.scrambledeggs.ScrambledEggsRandomActivity"
-            android:label="@string/activity_scrambledeggs_random_title"
-            android:parentActivityName="forkbomb.scrambledeggs.ScrambledEggsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="forkbomb.scrambledeggs.ScrambledEggsActivity" />
-        </activity>
-        <activity
-            android:name="forkbomb.scrambledeggs.ScrambledEggsQuizActivity"
-            android:label="@string/activity_scrambledeggs_quiz_title"
-            android:parentActivityName="forkbomb.scrambledeggs.ScrambledEggsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="forkbomb.scrambledeggs.ScrambledEggsActivity" />
-        </activity>
-        <activity
             android:name="forkbomb.scrambledeggs.GameActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name="forkbomb.scrambledeggs.QuizActivity"
-            android:parentActivityName="forkbomb.scrambledeggs.ScrambledEggsQuizActivity"
             android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="forkbomb.scrambledeggs.ScrambledEggsQuizActivity" />
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

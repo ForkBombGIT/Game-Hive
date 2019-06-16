@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Random extends Fragment implements View.OnClickListener {
+    //controls if button can be pressed
+    boolean buttonPress = false;
     //random num gen
     java.util.Random rnd = new java.util.Random();
     //games
@@ -61,11 +61,20 @@ public class Random extends Fragment implements View.OnClickListener {
         flavorText.setText(flavor[rnd.nextInt(flavor.length)]);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        buttonPress = false;
+    }
+
     //handles button press
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                activityStart(GameActivity.class);
+                if (!buttonPress) {
+                    activityStart(GameActivity.class);
+                    buttonPress = true;
+                }
                 break;
             default:
                 break;

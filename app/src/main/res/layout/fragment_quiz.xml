@@ -60,7 +60,7 @@
 
                     <androidx.gridlayout.widget.GridLayout
                         android:id="@+id/imggrid"
-                        android:layout_width="280dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
                         android:layout_marginBottom="32dp"
@@ -71,7 +71,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_1"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="15dp"
                             android:contentDescription="an egg with a 1 on it"
@@ -81,7 +81,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_2"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with a 2 on it"
                             app:layout_column="1"
@@ -90,7 +90,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_3"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with a 3 on it"
                             app:layout_column="2"
@@ -99,7 +99,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_4"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with a 4 on it"
                             app:layout_column="3"
@@ -108,7 +108,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_5"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="15dp"
                             android:contentDescription="an egg with a 5 on it"
@@ -118,7 +118,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_6"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with a 6 on it"
                             app:layout_column="1"
@@ -127,7 +127,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_7"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with a 7 on it"
                             app:layout_column="2"
@@ -136,7 +136,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_8"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with an 8 on it"
                             app:layout_column="3"
@@ -145,7 +145,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_9"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with a 9 on it"
                             app:layout_column="0"
@@ -154,7 +154,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_10"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with a 10 on it"
                             app:layout_column="1"
@@ -163,7 +163,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_11"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with an 11 on it"
                             app:layout_column="2"
@@ -172,7 +172,7 @@
 
                         <ImageView
                             android:id="@+id/img_egg_12"
-                            android:layout_width="70dp"
+                            android:layout_width="62dp"
                             android:layout_height="60dp"
                             android:contentDescription="an egg with a 12 on it"
                             app:layout_column="3"

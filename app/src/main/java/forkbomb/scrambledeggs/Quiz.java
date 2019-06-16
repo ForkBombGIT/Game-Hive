@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Quiz extends Fragment implements View.OnClickListener {
+    //controls if button can be pressed
+    boolean buttonPress = false;
     //random number gen
     java.util.Random rnd = new Random();
     //games
@@ -51,6 +53,12 @@ public class Quiz extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
         database = (ArrayList<Game>) args.getSerializable("games");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        buttonPress = false;
     }
 
     @Override
@@ -111,7 +119,10 @@ public class Quiz extends Fragment implements View.OnClickListener {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                activityStart(QuizActivity.class);
+                if (!buttonPress) {
+                    activityStart(QuizActivity.class);
+                    buttonPress = true;
+                }
                 break;
             default:
                 break;

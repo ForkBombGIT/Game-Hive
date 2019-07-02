@@ -1,6 +1,7 @@
 package forkbomb.scrambledeggs;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Game implements Serializable {
     public String title, description, year, publisher, developer, genre, platforms, region, visuals, music,
@@ -8,7 +9,8 @@ public class Game implements Serializable {
                   weapon, story, decade, accessories, customizing, enemy, difficulty, curve, feel,
                   communities, achievement;
 
-    public Game(){ }
+    public Game(){
+    }
 
     public String get(String val){
         switch(val) {

@@ -3,6 +3,7 @@ package forkbomb.scrambledeggs;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.text.HtmlCompat;
 import android.view.View;
@@ -13,6 +14,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -69,7 +72,7 @@ public class GameActivity extends AppCompatActivity {
         MobileAds.initialize(this, getString(R.string.admob_app_id));
         mInterstitialAd = new InterstitialAd(GameActivity.this);
         mInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
-        mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("FECC64101B6F54F6DD54A045D1CEBEEC").build());
+        mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("1AC86BEE682CCCD95C7416207D316C1C").build());
         mInterstitialAd.setAdListener(new AdListener() {
             public void onAdClosed() {
                 finish();

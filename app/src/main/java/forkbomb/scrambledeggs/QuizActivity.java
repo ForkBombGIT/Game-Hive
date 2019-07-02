@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
+    //controls if button can be pressed
+    boolean buttonPress = false;
+    //used for rnd
     Random rnd = new Random();
     //controls what questions will be used for the QuizActivity
     private QuestionHandler questionHandler;
@@ -112,41 +115,42 @@ public class QuizActivity extends AppCompatActivity {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button:
-                if (questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) {
-                    //increments question number
-                    if (questionNumber < questionHandler.quizLength - 1) {
+                if (!buttonPress) {
+                    if (questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) {
+                        //increments question number
+                        if (questionNumber < questionHandler.quizLength - 1) {
+                            //resets displayed answers array
+                            answerSize = (questionHandler.quizQuestions[++questionNumber].possibleAnswers.size() < 4) ? questionHandler.quizQuestions[questionNumber].possibleAnswers.size() : 4;
+                            questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
+
+                            //generates new answers
+                            for (int i = 0; i < answerSize; i++)
+                                questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
+
+                            ((Button) getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_refresh);
+                        } else {
+                            buttonPress = true;
+                            final Intent intent = new Intent(this, GameActivity.class);
+                            //creates a bundle to send
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("database", database);
+                            intent.putExtra("database", bundle);
+                            intent.putExtra("index", generateGame());
+                            intent.putExtra("origin", "quiz");
+
+                            //starts the new activity
+                            startActivity(intent);
+                            finish();
+                        }
+                    } else {
                         //resets displayed answers array
-                        answerSize = (questionHandler.quizQuestions[++questionNumber].possibleAnswers.size() < 4) ? questionHandler.quizQuestions[questionNumber].possibleAnswers.size() : 4;
                         questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
-
-                        //generates new answers
-                        for (int i = 0; i < answerSize; i++)
+                        for (int i = 0; i < answerSize; i++) {
                             questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
-
-                        ((Button)getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_refresh);
+                        }
                     }
-                    else {
-                        final Intent intent = new Intent(this, GameActivity.class);
-                        //creates a bundle to send
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("database",database);
-                        intent.putExtra("database",bundle);
-                        intent.putExtra("index", generateGame());
-                        intent.putExtra("origin","quiz");
-
-                        //starts the new activity
-                        startActivity(intent);
-                        finish();
-                    }
+                    handleQuiz();
                 }
-                else {
-                    //resets displayed answers array
-                    questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
-                    for (int i = 0; i < answerSize; i++) {
-                        questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
-                    }
-                }
-                handleQuiz();
                 break;
             default:
                 break;
@@ -157,11 +161,14 @@ public class QuizActivity extends AppCompatActivity {
         ArrayList<Integer> matches = new ArrayList<>();
         int highest = 0;
         for (int i = 0; i < database.size(); i++){
+            Game game = database.get(i);
             int counter = 0;
             for (int j = 0; j < questionHandler.quizLength; j++){
                 for (int k = 0; k < questionHandler.quizQuestions[j].userAnswers.size(); k++){
-                    String tag = (database.get(i).get(questionHandler.quizQuestions[j].tag) != null) ? database.get(i).get(questionHandler.quizQuestions[j].tag) : "";
-                    if ((tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k))) counter++;
+                    String tag = (game.get(questionHandler.quizQuestions[j].tag) != null) ? game.get(questionHandler.quizQuestions[j].tag) : "";
+                    if ((tag).contains(questionHandler.quizQuestions[j].userAnswers.get(k))) {
+                        counter++;
+                    }
                 }
             }
             if (counter > highest){

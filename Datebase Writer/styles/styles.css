@@ -1,0 +1,52 @@
+h1,h2 {
+    text-align: center;
+}
+h2 {
+    font-size: 16px !important;
+}
+input,textarea,select {
+    width: 100%;
+    resize: none;
+}
+button {
+    float: right;
+}
+.info-input {
+    margin-bottom: 5px;
+}
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+    margin-top: 10px;
+}
+.step.active {
+    background-color: #000;
+}
+.content {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    overflow: hidden;
+}
+#back {
+    margin-right: 10px;
+}
+#content1 {
+    height: 500px;
+}
+#progress {
+    margin-top: 15;
+}

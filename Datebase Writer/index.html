@@ -1,0 +1,554 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./styles/styles.css"/>
+        <link rel="stylesheet" href="./styles/skeleton.css"/>
+        <link rel="stylesheet" href="./styles/normalize.css"/>
+    </head>
+    <body>
+        <div id="content1" class="content">
+            <form id="form"> 
+                <h1>Scrambled Eggs: XML Writer</h1>
+                <h2><i>If you must list, seperate with pipe (|)</i></h2>
+                <div id="0">
+                    <div class="info-input" >
+                        <label for="name">Name:</label>
+                        <input id="name" type="text"/>
+                    </div>
+                    
+                    <div class="info-input">
+                        <label for="year">Year:</label>
+                        <input id="year" type="text"/>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="publisher">Publisher:</label>
+                        <input id="publisher" type="text"/>
+                    </div>
+                    
+                    <div class="info-input">
+                        <label for="developer">Developer:</label>
+                        <input id="developer" type="text"/>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="description">Description:</label>
+                        <textarea id="description" type="text"></textarea>
+                    </div>
+                </div>
+                <div id="1" style="display: none;">
+                    <div class="info-input">
+                        <label for="genre">Genre:</label>
+                        <input id="genre" list="genres" type="text"/>
+                        <datalist id="genres">
+                            <option>Action</option>
+                            <option>Adventure</option>
+                            <option>Fighting</option>
+                            <option>Western RPG</option>
+                            <option>Japanese RPG</option>
+                            <option>Platformer</option>
+                            <option>Beat ‘em up</option>
+                            <option>Run and gun</option>
+                            <option>Shoot 'em up</option>
+                            <option>Sports</option>
+                            <option>First-person shooter</option>
+                            <option>Third-person shooter</option>
+                            <option>Stealth</option>
+                            <option>Rhythm </option>
+                            <option>Arcade</option>
+                            <option>Dungeon crawler</option>
+                            <option>Party</option>
+                            <option>Puzzle</option>
+                            <option>Strategy</option>
+                            <option>Horror</option>
+                            <option>Survival</option>
+                            <option>Simulation</option>
+                            <option>Sports</option>
+                            <option>Casual</option>
+                            <option>Tabletop</option>
+                            <option>Sandbox</option>
+                            <option>Art</option>
+                            <option>Licensed</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="platform">Platforms:</label>
+                        <input id="platform" list="platforms" type="text"/>
+                        <datalist id="platforms">
+                            <option>Nintendo Entertainment System</option>
+                            <option>Famicom</option>
+                            <option>Super Nintendo</option>
+                            <option>Super Famicom</option>
+                            <option>Nintendo 64</option>
+                            <option>Gamecube</option>
+                            <option>Wii</option>
+                            <option>Wii U</option>
+                            <option>Switch</option>
+                            <option>Nintendo DS</option>
+                            <option>Nintendo 3DS</option>
+                            <option>Gameboy</option>
+                            <option>Gameboy Color</option>
+                            <option>Gameboy Advance</option>
+                            <option>Playstation</option>
+                            <option>Playstation 2</option>
+                            <option>Playstation 3</option>
+                            <option>Playstation 4</option>
+                            <option>Playstation Portable</option>
+                            <option>Playstation Vita</option>
+                            <option>PC</option>
+                            <option>Arcade</option>
+                            <option>Xbox</option>
+                            <option>Xbox 360</option>
+                            <option>Xbox One</option>
+                            <option>Master System</option>
+                            <option>Genesis / Sega CD</option>
+                            <option>Saturn</option>
+                            <option>Dreamcast</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="visuals">Visuals:</label>
+                        <input id="visuals" list="visualsOptions" type="text"/>
+                        <datalist id="visualsOptions">
+                            <option>Realism</option>
+                            <option>Pixel art</option>
+                            <option>Limited colors</option>
+                            <option>Cartoons</option>
+                            <option>Minimalism</option>
+                            <option>Abstractism</option>
+                            <option>2D graphics</option>
+                            <option>3D graphics</option>
+                            <option>Cuteness</option>
+                            <option>Horror</option>
+                            <option>Anime</option>
+                            <option>Grit</option>
+                            <option>Fantasy</option>
+                            <option>Sci-fi</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="music">Music:</label>
+                        <input id="music" list="musicOptions" type="text"/>
+                        <datalist id="musicOptions">
+                            <option>Retro</option>
+                            <option>Cheerful</option>
+                            <option>Intense</option>
+                            <option>Musical</option>
+                            <option>Orchestral</option>
+                            <option>Epic</option>
+                            <option>Adventurous</option>
+                            <option>Energetic</option>
+                            <option>Rockin’</option>
+                            <option>Funky</option>
+                            <option>Peaceful</option>
+                            <option>Other</option>
+                            <option>None</option>
+                        </datalist>
+                    </div>
+                    
+                    <div class="info-input">
+                        <label for="feel">Feel:</label>
+                        <input id="feel" list="feelOptions" type="text"/>
+                        <datalist id="feelOptions">
+                            <option>Relaxed</option>
+                            <option>Adventurous</option>
+                            <option>Scared</option>
+                            <option>Tense</option>
+                            <option>Excited</option>
+                            <option>Angry</option>
+                            <option>Sad</option>
+                            <option>Happy</option>
+                            <option>Cool</option>
+                            <option>Smart</option>
+                            <option>Weirded out</option>
+                            <option>Focused</option>
+                            <option>Other</option>
+                            <option>Nothing</option>
+                        </datalist>
+                    </div>
+                </div>
+                <div id="2" style="display: none;">
+                    <div class="info-input">
+                        <label for="enemy">Enemy:</label>
+                        <input id="enemy" list="enemyOptions" type="text"/>
+                        <datalist id="enemyOptions">
+                            <option>Martial artists</option>
+                            <option>Cute critters</option>
+                            <option>Warriors from different worlds</option>
+                            <option>Supernatural forces</option>
+                            <option>Aliens</option>
+                            <option>Robots</option>
+                            <option>Military might</option>
+                            <option>Sharpshooters</option>
+                            <option>Ancient warriors</option>
+                            <option>Characters of folklore</option>
+                            <option>Competition</option>
+                            <option>Mother nature</option>
+                            <option>Criminals</option>
+                            <option>The Undead</option>
+                            <option>Nothing</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="region">Region:</label>
+                        <input id="region" list="regionOptions" type="text"/>
+                        <datalist id="regionOptions">
+                            <option>Asian</option>
+                            <option>North American</option>
+                            <option>European</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="pace">Pace:</label>
+                        <input id="pace" list="paceOptions" type="text"/>
+                        <datalist id="paceOptions">
+                            <option>Casual</option>
+                            <option>Fast</option>
+                            <option>Slow</option>
+                            <option>Adventurous</option>
+                            <option>Tense</option>
+                            <option>Relaxing</option>
+                        </datalist>
+                    </div>
+                    
+                    <div class="info-input">
+                        <label for="camera">Camera:</label>
+                        <input id="camera" list="cameraOptions" type="text"/>
+                        <datalist id="cameraOptions">
+                            <option>First-person</option>
+                            <option>Behind your back</option>
+                            <option>Side view</option>
+                            <option>Top down</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="length">Length:</label>
+                        <input id="length" list="lengthOptions" type="text"/>
+                        <datalist id="lengthOptions">
+                            <option>Short</option>
+                            <option>Medium</option>
+                            <option>Long</option>
+                            <option>Infinite</option>
+                            <option>In matches or sessions</option>
+                        </datalist>
+                    </div>
+                </div>
+                <div id="3" style="display: none;">
+                    <div class="info-input">
+                        <label for="accessories">Accessories:</label>
+                        <input id="accessories" list="accessoriesOptions" type="text"/>
+                        <datalist id="accessoriesOptions">
+                            <option>Motion controls</option>
+                            <option>Steering wheel</option>
+                            <option>Fight stick</option>
+                            <option>Musical instrument</option>
+                            <option>Light gun</option>
+                            <option>Arcade stick</option>
+                            <option>Other</option>
+                            <option>None</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="story">Story:</label>
+                        <input id="story" list="storyOptions" type="text"/>
+                        <datalist id="storyOptions">
+                            <option>Sophisticated</option>
+                            <option>With lots of worldbuilding</option>
+                            <option>With interesting characters</option>
+                            <option>As a journey</option>
+                            <option>Like a book or film</option>
+                            <option>Pretty basic</option>
+                            <option>Short and sweet</option>
+                            <option>Any kind is fine</option>
+                            <option>Almost non-existent</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="dimension">Dimension:</label>
+                        <input id="dimension" list="dimensionOptions" type="text"/>
+                        <datalist id="dimensionOptions">
+                            <option>2D</option>
+                            <option>2.5D</option>
+                            <option>3D</option>
+                            <option>Static</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="weapon">Weapons:</label>
+                        <input id="weapon" list="weaponOptions" type="text"/>
+                        <datalist id="weaponOptions">
+                            <option>Sword</option>
+                            <option>Guns</option>
+                            <option>Blaster</option>
+                            <option>Your fists</option>
+                            <option>Magic</option>
+                            <option>Something unconventional</option>
+                            <option>Other</option>
+                            <option>Nothing</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="difficulty">Difficulty:</label>
+                        <input id="difficulty" list="difficultyOptions" type="text"/>
+                        <datalist id="difficultyOptions">
+                            <option>Easy</option>
+                            <option>Normal</option>
+                            <option>Hard</option>
+                            <option>Extreme</option>
+                            <option>I get to choose</option>
+                        </datalist>
+                    </div>
+                </div>
+                <div id="4" style="display: none;"> 
+                    <div class="info-input">
+                        <label for="protag">Protag:</label>
+                        <input id="protag" list="protagOptions" type="text"/>
+                        <datalist id="protagOptions">
+                            <option>Yourself</option>
+                            <option>A cutie</option>
+                            <option>A tough guy</option>
+                            <option>An unlikely hero</option>
+                            <option>A human</option>
+                            <option>Surreal</option>
+                            <option>A girl</option>
+                            <option>A warrior</option>
+                            <option>A sharpshooter</option>
+                            <option>A soldier or agent</option>
+                            <option>An animal</option>
+                            <option>A driver or pilot</option>
+                            <option>Unidentified</option>
+                            <option>A creature</option>
+                            <option>A weirdo</option>
+                            <option>An inanimate object</option>
+                            <option>A god</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+                    
+                    <div class="info-input">
+                        <label for="tone">Tone:</label>
+                        <input id="tone" list="toneOptions" type="text"/>
+                        <datalist id="toneOptions">
+                            <option>Casual</option>
+                            <option>Energetic</option>
+                            <option>Suspenseful</option>
+                            <option>Adventurous</option>
+                            <option>Exciting</option>
+                            <option>Surreal</option>
+                            <option>Intense</option>
+                            <option>Dark</option>
+                            <option>Fun</option>
+                            <option>Tragic</option>
+                            <option>Goofy</option>
+                            <option>Atmospheric</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="setting">Setting:</label>
+                        <input id="setting" list="settingOptions" type="text"/>
+                        <datalist id="settingOptions">
+                            <option>Fantasy</option>
+                            <option>Horror</option>
+                            <option>Mythical</option>
+                            <option>Modern</option>
+                            <option>Sci-fi</option>
+                            <option>Surreal</option>
+                            <option>Steampunk</option>
+                            <option>Space</option>
+                            <option>Natural</option>
+                            <option>Futuristic</option>
+                            <option>Post-apocalyptic</option>
+                            <option>Urban</option>
+                            <option>Unidentifiable</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="customizing">Customizing:</label>
+                        <input id="customizing" list="customizingOptions" type="text"/>
+                        <datalist id="customizingOptions">
+                            <option>The player</option>
+                            <option>Levels</option>
+                            <option>Vehicles and machines</option>
+                            <option>Weapons</option>
+                            <option>Apparel</option>
+                            <option>My life</option>
+                            <option>An army</option>
+                            <option>Creatures</option>
+                            <option>The world</option>
+                            <option>A character</option>
+                            <option>House</option>
+                            <option>Nothing</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="curve">Curve:</label>
+                        <input id="curve" list="curveOptions" type="text"/>
+                        <datalist id="curveOptions">
+                            <option>A baby could do this</option>
+                            <option>Standard</option>
+                            <option>Easy to learn; hard to master</option>
+                            <option>Takes a bit of practice</option>
+                            <option>Takes a lot of practice</option>
+                            <option>Accustomed for experts</option>
+                        </datalist>
+                    </div>
+                </div>
+                <div id="5" style="display: none;">
+                    <div class="info-input">
+                        <label for="violence">Violence:</label>
+                        <input id="violence" list="violenceOptions" type="text"/>
+                        <datalist id="violenceOptions">
+                            <option>Not at all</option>
+                            <option>Cartoon violence is okay</option>
+                            <option>A bit of blood won’t hurt</option>
+                            <option>If it’s there, it’s there</option>
+                            <option>Gratuitous amounts</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="communities">Communities:</label>
+                        <input id="communities" list="communitiesOptions" type="text"/>
+                        <datalist id="communitiesOptions">
+                            <option>Competitive</option>
+                            <option>Casual</option>
+                            <option>Modding / Hacking</option>
+                            <option>Non-existent</option>
+                            <option>Character builds and customization</option>
+                            <option>Speedrunning</option>
+                            <option>Role-playing</option>
+                            <option>Fandom</option>
+                            <option>Don’t care</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+                    
+                    <div class="info-input">
+                            <label for="players">Players:</label>
+                            <input id="players" list="playersOptions" type="text"/>
+                            <datalist id="playersOptions">
+                                <option>Nobody</option>
+                                <option>An individual</option>
+                                <option>A group</option>
+                                <option>The whole world</option>
+                            </datalist>
+                        </div>
+
+                    <div class="info-input">
+                        <label for="achievement">Achievement:</label>
+                        <input id="achievement" list="achievementOptions" type="text"/>
+                        <datalist id="achievementOptions">
+                            <option>Getting the highest score or rank</option>
+                            <option>Getting the fastest time</option>
+                            <option>Obtaining all collectibles</option>
+                            <option>Finishing the hardest difficulty</option>
+                            <option>Getting every ending</option>
+                            <option>Getting the best or secret ending</option>
+                            <option>Completing every level</option>
+                            <option>Simply finishing the last level</option>
+                            <option>Other</option>
+                            <option>Nothing</option>
+                        </datalist>
+                    </div>
+
+                    <div class="info-input">
+                        <label for="standard">Standard:</label>
+                        <input id="standard" list="standardOptions" type="text"/>
+                        <datalist id="standardOptions">
+                            <option>AAA</option>
+                            <option>Indie</option>
+                            <option>Regular</option>
+                            <option>Freeware</option>
+                        </datalist>
+                    </div>
+                </div>
+                <div id="6" style="display: none;">
+                    <div class="info-input">
+                        <label for="goal">Goal:</label>
+                        <input id="goal" list="goalOptions" type="text"/>
+                        <datalist id="goalOptions">
+                            <option>Save the world</option>
+                            <option>Solve puzzles</option>
+                            <option>Create stuff</option>
+                            <option>Command things</option>
+                            <option>Explore the world</option>
+                            <option>Collect stuff</option>
+                            <option>Become stronger</option>
+                            <option>Perform a song or show</option>
+                            <option>Perform cool tricks</option>
+                            <option>Destroy stuff</option>
+                            <option>Conquer things</option>
+                            <option>Fight enemies</option>
+                            <option>Shoot things</option>
+                            <option>Beat stuff up</option>
+                            <option>Fight evildoers</option>
+                            <option>Live my life</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+                    <div class="info-input">
+                        <label for="period">Period:</label>
+                        <input id="period" list="periodOptions" type="text"/>
+                        <datalist id="periodOptions">
+                            <option>Wild West</option>
+                            <option>Colonial era</option>
+                            <option>Feudal period</option>
+                            <option>Prehistory</option>
+                            <option>The future</option>
+                            <option>Post-apocalyptic</option>
+                            <option>Modern era</option>
+                            <option>Victorian era</option>
+                            <option>Middle Ages</option>
+                            <option>Undetermined</option>
+                            <option>Other</option>
+                        </datalist>
+                    </div>
+                    <div class="info-input">
+                        <label for="decade">Decade:</label>
+                        <input id="decade" list="decadeOptions" type="text"/>
+                        <datalist id="decadeOptions">
+                            <option>1980</option>
+                            <option>1990</option>
+                            <option>2000</option>
+                            <option>2010</option>
+                            <option>2020</option>
+                        </datalist>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content">
+            <div id="progress">
+                <span id="step0" class="step active"></span>
+                <span id="step1" class="step"></span>
+                <span id="step2" class="step"></span>
+                <span id="step3" class="step"></span>
+                <span id="step4" class="step"></span>
+                <span id="step5" class="step"></span>
+                <span id="step6" class="step"></span>
+                <button id="next">Next</button>
+                <button id="back">Back</button>
+            </div>  
+        </div>
+        <script src="./js/eventhandlers.js"></script>
+    </body>
+</html> 

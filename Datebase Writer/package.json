@@ -1,0 +1,23 @@
+{
+  "name": "databasewriter",
+  "version": "1.0.0",
+  "description": "a database writer for the scrambled eggs application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ForkBombGIT/ScrambledEggs-DatabaseWriter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ForkBombGIT/ScrambledEggs-DatabaseWriter/issues"
+  },
+  "homepage": "https://github.com/ForkBombGIT/ScrambledEggs-DatabaseWriter#readme",
+  "devDependencies": {
+    "electron": "^4.1.4"
+  }
+}

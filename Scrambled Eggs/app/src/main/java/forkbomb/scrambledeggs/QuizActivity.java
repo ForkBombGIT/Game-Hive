@@ -3,6 +3,8 @@ package forkbomb.scrambledeggs;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -15,13 +17,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
     //controls if button can be pressed
     boolean buttonPress = false;
     //used for rnd
-    Random rnd = new Random();
+    final Random rnd = new Random();
     //controls what questions will be used for the QuizActivity
     private QuestionHandler questionHandler;
     //controls what question the user is on
@@ -33,7 +36,7 @@ public class QuizActivity extends AppCompatActivity {
     TextView question;
     ListView answers;
     int answerSize;
-    //adapter for filling listview
+    //adapter for filling list view
     ArrayAdapter<String> adapter;
 
     @Override
@@ -42,15 +45,15 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         //toolbar setup
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_downicon512, null));
 
         //load database
         Bundle gameDatabase = getIntent().getBundleExtra("database");
-        database = (ArrayList<Game>) gameDatabase.getSerializable("database");
+        database = (ArrayList<Game>) Objects.requireNonNull(gameDatabase).getSerializable("database");
 
         //used for handling questions, answers, and user selections
         questionHandler = new QuestionHandler(getIntent().getIntExtra("length", 2),database);
@@ -58,7 +61,7 @@ public class QuizActivity extends AppCompatActivity {
         //sets up activity elements
         question = findViewById(R.id.tv_question);
         answers = findViewById(R.id.answers);
-        answerSize = (questionHandler.quizQuestions[questionNumber].possibleAnswers.size() < 4) ? questionHandler.quizQuestions[questionNumber].possibleAnswers.size() : 4;
+        answerSize = Math.min(questionHandler.quizQuestions[questionNumber].possibleAnswers.size(), 4);
         questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
 
         //event handling for when item in list view is clicked
@@ -98,12 +101,13 @@ public class QuizActivity extends AppCompatActivity {
     public void handleQuiz(){
         question.setText(questionHandler.quizQuestions[questionNumber].question);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, questionHandler.quizQuestions[questionNumber].displayedAnswers){
+            @NonNull
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
+            public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                 TextView textView = (TextView) super.getView(position, convertView, parent);
                 float fontSize = androidx.core.math.MathUtils .clamp(((TextView)findViewById(R.id.tv_question)).getTextSize()/4,24,44);
                 textView.setTextSize(fontSize);
-                textView.setTextAlignment(convertView.TEXT_ALIGNMENT_CENTER);
+                textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 textView.setBackground(getContext().getDrawable(R.drawable.listview_entries_default));
                 return textView;
             }
@@ -113,47 +117,43 @@ public class QuizActivity extends AppCompatActivity {
 
     //handles button press
     public void onClick(View v){
-        switch (v.getId()){
-            case R.id.button:
-                if (!buttonPress) {
-                    if (questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) {
-                        //increments question number
-                        if (questionNumber < questionHandler.quizLength - 1) {
-                            //resets displayed answers array
-                            answerSize = (questionHandler.quizQuestions[++questionNumber].possibleAnswers.size() < 4) ? questionHandler.quizQuestions[questionNumber].possibleAnswers.size() : 4;
-                            questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
-
-                            //generates new answers
-                            for (int i = 0; i < answerSize; i++)
-                                questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
-
-                            ((Button) getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_refresh);
-                        } else {
-                            buttonPress = true;
-                            final Intent intent = new Intent(this, GameActivity.class);
-                            //creates a bundle to send
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("database", database);
-                            intent.putExtra("database", bundle);
-                            intent.putExtra("index", generateGame());
-                            intent.putExtra("origin", "quiz");
-
-                            //starts the new activity
-                            startActivity(intent);
-                            finish();
-                        }
-                    } else {
+        if (v.getId() == R.id.button) {
+            if (!buttonPress) {
+                if (questionHandler.quizQuestions[questionNumber].userAnswers.size() > 0) {
+                    //increments question number
+                    if (questionNumber < questionHandler.quizLength - 1) {
                         //resets displayed answers array
+                        answerSize = (questionHandler.quizQuestions[++questionNumber].possibleAnswers.size() < 4) ? questionHandler.quizQuestions[questionNumber].possibleAnswers.size() : 4;
                         questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
-                        for (int i = 0; i < answerSize; i++) {
+
+                        //generates new answers
+                        for (int i = 0; i < answerSize; i++)
                             questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
-                        }
+
+                        ((Button) getWindow().getDecorView().findViewById(R.id.button)).setText(R.string.activity_quiz_button_refresh);
+                    } else {
+                        buttonPress = true;
+                        final Intent intent = new Intent(this, GameActivity.class);
+                        //creates a bundle to send
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("database", database);
+                        intent.putExtra("database", bundle);
+                        intent.putExtra("index", generateGame());
+                        intent.putExtra("origin", "quiz");
+
+                        //starts the new activity
+                        startActivity(intent);
+                        finish();
                     }
-                    handleQuiz();
+                } else {
+                    //resets displayed answers array
+                    questionHandler.quizQuestions[questionNumber].displayedAnswers = new String[answerSize];
+                    for (int i = 0; i < answerSize; i++) {
+                        questionHandler.quizQuestions[questionNumber].displayedAnswers[i] = questionHandler.generateAnswer(questionNumber);
+                    }
                 }
-                break;
-            default:
-                break;
+                handleQuiz();
+            }
         }
     }
 

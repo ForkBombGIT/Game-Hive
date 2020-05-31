@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import android.util.DisplayMetrics;
@@ -20,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.Random;
 import java.util.TimeZone;
 
@@ -28,9 +30,9 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     int state = 0;
     int lastState = state;
     //random val gen
-    Random rnd = new Random();
+    final Random rnd = new Random();
     //var to hold the top toolbar
-    Toolbar toptoolbar;
+    Toolbar topToolBar;
     //used to hold date data, to check if its a new day
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -40,20 +42,23 @@ public class ScrambledEggsActivity extends AppCompatActivity {
     int DB_LENGTH = 0;
     //holds seen random games
     ArrayList<Integer> seenGames;
+    //activity context
+    private static Context context;
 
     //on create function, when the app is initially created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = getApplicationContext();
         setContentView(R.layout.activity_scrambledeggs);
 
         //sets up toolbar
-        toptoolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toptoolbar);
+        topToolBar = findViewById(R.id.toolbar);
+        setSupportActionBar(topToolBar);
 
         //initializes the array list
         gameDatabase = XmlReader.readXml(ScrambledEggsActivity.this, R.raw.gamedatabase);
-        DB_LENGTH = gameDatabase.size();
+        DB_LENGTH = Objects.requireNonNull(gameDatabase).size();
         seenGames = new ArrayList<>();
         //checks if there is a new day
         checkForNewDate();
@@ -92,7 +97,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
                 if (lastState != state) {
                     lastState = state;
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frameLayout, selectedFragment);
+                    transaction.replace(R.id.frameLayout, Objects.requireNonNull(selectedFragment));
                     transaction.commit();
                 }
                 return true;
@@ -105,17 +110,11 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    //called when the activity starts
-    @Override
-    protected void onStart(){
-        super.onStart();
-    }
-
     //when the activity unpauses
     @Override
     protected void onResume(){
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.eggonlyicon512);
-        ActivityManager.TaskDescription td = new ActivityManager.TaskDescription(null, bm, getResources().getColor(R.color.colorPrimary));
+        ActivityManager.TaskDescription td = new ActivityManager.TaskDescription(null, bm,(ContextCompat.getColor(Objects.requireNonNull(context),R.color.colorPrimary)));
         this.setTaskDescription(td);
         super.onResume();
     }
@@ -152,7 +151,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
                 int day = preferences.getInt("day",-1);
                 int month = preferences.getInt("month",-1);
                 int year = preferences.getInt("year",-1);
-                //checks if theres a difference in days
+                //checks if there is a difference in days
                 if (year == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR)) {
                     if (month == Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH)) {
                         if ((day != Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH)))
@@ -165,7 +164,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         }
         //adds current index to preferences
         editor.putInt("index",index);
-        editor.commit();
+        editor.apply();
     }
 
     //generates a new random game
@@ -202,7 +201,7 @@ public class ScrambledEggsActivity extends AppCompatActivity {
         editor.putInt("year",year);
         editor.putInt("index",i);
 
-        editor.commit();
+        editor.apply();
     }
 
 

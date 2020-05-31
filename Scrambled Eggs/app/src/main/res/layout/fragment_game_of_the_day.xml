@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".GameOfTheDay">
     <ScrollView
-        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbarSize="5dip"

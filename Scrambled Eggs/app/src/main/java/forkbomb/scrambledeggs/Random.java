@@ -11,16 +11,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Random extends Fragment implements View.OnClickListener {
     //controls if button can be pressed
     boolean buttonPress = false;
     //random num gen
-    java.util.Random rnd = new java.util.Random();
+    final java.util.Random rnd = new java.util.Random();
     //games
     ArrayList<Game> database;
     //flavor text
-    String[] flavor = {
+    final String[] flavor = {
             "Crack it open, and see what's inside!",
             "What's gonna hatch from this one?",
             "What's inside? Who knows!"
@@ -42,7 +43,7 @@ public class Random extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
-        database = (ArrayList<Game>) args.getSerializable("games");
+        database = (ArrayList<Game>) Objects.requireNonNull(args).getSerializable("games");
     }
 
     @Override
@@ -69,15 +70,11 @@ public class Random extends Fragment implements View.OnClickListener {
 
     //handles button press
     public void onClick(View v){
-        switch (v.getId()){
-            case R.id.button:
-                if (!buttonPress) {
-                    activityStart(GameActivity.class);
-                    buttonPress = true;
-                }
-                break;
-            default:
-                break;
+        if (v.getId() == R.id.button) {
+            if (!buttonPress) {
+                activityStart(GameActivity.class);
+                buttonPress = true;
+            }
         }
     }
 

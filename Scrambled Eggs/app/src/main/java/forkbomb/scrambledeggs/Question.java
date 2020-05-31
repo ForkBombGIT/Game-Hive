@@ -3,11 +3,11 @@ package forkbomb.scrambledeggs;
 import java.util.ArrayList;
 
 public class Question {
-    public String question;
-    public ArrayList<String> possibleAnswers;
+    public final String question;
+    public final ArrayList<String> possibleAnswers;
     public String[] displayedAnswers;
-    public ArrayList<String> userAnswers;
-    public String tag;
+    public final ArrayList<String> userAnswers;
+    public final String tag;
 
     public Question(String q, String t){
         this.question = q;

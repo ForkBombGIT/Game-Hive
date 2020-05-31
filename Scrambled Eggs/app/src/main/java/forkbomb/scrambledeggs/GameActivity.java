@@ -3,7 +3,6 @@ package forkbomb.scrambledeggs;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.text.HtmlCompat;
 import android.view.View;
@@ -15,14 +14,13 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
     //random gen
-    Random rand = new Random();
+    final Random rand = new Random();
     //data used to display the GameActivity
     ArrayList<Game> database;
     //used to tell what started activity
@@ -44,7 +42,8 @@ public class GameActivity extends AppCompatActivity {
 
         //gets bundle
         Bundle bundle = getIntent().getBundleExtra("database");
-        database = (ArrayList<Game>) bundle.getSerializable("database");
+        assert bundle != null;
+        database = (ArrayList<Game>) Objects.requireNonNull(bundle).getSerializable("database");
 
         //checks the origin of the activity
         //if its created from the quiz activity, the fab must be hidden, then the matched game will be displayed
@@ -53,26 +52,27 @@ public class GameActivity extends AppCompatActivity {
               findViewById(R.id.button).setVisibility(View.GONE);
               displayData(getIntent().getIntExtra("index",-1));
         } else {
-            DB_LENGTH = database.size();
+            assert database != null;
+            DB_LENGTH = Objects.requireNonNull(database).size();
             seenGames = new ArrayList<>();
             generateRandomGame();
         }
 
         //sets toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(Objects.requireNonNull(getSupportActionBar())).setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_downicon512, null));
 
         //sets fab elevation
         ((FloatingActionButton) findViewById(R.id.button)).setCompatElevation(0);
 
         //init ads
-        MobileAds.initialize(this, getString(R.string.admob_app_id));
+        MobileAds.initialize(this);
         mInterstitialAd = new InterstitialAd(GameActivity.this);
         mInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
-        mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).addTestDevice("1AC86BEE682CCCD95C7416207D316C1C").build());
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
         mInterstitialAd.setAdListener(new AdListener() {
             public void onAdClosed() {
                 finish();
@@ -133,16 +133,16 @@ public class GameActivity extends AppCompatActivity {
 
         //genre entry text
         String[] genres = database.get(index).genre.split("\\|");
-        String genreText = "";
+        StringBuilder genreText = new StringBuilder();
         for (int i = 0; i < genres.length; i++)
-            genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
-        genreEntries.setText(genreText);
+            genreText.append(genres[i].trim()).append((i == (genres.length - 1)) ? "" : "\n");
+        genreEntries.setText(genreText.toString());
         //platform entry text
         String[] platformEntries = database.get(index).platforms.split("\\|");
-        String platformText = "";
+        StringBuilder platformText = new StringBuilder();
         for (int i = 0; i < platformEntries.length; i++)
-            platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");
-        platformsEntries.setText(platformText);
+            platformText.append(platformEntries[i].trim()).append((i == (platformEntries.length - 1)) ? "" : "\n");
+        platformsEntries.setText(platformText.toString());
     }
 
     //generates a new random GameActivity
@@ -162,13 +162,9 @@ public class GameActivity extends AppCompatActivity {
 
     //handles button press
     public void onClick(View v){
-        switch (v.getId()){
-            case R.id.button:
-                if (origin.equals("random"))
-                    generateRandomGame();
-                break;
-            default:
-                break;
+        if (v.getId() == R.id.button) {
+            if (origin.equals("random"))
+                generateRandomGame();
         }
     }
 

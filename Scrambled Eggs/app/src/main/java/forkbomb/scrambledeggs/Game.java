@@ -1,7 +1,6 @@
 package forkbomb.scrambledeggs;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Game implements Serializable {
     public String title, description, year, publisher, developer, genre, platforms, region, visuals, music,

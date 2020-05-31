@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.gridlayout.widget.GridLayout;
 import android.view.LayoutInflater;
@@ -14,23 +15,24 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class Quiz extends Fragment implements View.OnClickListener {
     //controls if button can be pressed
     boolean buttonPress = false;
     //random number gen
-    java.util.Random rnd = new Random();
+    final java.util.Random rnd = new Random();
     //games
     ArrayList<Game> database;
     //used to display eggs
     GridLayout imgGrid;
-    ImageView[] eggs = new ImageView[12];
+    final ImageView[] eggs = new ImageView[12];
     //holds length of quiz
     int quizLength;
     //possible flavor text
     TextView flavorText;
-    String[] flavor = {
+    final String[] flavor = {
             "How many questions do you want?",
             "How big do you want your omelette?",
             "How many eggs do you wanna scramble?"
@@ -52,7 +54,7 @@ public class Quiz extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
-        database = (ArrayList<Game>) args.getSerializable("games");
+        database = (ArrayList<Game>) Objects.requireNonNull(args).getSerializable("games");
     }
 
     @Override
@@ -76,11 +78,11 @@ public class Quiz extends Fragment implements View.OnClickListener {
         flavorText = view.findViewById(R.id.flavor);
         flavorText.setText(flavor[rnd.nextInt(flavor.length)]);
 
-        //sets imageview array
+        //sets image view array
         imgGrid = view.findViewById(R.id.imggrid);
         for (int i = 0; i < imgGrid.getChildCount(); i++){
             eggs[i] = (ImageView) imgGrid.getChildAt(i);
-            eggs[i].setColorFilter(getResources().getColor(R.color.itemBorder));
+            eggs[i].setColorFilter(ContextCompat.getColor(Objects.requireNonNull(getActivity()),R.color.itemBorder));
         }
 
         //sets up seek bar
@@ -109,7 +111,7 @@ public class Quiz extends Fragment implements View.OnClickListener {
                     eggs[i].setColorFilter(Color.TRANSPARENT);
                 }
                 for (int i = quizLength; i < 12; i++){
-                    eggs[i].setColorFilter(getResources().getColor(R.color.itemBorder));
+                    eggs[i].setColorFilter(ContextCompat.getColor(Objects.requireNonNull(getActivity()),R.color.itemBorder));
                 }
             }
         });
@@ -117,15 +119,11 @@ public class Quiz extends Fragment implements View.OnClickListener {
 
     //handles button press
     public void onClick(View v){
-        switch (v.getId()){
-            case R.id.button:
-                if (!buttonPress) {
-                    activityStart(QuizActivity.class);
-                    buttonPress = true;
-                }
-                break;
-            default:
-                break;
+        if (v.getId() == R.id.button) {
+            if (!buttonPress) {
+                activityStart(QuizActivity.class);
+                buttonPress = true;
+            }
         }
     }
 

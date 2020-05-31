@@ -9,12 +9,12 @@ import java.util.Random;
 
 public class QuestionHandler {
     //holds questions for specific quiz
-    private HashSet<Integer> selectedIndexs;
+    private final HashSet<Integer> selectedIndexes;
     //holds the questions selected for the quiz
-    public Question[] quizQuestions;
-    public int quizLength;
+    public final Question[] quizQuestions;
+    public final int quizLength;
     //holds all possible questions
-    private Question[] questionList = new Question[]{
+    private final Question[] questionList = new Question[]{
             new Question("Any regional preferences for developers?","region"),
             new Question("What should the game's length be?","length"),
             new Question("Do you want to see violence?","violence"),
@@ -49,7 +49,7 @@ public class QuestionHandler {
     //constructor
     public QuestionHandler(int length, ArrayList<Game> db){
         quizLength = length;
-        selectedIndexs = new HashSet<Integer>();
+        selectedIndexes = new HashSet<>();
         quizQuestions = generateQuestions(db);
     }
 
@@ -57,18 +57,18 @@ public class QuestionHandler {
     private Question[] generateQuestions(ArrayList<Game> db){
         Question[] temp = new Question[quizLength];
         //iterates through the array and adds random questions
-        while (selectedIndexs.size() < quizLength) selectedIndexs.add(new Random(System.nanoTime()).nextInt(questionList.length));
+        while (selectedIndexes.size() < quizLength) selectedIndexes.add(new Random(System.nanoTime()).nextInt(questionList.length));
 
         //adds the questions to the array
-        Integer[] arr = selectedIndexs.toArray(new Integer[quizLength]);
+        Integer[] arr = selectedIndexes.toArray(new Integer[quizLength]);
         for (int i = 0; i < quizLength; i++) {
             temp[i] = questionList[arr[i]];
             Log.i("questionhandler",temp[i].tag);
             for (int j = 0; j < db.size(); j++) {
                 Log.i("questionhandler",db.get(j).get(temp[i].tag));
                 String[] result = db.get(j).get(temp[i].tag).split("\\|");
-                for (int k = 0; k < result.length; k++) {
-                    temp[i].addAnswer(result[k].trim());
+                for (String s : result) {
+                    temp[i].addAnswer(s.trim());
                 }
             }
         }

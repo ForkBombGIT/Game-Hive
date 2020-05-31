@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FFA000</color>
-    <color name="colorPrimaryLight">#ffd149</color>
     <color name="colorPrimaryDark">#c67100</color>
     <color name="colorSecondary">#ffa000</color>
-    <color name="colorSecondaryLight">#ffd149</color>
-    <color name="colorSecondaryDark">#c67100</color>
     <color name="colorBlack">#333333</color>
     <color name="colorWhite">#ffffff</color>
     <color name="toolBarColor">#FFFFFF</color>
     <color name="homeTitleColor">#333333</color>
     <color name="itemBorder">#cccccc</color>
     <color name ="background">#Fdedac</color>
-    <color name ="cardbg">#ffffea</color>
 </resources>

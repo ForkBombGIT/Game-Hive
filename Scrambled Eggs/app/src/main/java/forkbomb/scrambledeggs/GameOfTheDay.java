@@ -2,6 +2,7 @@ package forkbomb.scrambledeggs;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.text.HtmlCompat;
 import androidx.fragment.app.Fragment;
@@ -11,11 +12,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameOfTheDay extends Fragment {
     //games
     ArrayList<Game> database;
-    //index of gotd
+    //index of game of the day
     int index;
     public GameOfTheDay() {
         // Required empty public constructor
@@ -34,7 +36,7 @@ public class GameOfTheDay extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
-        database = (ArrayList<Game>) args.getSerializable("games");
+        database = (ArrayList<Game>) Objects.requireNonNull(args).getSerializable("games");
         index = args.getInt("index");
     }
 
@@ -46,7 +48,7 @@ public class GameOfTheDay extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         displayData(view);
     }
 
@@ -86,15 +88,15 @@ public class GameOfTheDay extends Fragment {
 
         //genre entry text
         String[] genres = database.get(index).genre.split("\\|");
-        String genreText = "";
+        StringBuilder genreText = new StringBuilder();
         for (int i = 0; i < genres.length; i++)
-            genreText += genres[i].trim() + ((i == (genres.length - 1)) ? "" : "\n");
-        genreEntries.setText(genreText);
+            genreText.append(genres[i].trim()).append((i == (genres.length - 1)) ? "" : "\n");
+        genreEntries.setText(genreText.toString());
         //platform entry text
         String[] platformEntries = database.get(index).platforms.split("\\|");
-        String platformText = "";
+        StringBuilder platformText = new StringBuilder();
         for (int i = 0; i < platformEntries.length; i++)
-            platformText += platformEntries[i].trim() + ((i == (platformEntries.length - 1)) ? "" : "\n");
-        platformsEntries.setText(platformText);
+            platformText.append(platformEntries[i].trim()).append((i == (platformEntries.length - 1)) ? "" : "\n");
+        platformsEntries.setText(platformText.toString());
     }
 }
